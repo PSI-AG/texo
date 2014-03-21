@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.eclipse.org/emf/texo/server/model/response"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.eclipse.org/emf/texo/server/model/response">
+
+	<xs:element name="response">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="status" type="xs:string" />
+				<xs:element name="startRow" type="xs:long" />
+				<xs:element name="endRow" type="xs:long" />
+				<xs:element name="totalRows" type="xs:long" />
+				<xs:element name="data" type="xs:anyType" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="result">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="updated" type="xs:anyType" maxOccurs="unbounded" />
+				<xs:element name="inserted" type="xs:anyType" maxOccurs="unbounded" />
+				<xs:element name="deleted" type="xs:anyType" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="error" type="ErrorType" />
+
+	<xs:complexType name="ErrorType">
+		<xs:sequence>
+			<xs:element name="errorClass" type="xs:string" nillable="true" />
+			<xs:element name="message" type="xs:string" nillable="true" />
+			<xs:element name="stackTrace" type="xs:string" nillable="true" />
+			<xs:element name="cause" type="ErrorType" nillable="true" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

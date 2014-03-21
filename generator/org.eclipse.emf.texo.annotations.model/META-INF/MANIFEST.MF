@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %pluginName
+Bundle-SymbolicName: org.eclipse.emf.texo.annotations.model;singleton:=true
+Bundle-Version: 0.1.0.qualifier
+Bundle-Vendor: %providerName
+Bundle-ClassPath: .
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: org.eclipse.emf.texo.annotations;version="0.1.0",
+ org.eclipse.emf.texo.annotations.annotationsmodel;version="0.1.0",
+ org.eclipse.emf.texo.annotations.annotationsmodel.util;version="0.1.0"
+Require-Bundle: org.eclipse.core.runtime;bundle-version="[3.5.0,4.0.0)",
+ org.eclipse.emf.ecore;bundle-version="[2.5.0,3.0.0)"

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:this="http://www.eclipse.org/emf/texo/test/model/schemaconstructs/include" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.eclipse.org/emf/texo/test/model/schemaconstructs/include">
+	<include schemaLocation="include-included.xsd"/> 
+	
+	<complexType name="Include1">
+		<sequence>
+			<element name="code" type="string"/>
+			<element name="include2" type="this:Include2"/>
+		</sequence>
+	</complexType>
+</schema>

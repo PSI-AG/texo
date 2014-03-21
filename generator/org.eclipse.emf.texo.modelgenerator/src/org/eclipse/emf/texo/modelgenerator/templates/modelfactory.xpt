@@ -1,0 +1,264 @@
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::texo::annotations::annotationsmodel»
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(ModelController modelController) FOR EPackageModelGenAnnotation-»
+«FILE modelFactoryFileName(this) java-»
+«this.javaFileHeader-»
+package «this.modelClassesPackagePath»;
+
+/**
+ * The <b>{@link org.eclipse.emf.texo.model.ModelFactory}</b> for the types of this model: «this.EPackage.name».
+ * It contains code to create instances {@link org.eclipse.emf.texo.model.ModelObject} wrappers and instances for EClasses and convert objects back and forth from their String (XML) representation.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+«IF this.documentation != null-»
+ * <!-- begin-model-doc -->
+ * «this.documentation-»
+ * <!-- end-model-doc -->
+«ENDIF-»
+ * @generated
+ */
+public class «this.simpleModelFactoryClassName» implements org.eclipse.emf.texo.model.ModelFactory {
+
+	/**
+	 * Creates an instance for an {@link org.eclipse.emf.ecore.EClass}
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass creates a Object instance for this EClass
+	 * @return an object representing the eClass
+	 * @generated
+	 */
+	public Object create(org.eclipse.emf.ecore.EClass eClass) {
+		switch (eClass.getClassifierID()) {
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	«IF !eClassAnnotation.EClass.abstract && !eClassAnnotation.EClass.interface && eClassAnnotation.generateCode-»
+			case «this.qualifiedClassName».«toUpperCase(eClassAnnotation.name)»_CLASSIFIER_ID:
+				return create«toFirstUpper(eClassAnnotation.name)»();
+	«ENDIF-»
+	«ENDFOREACH-»
+		}
+		throw new IllegalArgumentException("The EClass '" + eClass.getName() + "' is not a valid EClass for this EPackage");
+	}
+
+	/**
+	 * Wraps an object in a {@link ModelObject}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 *
+	 * @param eClass
+	 *            the EClass of the object
+	 * @param adaptee
+	 *            the object being wrapped/adapted
+	 * @return the wrapper {@link ModelObject}
+	 * @generated
+	 */
+	@SuppressWarnings( { "unchecked", "rawtypes" })
+	public ModelObject createModelObject(org.eclipse.emf.ecore.EClass eClass, Object adaptee) {
+	«IF !this.EClassModelGenAnnotations.isEmpty-»
+		ModelObject<Object> modelObject = null;
+		switch (eClass.getClassifierID()) {
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	«IF eClassAnnotation.generateCode-»
+			case «this.qualifiedClassName».«toUpperCase(eClassAnnotation.name)»_CLASSIFIER_ID:
+				modelObject = new «eClassAnnotation.simpleClassName»ModelObject();
+				break;
+	«ENDIF-»
+	«ENDFOREACH-»
+			default:
+				throw new IllegalArgumentException("The EClass '" + eClass + "' is not defined in this EPackage");
+		}
+		modelObject.setTarget(adaptee);
+		return modelObject;
+	«ELSE-»
+		throw new IllegalArgumentException("The EClass '" + eClass + "' is not defined in this EPackage");
+	«ENDIF-»
+	}
+
+	/**
+	 * Creates a feature map entry instance for a certain EStructuralFeature.
+	 *
+	 * @param eFeature
+	 *          the feature map feature
+	 * @return the pojo feature map entry
+	 * @generated
+	 */
+	public Object createFeatureMapEntry(org.eclipse.emf.ecore.EStructuralFeature eFeature) {
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	«FOREACH eClassAnnotation.featureMapFeatures AS featureAnnotation-»
+	  if (eFeature == «this.qualifiedClassName».INSTANCE.get«toFirstUpper(eClassAnnotation.name)»_«toFirstUpper(featureAnnotation.name)»()) {
+        return new «featureAnnotation.featureMapQualifiedClassName-»();
+      }
+	«ENDFOREACH-»
+	«ENDFOREACH-»
+      throw new IllegalArgumentException("The EStructuralFeature '" + eFeature
+          + "' is not a valid feature map in this EPackage");
+  	}
+
+    /**
+     * Wraps a feature map entry pojo in a {@link org.eclipse.emf.texo.model.AbstractModelFeatureMapEntry}. If the feature map
+     * entry is null then a new one is created and
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     *
+     * @param eFeature
+     *          the feature map feature of the object
+     * @param adaptee
+     *          the pojo feature map entry being wrapped/adapted
+     * @return the wrapper {@link ModelFeatureMapEntry}
+     * @generated
+     */
+    public org.eclipse.emf.texo.model.ModelFeatureMapEntry<?> createModelFeatureMapEntry(EStructuralFeature eFeature,
+        Object adaptee) {
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	«FOREACH eClassAnnotation.featureMapFeatures AS featureAnnotation-»
+	  if (eFeature == «this.qualifiedClassName».INSTANCE.get«toFirstUpper(eClassAnnotation.name)»_«toFirstUpper(featureAnnotation.name)»()) {
+        final «featureAnnotation.featureMapSimpleClassName-»ModelFeatureMapEntry<«featureAnnotation.featureMapQualifiedClassName-»> entry = new «featureAnnotation.featureMapSimpleClassName-»ModelFeatureMapEntry<«featureAnnotation.featureMapQualifiedClassName-»>();
+        entry.setTarget(«cast(featureAnnotation.featureMapQualifiedClassName)-»adaptee);
+        return entry;
+      }
+	«ENDFOREACH-»
+	«ENDFOREACH-»
+      throw new IllegalArgumentException("The EStructuralFeature '" + eFeature
+          + "' is not a valid feature map in this EPackage");
+    }
+
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	«IF !eClassAnnotation.EClass.abstract && !eClassAnnotation.EClass.interface && eClassAnnotation.generateCode-»
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return an instance of the model object representing the EClass «eClassAnnotation.EClass.name»
+	 * @generated
+	 */
+	public «eClassAnnotation.qualifiedClassName» create«toFirstUpper(eClassAnnotation.name)»() {
+		return new «eClassAnnotation.qualifiedClassName»();
+	}
+	«ENDIF-»
+	«ENDFOREACH-»
+
+	/**
+	 * Converts an instance of an {@link org.eclipse.emf.ecore.EDataType} to a String.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eDataType
+	 *            the {@link org.eclipse.emf.ecore.EDataType} defining the type
+	 * @param value
+	 *            the object to convert, if the value is null then null is returned.
+	 * @generated
+	 */
+	public Object createFromString(org.eclipse.emf.ecore.EDataType eDataType, String value) {
+		switch (eDataType.getClassifierID()) {
+	«FOREACH this.EDataTypeModelGenAnnotations AS eDataTypeAnnotation-»
+		case «this.qualifiedClassName».«toUpperCase(eDataTypeAnnotation.name)»_CLASSIFIER_ID:
+			return create«toFirstUpper(eDataTypeAnnotation.name)»FromString(value);
+	«ENDFOREACH-»
+		}
+		throw new IllegalArgumentException("The EDatatype '" + eDataType + "' is not defined in this EPackage");
+	}
+
+	/**
+	 * Converts an instance of an {@link org.eclipse.emf.ecore.EDataType} to a String.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eDataType
+	 *            the {@link org.eclipse.emf.ecore.EDataType} defining the type
+	 * @param value
+	 *            the object to convert, if value == null then null is returned
+	 * @generated
+	 */
+	«IF this.addSuppressUnchecked-»
+	@SuppressWarnings("unchecked")
+	«ENDIF-»
+	public String convertToString(org.eclipse.emf.ecore.EDataType eDataType, Object value) {
+		switch (eDataType.getClassifierID()) {
+	«FOREACH this.EDataTypeModelGenAnnotations AS eDataTypeAnnotation-»
+		«IF eDataTypeAnnotation.generateCode-»
+			case «this.qualifiedClassName».«toUpperCase(eDataTypeAnnotation.name)»_CLASSIFIER_ID:
+				return convert«toFirstUpper(eDataTypeAnnotation.name)»ToString(«cast(eDataTypeAnnotation.objectClassName)»value);
+		«ENDIF-»
+	«ENDFOREACH-»
+		}
+		throw new IllegalArgumentException("The EDatatype '" + eDataType + "' is not defined in this EPackage.");
+	}
+
+	«FOREACH this.EDataTypeModelGenAnnotations AS eDataTypeAnnotation-»
+	/**
+	 * Converts the EDataType: «eDataTypeAnnotation.EClassifier.name» to a String.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value
+     *            the object to convert
+     * @return the String representing the value, if value == null then null is returned
+	 * @generated
+	 */
+	public String convert«toFirstUpper(eDataTypeAnnotation.name)»ToString(«eDataTypeAnnotation.objectClassName» value) {
+		if (value == null) {
+			return null;
+		}
+		«IF eDataTypeAnnotation.enum-»
+		return value.toString();
+		«ELSEIF eDataTypeAnnotation.baseTypeAnnotation != null-»
+		return convert«toFirstUpper(eDataTypeAnnotation.baseTypeAnnotation.name)»ToString(value);
+		«ELSEIF eDataTypeAnnotation.dateType-»
+		return org.eclipse.emf.texo.utils.ModelUtils.convertToXML(value);
+		«ELSEIF eDataTypeAnnotation.instanceClassName == 'java.lang.String'-»
+		return value;
+		«ELSEIF eDataTypeAnnotation.automaticStringConversion-»
+		return value.toString();
+		«ELSE-»
+		EDataType eDataType = «this.qualifiedClassName».INSTANCE.get«toFirstUpper(eDataTypeAnnotation.name)»EDataType();
+		throw new UnsupportedOperationException("Operation not support for EDataType " + eDataType.getName() + " converting from value " + value);
+		«ENDIF-»
+	}
+
+	/**
+	 * Creates an instance of the EDataType: «eDataTypeAnnotation.EClassifier.name» from a String.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @param value
+     *            the string value to convert to an object
+     * @return the instance of the data type, if value == null then null is returned
+	 * @generated
+	 */
+	public «eDataTypeAnnotation.objectClassName» create«toFirstUpper(eDataTypeAnnotation.name)»FromString(String value) {
+		if (value == null) {
+			return null;
+		}
+		«IF eDataTypeAnnotation.enum-»
+		return «eDataTypeAnnotation.qualifiedClassName».get(value);
+		«ELSEIF eDataTypeAnnotation.baseTypeAnnotation != null-»
+		return create«toFirstUpper(eDataTypeAnnotation.baseTypeAnnotation.name)»FromString(value);
+		«ELSEIF eDataTypeAnnotation.dateType-»
+		return org.eclipse.emf.texo.utils.ModelUtils.createFromXML(value);
+		«ELSEIF eDataTypeAnnotation.instanceClassName == 'java.lang.String'-»
+		return value;
+		«ELSEIF eDataTypeAnnotation.automaticStringConversion-»
+		return new «eDataTypeAnnotation.objectClassName»(value);
+		«ELSE-»
+		EDataType eDataType = «this.qualifiedClassName».INSTANCE.get«toFirstUpper(eDataTypeAnnotation.name)»EDataType();
+		throw new UnsupportedOperationException("Operation not support for EDataType " + eDataType.getName() + " converting from value " + value);
+		«ENDIF-»
+	}
+	«ENDFOREACH-»
+
+	«REM»Create the ModelObject wrappers as inner classes«ENDREM»
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	«IF eClassAnnotation.qualifiedClassName != null-»
+	«EXPAND org::eclipse::emf::texo::modelgenerator::templates::modelobject::root(modelController) FOR eClassAnnotation»
+	«ENDIF-»
+	«ENDFOREACH-»
+
+	«REM»Create the ModelFeatureMapEntry wrapper«ENDREM»
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	«FOREACH eClassAnnotation.featureMapFeatures AS featureAnnotation-»
+	«EXPAND org::eclipse::emf::texo::modelgenerator::templates::modelfeaturemap::root(modelController) FOR featureAnnotation»
+	«ENDFOREACH-»
+	«ENDFOREACH-»
+
+}
+«ENDFILE-»
+«ENDDEFINE»

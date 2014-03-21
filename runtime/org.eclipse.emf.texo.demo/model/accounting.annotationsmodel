@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:modelannotations="http://www.eclipse.org/emf/texo/modelgenerator/modelannotations" xmlns:ormannotations="http://www.eclipse.org/emf/texo/orm/ormannotations">
+  <annotatedEPackages>
+    <ePackage href="accounting.ecore#/"/>
+    <ePackageAnnotations xsi:type="modelannotations:EPackageModelGenAnnotation"  rootClassExtends="org.eclipse.emf.texo.test.model.base.identifiable.Identifiable"/>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="accounting.ecore#//Accounting"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" qualifiedClassName="org.eclipse.emf.texo.test.model.samples.accounting.AccountingClass" serializable="true"/>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="accounting.ecore#//Serializable"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <transient name=""/>
+      </eClassAnnotations>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="accounting.ecore#//Account"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" serializable="true"/>
+    </annotatedEClassifiers>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.capa.CapacityEntry" name="capa_CapacityEntry">
+    <orm:table name="capa_CapacityEntry"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="capacityEntryId">
+        <orm:column name="capacityEntryId"/>
+      </orm:basic>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.capa.Machine" name="capa_Machine">
+    <orm:table name="capa_Machine"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="machineId">
+        <orm:column name="machineId"/>
+      </orm:basic>
+      <orm:basic name="machineSearchString">
+        <orm:column name="machineSearchString"/>
+      </orm:basic>
+      <orm:basic name="multiplicity">
+        <orm:column name="multiplicity"/>
+      </orm:basic>
+      <orm:basic name="taskSearchString">
+        <orm:column name="taskSearchString"/>
+      </orm:basic>
+      <orm:many-to-one name="workWeek" optional="false">
+        <orm:join-column name="capa_Machine_workWeek"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:one-to-many name="tasks">
+        <orm:order-column name="capa_Machine_tasks_ind"/>
+        <orm:join-column name="capa_Machine_tasks"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.capa.WorkWeek" name="capa_WorkWeek">
+    <orm:table name="capa_WorkWeek"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="workWeekId">
+        <orm:column name="workWeekId"/>
+      </orm:basic>
+      <orm:one-to-many name="days">
+        <orm:order-column name="capa_WorkWeek_days_ind"/>
+        <orm:join-column name="capa_WorkWeek_days"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.capa.Task" name="capa_Task">
+    <orm:table name="capa_Task"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="taskId">
+        <orm:column name="taskId"/>
+      </orm:basic>
+      <orm:basic name="timePerPice">
+        <orm:column name="timePerPice"/>
+      </orm:basic>
+      <orm:basic name="timePerPreperation">
+        <orm:column name="timePerPreperation"/>
+      </orm:basic>
+      <orm:many-to-one name="capacityEntry" optional="false">
+        <orm:join-column name="capa_Task_capacityEntry"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="production" optional="false">
+        <orm:join-column name="capa_Task_production"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.capa.MachineList" name="capa_MachineList">
+    <orm:table name="capa_MachineList"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="machines">
+        <orm:order-column name="capa_MachineList_machines_ind"/>
+        <orm:join-column name="capa_MachineList_machines"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.capa.Production" name="capa_Production">
+    <orm:table name="capa_Production"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="article">
+        <orm:column name="article"/>
+      </orm:basic>
+      <orm:basic name="dueTime">
+        <orm:column name="dueTime"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="missingAmount">
+        <orm:column name="missingAmount"/>
+      </orm:basic>
+      <orm:basic name="productionId">
+        <orm:column name="productionId"/>
+      </orm:basic>
+      <orm:basic name="startTime">
+        <orm:column name="startTime"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="totalAmount">
+        <orm:column name="totalAmount"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.capa.WorkDay" name="capa_WorkDay">
+    <orm:table name="capa_WorkDay"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="dayOfWeek">
+        <orm:column name="T_dayOfWeek"/>
+      </orm:basic>
+      <orm:basic name="duration">
+        <orm:column name="duration"/>
+      </orm:basic>
+      <orm:basic name="startTime">
+        <orm:column name="startTime"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

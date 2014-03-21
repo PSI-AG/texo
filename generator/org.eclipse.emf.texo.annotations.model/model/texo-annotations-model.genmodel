@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.texo.annotations.model/src" modelPluginID="org.eclipse.emf.texo.annotations.model"
+    modelName="Texo-annotations-model" suppressInterfaces="true" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="5.0" copyrightFields="false" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore">
+  <foreignModel>texo-annotations-model.ecore</foreignModel>
+  <genPackages prefix="Annotationsmodel" basePackage="org.eclipse.emf.texo.annotations"
+      disposableProviderFactory="true" ecorePackage="texo-annotations-model.ecore#/">
+    <genClasses image="false" ecoreClass="texo-annotations-model.ecore#//ENamedElementAnnotation">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//ENamedElementAnnotation/eNamedElement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-model.ecore#//ENamedElementAnnotation/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-model.ecore#//ENamedElementAnnotation/lastIdentifier"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-model.ecore#//ENamedElementAnnotation/generated"/>
+      <genOperations ecoreOperation="texo-annotations-model.ecore#//ENamedElementAnnotation/getJavaAnnotation">
+        <genParameters ecoreParameter="texo-annotations-model.ecore#//ENamedElementAnnotation/getJavaAnnotation/identifier"/>
+      </genOperations>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-model.ecore#//EClassifierAnnotation">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EClassifierAnnotation/eClassifier"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EClassifierAnnotation/annotatedEClassifier"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//EClassAnnotation">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EClassAnnotation/annotatedEClass"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EClassAnnotation/eClass"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//EDataTypeAnnotation">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EDataTypeAnnotation/annotatedEDataType"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EDataTypeAnnotation/eDataType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-model.ecore#//EStructuralFeatureAnnotation">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EStructuralFeatureAnnotation/eStructuralFeature"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//EPackageAnnotation">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EPackageAnnotation/ePackage"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EPackageAnnotation/annotatedEPackage"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//EReferenceAnnotation">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EReferenceAnnotation/eReference"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EReferenceAnnotation/annotatedEReference"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//EAttributeAnnotation">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EAttributeAnnotation/eAttribute"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EAttributeAnnotation/annotatedEAttribute"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//EEnumAnnotation">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EEnumAnnotation/eEnum"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EEnumAnnotation/annotatedEEnum"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//EEnumLiteralAnnotation">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EEnumLiteralAnnotation/eEnumLiteral"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//EEnumLiteralAnnotation/annotatedEEnumLiteral"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//AnnotatedEClass">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEClass/eClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEClass/eClassAnnotations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEClass/annotatedEStructuralFeatures"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-model.ecore#//AnnotatedEStructuralFeature">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEStructuralFeature/eStructuralFeature"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEStructuralFeature/annotatedEClass"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//AnnotatedEPackage">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEPackage/ePackage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEPackage/ePackageAnnotations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEPackage/annotatedEClassifiers"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEPackage/annotatedModel"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-model.ecore#//AnnotatedEClassifier">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEClassifier/eClassifier"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEClassifier/annotatedEPackage"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//AnnotatedEDataType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEDataType/eDataType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEDataType/eDataTypeAnnotations"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//AnnotatedModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedModel/annotatedEPackages"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-model.ecore#//AnnotatedModel/generatingSources"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-model.ecore#//AnnotatedENamedElement">
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedENamedElement/eNamedElement"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//AnnotatedEEnum">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEEnum/eEnum"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEEnum/eEnumAnnotations"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEEnum/annotatedEEnumLiterals"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//AnnotatedEReference">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEReference/eReference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEReference/eReferenceAnnotations"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//AnnotatedEAttribute">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEAttribute/eAttribute"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEAttribute/eAttributeAnnotations"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-model.ecore#//AnnotatedEEnumLiteral">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEEnumLiteral/eEnumLiteral"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEEnumLiteral/eEnumLiteralAnnotations"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-model.ecore#//AnnotatedEEnumLiteral/annotatedEEnum"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

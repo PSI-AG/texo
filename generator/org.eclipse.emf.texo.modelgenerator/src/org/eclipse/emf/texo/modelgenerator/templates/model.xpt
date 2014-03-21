@@ -1,0 +1,35 @@
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+
+«DEFINE root(ModelController modelController, boolean doDao) FOR EPackage-»
+«LET ((EPackageModelGenAnnotation)modelController.getAnnotation(this, ModelcodegeneratorPackage::eNS_URI)) AS ePackageAnnotation»
+	«FOREACH ePackageAnnotation.EClassModelGenAnnotations AS eClassAnnotation»
+		«IF eClassAnnotation.EClass.interface»
+			«EXPAND org::eclipse::emf::texo::modelgenerator::templates::interface::root(modelController) FOR eClassAnnotation»
+		«ELSE»
+			«EXPAND org::eclipse::emf::texo::modelgenerator::templates::entity::root(modelController) FOR eClassAnnotation»
+		«ENDIF»
+		«EXPAND org::eclipse::emf::texo::modelgenerator::templates::addition::root(modelController) FOR eClassAnnotation»
+	«ENDFOREACH»
+	«FOREACH ePackageAnnotation.EEnumModelGenAnnotations AS eEnumAnnotation»
+		«EXPAND org::eclipse::emf::texo::modelgenerator::templates::enum::root(modelController) FOR eEnumAnnotation»
+		«EXPAND org::eclipse::emf::texo::modelgenerator::templates::addition::root(modelController) FOR eEnumAnnotation»
+	«ENDFOREACH»
+	«IF ePackageAnnotation.addRuntimeModelBehavior»
+		«EXPAND org::eclipse::emf::texo::modelgenerator::templates::modelpackage::root(modelController, doDao) FOR ePackageAnnotation»
+		«EXPAND org::eclipse::emf::texo::modelgenerator::templates::modelfactory::root(modelController) FOR ePackageAnnotation»
+		«IF ePackageAnnotation.handleEcoreFile»
+			«EXPAND org::eclipse::emf::texo::modelgenerator::templates::ecorefile::root(modelController) FOR ePackageAnnotation»
+		«ENDIF»
+		«IF doDao»
+			«FOREACH ePackageAnnotation.EClassModelGenAnnotations AS eClassAnnotation»
+				«IF eClassAnnotation.daoQualifiedClassName != null»
+					«EXPAND org::eclipse::emf::texo::modelgenerator::templates::dao::root(modelController) FOR eClassAnnotation»
+				«ENDIF»
+			«ENDFOREACH»
+		«ENDIF»	
+	«ENDIF»
+	«EXPAND org::eclipse::emf::texo::modelgenerator::templates::addition::root(modelController) FOR ePackageAnnotation»
+«ENDLET»
+«ENDDEFINE»

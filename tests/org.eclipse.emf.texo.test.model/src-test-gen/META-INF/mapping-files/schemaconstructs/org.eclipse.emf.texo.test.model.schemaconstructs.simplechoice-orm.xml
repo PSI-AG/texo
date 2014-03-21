@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.simplechoice.PersonGroupFeatureGroup" name="simplechoice_Person_group">
+    <orm:attributes>
+      <orm:basic name="age" optional="false">
+        <orm:column name="age"/>
+      </orm:basic>
+      <orm:basic name="length" optional="false">
+        <orm:column name="T_length"/>
+      </orm:basic>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.simplechoice.Person" name="simplechoice_Person">
+    <orm:table name="simplechoice_Person"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:one-to-many name="group" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.schemaconstructs.simplechoice.PersonGroupFeatureGroup">
+        <orm:join-table name="simplechoice_Person_group_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

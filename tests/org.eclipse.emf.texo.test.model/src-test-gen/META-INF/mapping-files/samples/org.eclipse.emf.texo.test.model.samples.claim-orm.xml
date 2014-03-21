@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.claim.Claim" name="claim_Claim">
+    <orm:table name="claim_Claim"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="billingName" optional="false">
+        <orm:column name="billingName"/>
+      </orm:basic>
+      <orm:basic name="claimGroupVSPId" optional="false">
+        <orm:column name="claimGroupVSPId"/>
+      </orm:basic>
+      <orm:basic name="claimStatus" optional="false">
+        <orm:column name="claimStatus"/>
+      </orm:basic>
+      <orm:many-to-one name="claimCompositeKey" optional="false">
+        <orm:join-column name="claim_Claim_claimCompositeKey"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:one-to-many name="claimLine">
+        <orm:order-column name="claim_Claim_claimLine_ind"/>
+        <orm:join-column name="claim_Claim_claimLine"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.claim.ClaimCompositeKey" name="claim_ClaimCompositeKey">
+    <orm:table name="claim_ClaimCompositeKey"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="claimNumber" optional="false">
+        <orm:column name="claimNumber"/>
+      </orm:basic>
+      <orm:basic name="claimExtensionNumber" optional="false">
+        <orm:column name="claimExtensionNumber"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.claim.ClaimLine" name="claim_ClaimLine">
+    <orm:table name="claim_ClaimLine"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="claimLineBilledAmount" optional="false">
+        <orm:column name="claimLineBilledAmount" precision="15" scale="7"/>
+      </orm:basic>
+      <orm:basic name="serviceCode" optional="false">
+        <orm:column name="serviceCode"/>
+      </orm:basic>
+      <orm:basic name="claimLineStatus" optional="false">
+        <orm:column name="claimLineStatus"/>
+      </orm:basic>
+      <orm:many-to-one name="claim" optional="false">
+        <orm:join-column name="claim_ClaimLine_claim"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="claimLineCompositeKey" optional="false">
+        <orm:join-column name="claim_ClaimLine_claimLineCompositeKey"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.claim.ClaimLineCompositeKey" name="claim_ClaimLineCompositeKey">
+    <orm:table name="claim_ClaimLineCompositeKey"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="claimLineNumber" optional="false">
+        <orm:column name="claimLineNumber"/>
+      </orm:basic>
+      <orm:many-to-one name="claim" optional="false">
+        <orm:join-column name="claim_ClaimLineCompositeKey_claim"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

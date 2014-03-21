@@ -1,0 +1,82 @@
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::texo::annotations::annotationsmodel»
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(ModelController modelController) FOR EClassModelGenAnnotation-»
+«LET ((EPackageModelGenAnnotation)this.ownerEPackageAnnotation) AS ePackageAnnotation»
+«IF this.generateCode»
+«FILE classFileName(this) java-»
+«ePackageAnnotation.javaFileHeader-»
+package «ePackageAnnotation.packagePath»;
+
+/**
+ * A representation of the model object '<em><b>«this.name»</b></em>'.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+«IF this.documentation != null-»
+ * <!-- begin-model-doc -->
+ * «this.documentation»
+ * <!-- end-model-doc -->
+«ENDIF-»
+ * @generated
+*/
+«modelController.getJavaAnnotations(this.EClass, "type")-»
+public interface «this.simpleClassName-»
+«IF this.classExtends.size > 0-» extends «this.classExtends.get(0)-»«ENDIF-»
+{
+«FOREACH this.EStructuralFeatureModelGenAnnotations AS featureAnnotation-»
+		/**
+		 * Returns the value of '<em><b>«featureAnnotation.EStructuralFeature.name»</em></b>' feature.
+		 *
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @return the value of '<em><b>«featureAnnotation.EStructuralFeature.name»</b></em>' feature
+		 * @generated
+		 */
+		«modelController.getJavaAnnotations(featureAnnotation.EStructuralFeature, "getter")-»
+		public «featureAnnotation.type» «featureAnnotation.getter»();
+
+		«IF featureAnnotation.EStructuralFeature.changeable || (featureAnnotation.reference && ((EReferenceModelGenAnnotation)featureAnnotation).oppositeModelGenAnnotation != null)-»
+			«IF featureAnnotation.featureMapFeature == null && featureAnnotation.many && featureAnnotation.reference && ((EReferenceModelGenAnnotation)featureAnnotation).generateSafeManyAccess-»
+			/**
+			 * Adds to the <em>«featureAnnotation.EStructuralFeature.name»</em> feature.
+			 * @generated
+			 */
+			public boolean addTo«toFirstUpper(featureAnnotation.validJavaMemberName)»(«featureAnnotation.itemType» value);
+
+			/**
+			 * Removes from the <em>«featureAnnotation.EStructuralFeature.name»</em> feature.
+			 * @generated
+			 */
+			public boolean removeFrom«toFirstUpper(featureAnnotation.validJavaMemberName)»(«featureAnnotation.itemType» value);
+
+			/**
+			 * Clears the <em>«featureAnnotation.EStructuralFeature.name»</em> feature.
+			 * @generated
+			 */
+			public void clear«toFirstUpper(featureAnnotation.validJavaMemberName)»();
+			«ENDIF-»
+			/**
+			 * Sets the '{@link «this.simpleClassName»#«featureAnnotation.getter»() <em>«featureAnnotation.EStructuralFeature.name»</em>}' feature.
+			 *
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @param new«toFirstUpper(featureAnnotation.name)»
+			 *            the new value of the '{@link «this.simpleClassName»#«featureAnnotation.getter»() <em>«featureAnnotation.EStructuralFeature.name»</em>}' feature.
+			 * @generated
+			 */
+			«modelController.getJavaAnnotations(featureAnnotation.EStructuralFeature, "getter")-»
+			public void «featureAnnotation.setter»(«featureAnnotation.type» new«toFirstUpper(featureAnnotation.name)»);
+		«ENDIF-»
+«ENDFOREACH-»
+
+«EXPAND org::eclipse::emf::texo::modelgenerator::templates::interface_addition::root(modelController) FOR this»
+
+}
+«ENDFILE-»
+«ENDIF»
+«ENDLET»
+«ENDDEFINE»

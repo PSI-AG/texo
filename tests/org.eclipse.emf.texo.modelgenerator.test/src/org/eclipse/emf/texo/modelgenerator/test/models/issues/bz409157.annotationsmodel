@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:modelannotations="http://www.eclipse.org/emf/texo/modelgenerator/modelannotations">
+  <annotatedEPackages>
+    <ePackage href="bz409157.ecore#/"/>
+    <ePackageAnnotations xsi:type="modelannotations:EPackageModelGenAnnotation" generated="true" name="texo" addRuntimeModelBehavior="false" packagePath="texo.dto" modelClassesPackagePath="texo.dto" qualifiedClassName="texo._1.TexoModelPackage" simpleClassName="TexoModelPackage" simpleModelFactoryClassName="TexoModelFactory" ecoreFileName="bz409157.ecore" daoClassesPackagePath="texo.dao" daoRootClass="org.eclipse.emf.texo.server.store.BaseDao"/>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="bz409157.ecore#//TestA"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="TestA" qualifiedClassName="" simpleClassName="TestADTO" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="false" serializable="true" abstract="false" daoQualifiedClassName=""/>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="bz409157.ecore#//TestB"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" generated="true" name="TestB" qualifiedClassName="" simpleClassName="TestBDTO" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="false" serializable="false" abstract="false" daoQualifiedClassName=""/>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEEnum">
+      <eEnum href="bz409157.ecore#//TestEnum"/>
+      <eEnumAnnotations xsi:type="modelannotations:EEnumModelGenAnnotation" simpleClassName="TESTABCEnum"/>
+    </annotatedEClassifiers>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.catalog.CatalogType" name="catalog_CatalogType">
+    <orm:table name="catalog_CatalogType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="description" optional="false">
+        <orm:column name="description"/>
+      </orm:basic>
+      <orm:many-to-many name="subCatalog">
+        <orm:order-column name="catalog_CatalogType_subCatalog_ind"/>
+        <orm:join-table name="catalog_CatalogType_subCatalog">
+          <orm:join-column name="catalog_CatalogType_subCatalog"/>
+          <orm:inverse-join-column name="subCatalog_catalog_CatalogType"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+      <orm:many-to-many name="product">
+        <orm:order-column name="catalog_CatalogType_product_ind"/>
+        <orm:join-table name="catalog_CatalogType_product">
+          <orm:join-column name="catalog_CatalogType_product"/>
+          <orm:inverse-join-column name="product_catalog_ProductType"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.catalog.ProductType" name="catalog_ProductType">
+    <orm:table name="catalog_ProductType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="code" optional="false">
+        <orm:column name="code"/>
+      </orm:basic>
+      <orm:basic name="description" optional="false">
+        <orm:column name="description"/>
+      </orm:basic>
+      <orm:many-to-one name="price" optional="false">
+        <orm:join-column name="catalog_ProductType_price"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:one-to-many name="remark">
+        <orm:order-column name="catalog_ProductType_remark_ind"/>
+        <orm:join-column name="catalog_ProductType_remark"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.catalog.PriceType" name="catalog_PriceType">
+    <orm:table name="catalog_PriceType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="price" optional="false">
+        <orm:column name="price"/>
+      </orm:basic>
+      <orm:basic name="quantityTo" optional="false">
+        <orm:column name="quantityTo"/>
+      </orm:basic>
+      <orm:many-to-one name="supplier" optional="false">
+        <orm:join-column name="catalog_PriceType_supplier"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.catalog.SupplierType" name="catalog_SupplierType">
+    <orm:table name="catalog_SupplierType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="noOfEmployees" optional="false">
+        <orm:column name="noOfEmployees"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.catalog.StringType" name="catalog_StringType">
+    <orm:table name="catalog_StringType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="value" optional="false">
+        <orm:column name="T_value"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

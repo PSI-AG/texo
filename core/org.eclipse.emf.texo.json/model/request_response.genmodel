@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.texo.json/src" modelPluginID="org.eclipse.emf.texo.json"
+    modelName="Request_response" importerID="org.eclipse.emf.importer.ecore" bundleManifest="false"
+    complianceLevel="5.0" copyrightFields="false">
+  <foreignModel>request.ecore</foreignModel>
+  <foreignModel>response.ecore</foreignModel>
+  <genPackages prefix="Request" basePackage="org.eclipse.emf.texo.client.model" resource="XML"
+      disposableProviderFactory="true" ecorePackage="request.ecore#/">
+    <genClasses ecoreClass="request.ecore#//ActionType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request.ecore#//ActionType/update"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request.ecore#//ActionType/insert"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request.ecore#//ActionType/delete"/>
+    </genClasses>
+    <genClasses ecoreClass="request.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference request.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference request.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request.ecore#//DocumentRoot/action"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request.ecore#//DocumentRoot/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request.ecore#//DocumentRoot/queryReferingObjects"/>
+    </genClasses>
+    <genClasses ecoreClass="request.ecore#//Parameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//Parameter/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//Parameter/value"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//Parameter/type"/>
+    </genClasses>
+    <genClasses ecoreClass="request.ecore#//QueryReferingObjectsType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//QueryReferingObjectsType/targetUri"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//QueryReferingObjectsType/includeContainerReferences"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//QueryReferingObjectsType/maxResults"/>
+    </genClasses>
+    <genClasses ecoreClass="request.ecore#//QueryType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//QueryType/namedQuery"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//QueryType/query"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference request.ecore#//QueryType/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//QueryType/firstResult"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//QueryType/maxResults"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//QueryType/doCount"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute request.ecore#//QueryType/countOperation"/>
+    </genClasses>
+  </genPackages>
+  <genPackages prefix="Response" basePackage="org.eclipse.emf.texo.client.model" resource="XML"
+      disposableProviderFactory="true" ecorePackage="response.ecore#/">
+    <genClasses ecoreClass="response.ecore#//DocumentRoot">
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EAttribute response.ecore#//DocumentRoot/mixed"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference response.ecore#//DocumentRoot/xMLNSPrefixMap"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference response.ecore#//DocumentRoot/xSISchemaLocation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference response.ecore#//DocumentRoot/error"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference response.ecore#//DocumentRoot/response"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference response.ecore#//DocumentRoot/result"/>
+    </genClasses>
+    <genClasses ecoreClass="response.ecore#//ErrorType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute response.ecore#//ErrorType/errorClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute response.ecore#//ErrorType/message"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute response.ecore#//ErrorType/stackTrace"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference response.ecore#//ErrorType/cause"/>
+    </genClasses>
+    <genClasses ecoreClass="response.ecore#//ResponseType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute response.ecore#//ResponseType/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute response.ecore#//ResponseType/startRow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute response.ecore#//ResponseType/endRow"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute response.ecore#//ResponseType/totalRows"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference response.ecore#//ResponseType/data"/>
+    </genClasses>
+    <genClasses ecoreClass="response.ecore#//ResultType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference response.ecore#//ResultType/updated"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference response.ecore#//ResultType/inserted"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference response.ecore#//ResultType/deleted"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

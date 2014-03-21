@@ -1,0 +1,277 @@
+«IMPORT org::eclipse::emf::texo::modelgenerator::annotator»
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::texo::annotations::annotationsmodel»
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(ModelController modelController, boolean doDao) FOR EPackageModelGenAnnotation-»
+«FILE packageFileName(this) java-»
+«this.javaFileHeader-»
+package «this.modelClassesPackagePath»;
+
+/**
+ * The <b>Package</b> for the model '<em><b>«this.name»</b></em>'.
+ * It contains initialization code and access to the Factory to instantiate types of this package.
+ * 
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+«IF this.documentation != null-»
+ * <!-- begin-model-doc -->
+ * «this.documentation-»
+ * <!-- end-model-doc -->
+«ENDIF-»
+ * @generated
+ */
+public class «this.simpleClassName» extends org.eclipse.emf.texo.model.ModelPackage {
+		
+	/**
+	 * Is set when the package has been initialized.
+	 * @generated
+	 */
+	private static boolean isInitialized = false;	
+	
+	/**
+	 * The package namespace URI.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final String NS_URI = "«this.EPackage.nsURI»";
+	
+	/**
+	 * The {@link org.eclipse.emf.texo.model.ModelFactory} for this package.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+	 public static final «this.simpleModelFactoryClassName» «GenConstants::MODELFACTORY_CONSTANT» = new «this.simpleModelFactoryClassName»();
+	«FOREACH this.EDataTypeModelGenAnnotations AS eClassifierAnnotation-»
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int «toUpperCase(eClassifierAnnotation.name)»_CLASSIFIER_ID = «eClassifierAnnotation.EClassifier.classifierID»;
+	«ENDFOREACH»
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int «toUpperCase(eClassAnnotation.name)»_CLASSIFIER_ID = «eClassAnnotation.EClass.classifierID»;
+	«FOREACH eClassAnnotation.EStructuralFeatureModelGenAnnotations AS featureAnnotation-»
+	
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final int «toUpperCase(eClassAnnotation.name)»_«toUpperCase(featureAnnotation.name)»_FEATURE_ID = «eClassAnnotation.EClass.getFeatureID(featureAnnotation.EStructuralFeature)»;		
+	«ENDFOREACH-»
+	«ENDFOREACH-»
+	
+	«REM»this static initialization must be done last, after the other ones, otherwise
+	the above statics are not set before the initialize method is called«ENDREM»
+	/**
+	 * The static member with the instance of this {@link ModelPackage}.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final «this.simpleClassName» INSTANCE = initialize();  
+	
+	/**
+	 * Initializes this {@link org.eclipse.emf.texo.model.ModelPackage}.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static «this.simpleClassName» initialize() {
+
+		if (isInitialized) {
+			return («this.simpleClassName»)org.eclipse.emf.texo.model.ModelResolver.getInstance().getModelPackage(NS_URI);
+		}
+		
+		final «this.simpleClassName» modelPackage = new «this.simpleClassName»();
+
+		org.eclipse.emf.texo.model.ModelResolver.getInstance().registerModelPackage(modelPackage);
+
+		«IF this.handleEcoreFile-»
+		// read the model from the ecore file, the EPackage is registered in the EPackage.Registry
+		// see the ModelResolver getEPackageRegistry method
+		org.eclipse.emf.texo.utils.ModelUtils.readEPackagesFromFile(modelPackage);
+		«ENDIF-»
+	
+		isInitialized = true;
+
+		«FOREACH this.dependsOn AS p-»
+		«LET ((EPackageModelGenAnnotation)p) AS dep-»
+		«dep.qualifiedClassName».initialize();
+		«ENDLET-»
+		«ENDFOREACH-»
+
+		// force the initialization of the EFactory proxy
+		modelPackage.getEPackage();
+
+		«FOREACH this.subPackageModelGens AS p-»
+		«LET ((EPackageModelGenAnnotation)p) AS sub-»
+		«sub.qualifiedClassName».initialize();
+		«ENDLET-»
+		«ENDFOREACH-»
+
+		// register the relation between a Class and its EClassifier
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	«IF eClassAnnotation.qualifiedClassName != null-»
+		org.eclipse.emf.texo.model.ModelResolver.getInstance().registerClassModelMapping(«eClassAnnotation.qualifiedClassName».class, modelPackage.get«toFirstUpper(eClassAnnotation.name)»EClass(),modelPackage);
+	«ENDIF-»
+	«ENDFOREACH-»
+		
+	«FOREACH this.EEnumModelGenAnnotations AS eEnumAnnotation-»
+	«IF eEnumAnnotation.qualifiedClassName != null-»
+		org.eclipse.emf.texo.model.ModelResolver.getInstance().registerClassModelMapping(«eEnumAnnotation.qualifiedClassName».class, modelPackage.get«toFirstUpper(eEnumAnnotation.name)»EEnum(),modelPackage);		
+	«ENDIF-»
+	«ENDFOREACH-»
+
+	«IF doDao-»
+		«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+		«IF eClassAnnotation.daoQualifiedClassName != null-»
+		org.eclipse.emf.texo.server.store.DaoRegistry.getInstance().registerDao(«eClassAnnotation.qualifiedClassName».class, «eClassAnnotation.daoQualifiedClassName».class);
+		«ENDIF»
+		«ENDFOREACH-»
+	«ENDIF-»
+	
+		// and return ourselves
+		return modelPackage;
+	}
+	
+	/**
+	 * Returns the {@link org.eclipse.emf.texo.model.ModelFactory} of this ModelPackage.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+	 * 
+	 * @return the {@link «this.simpleModelFactoryClassName»} instance.
+	 * @generated
+	 */
+	@Override
+	public «this.simpleModelFactoryClassName» getModelFactory() {
+		return «GenConstants::MODELFACTORY_CONSTANT»;
+	}
+	
+	/** 
+	 * Returns the nsUri of the {@link org.eclipse.emf.ecore.EPackage} managed by this Package instance.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+	 * @return the nsUri of the EPackage 
+	 * @generated
+	*/
+	@Override
+	public String getNsURI() {
+		return NS_URI;
+	}
+	
+	/** 
+	 * Returns the name of the ecore file containing the ecore model of the {@link org.eclipse.emf.ecore.EPackage} managed here.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * 
+	 * @return the name of the ecore file 
+	 * @generated
+	*/
+	@Override
+	public String getEcoreFileName() {
+		return "«this.name».ecore";
+	}
+
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	
+	/**
+	 * Returns the {@link org.eclipse.emf.ecore.EClass} '<em><b>«eClassAnnotation.EClass.name»</b></em>'.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return an instance of the {@link org.eclipse.emf.ecore.EClass} '<em><b>«eClassAnnotation.EClass.name»</b></em>' 
+	 * @generated
+	 */
+	public org.eclipse.emf.ecore.EClass get«toFirstUpper(eClassAnnotation.name)»EClass() {
+		return (org.eclipse.emf.ecore.EClass)getEPackage().getEClassifiers().get(«toUpperCase(eClassAnnotation.name)»_CLASSIFIER_ID);
+	}
+	«FOREACH eClassAnnotation.EStructuralFeatureModelGenAnnotations AS featureAnnotation-»
+
+	/**
+	 * Returns the {@link org.eclipse.emf.ecore.EStructuralFeature} '<em><b>«eClassAnnotation.EClass.name».«featureAnnotation.EStructuralFeature.name»</b></em>'.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return an instance of the {@link org.eclipse.emf.ecore.EStructuralFeature}: '<em><b>«eClassAnnotation.EClass.name».«featureAnnotation.EStructuralFeature.name»</b></em>'.
+	 * @generated
+	 */
+	«IF EReference.isInstance(featureAnnotation.EStructuralFeature)-»
+	public org.eclipse.emf.ecore.EReference get«toFirstUpper(eClassAnnotation.name)»_«toFirstUpper(featureAnnotation.name)»() { 	
+		return (org.eclipse.emf.ecore.EReference)get«toFirstUpper(eClassAnnotation.name)»EClass().getEAllStructuralFeatures().get(«toUpperCase(eClassAnnotation.name)»_«toUpperCase(featureAnnotation.name)»_FEATURE_ID);
+	}
+	«ELSE-»
+	public org.eclipse.emf.ecore.EAttribute get«toFirstUpper(eClassAnnotation.name)»_«toFirstUpper(featureAnnotation.name)»() {
+		return (org.eclipse.emf.ecore.EAttribute)get«toFirstUpper(eClassAnnotation.name)»EClass().getEAllStructuralFeatures().get(«toUpperCase(eClassAnnotation.name)»_«toUpperCase(featureAnnotation.name)»_FEATURE_ID);
+	}
+	«ENDIF-»
+	«ENDFOREACH-»
+	«ENDFOREACH-»
+	«FOREACH this.EDataTypeModelGenAnnotations AS eClassifierAnnotation-»
+	«IF EEnum.isInstance(eClassifierAnnotation.EClassifier)-»
+	/**
+	 * Returns the EEnum '<em><b>«eClassifierAnnotation.EClassifier.name»</b></em>'.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return an instance of the EEnum representing '<em><b>«eClassifierAnnotation.EClassifier.name»</b></em>'
+	 * @generated
+	 */
+	public org.eclipse.emf.ecore.EEnum get«toFirstUpper(eClassifierAnnotation.name)»EEnum() {
+		return (org.eclipse.emf.ecore.EEnum)getEPackage().getEClassifiers().get(«toUpperCase(eClassifierAnnotation.name)»_CLASSIFIER_ID);
+	}
+	«ELSE-»
+	/**
+	 * Returns the {@link org.eclipse.emf.ecore.EDataType} '<em><b>«eClassifierAnnotation.EClassifier.name»</b></em>'.
+ 	 * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @return an instance of the {@link org.eclipse.emf.ecore.EDataType} representing '<em><b>«eClassifierAnnotation.EClassifier.name»</b></em>'
+	 * @generated
+	 */
+	public org.eclipse.emf.ecore.EDataType get«toFirstUpper(eClassifierAnnotation.name)»EDataType() {
+		return	(org.eclipse.emf.ecore.EDataType)getEPackage().getEClassifiers().get(«toUpperCase(eClassifierAnnotation.name)»_CLASSIFIER_ID);
+	}
+	«ENDIF-»
+	«ENDFOREACH-»
+				
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClassifier
+	 *            the {@link org.eclipse.emf.ecore.EClassifier}
+	 * @return the class implementing a specific {@link org.eclipse.emf.ecore.EClass}.
+	 * @generated
+	 */
+	@Override
+	public Class<?> getEClassifierClass(org.eclipse.emf.ecore.EClassifier eClassifier) {
+		switch (eClassifier.getClassifierID()) { 
+	«FOREACH this.EClassModelGenAnnotations AS eClassAnnotation-»
+	«IF eClassAnnotation.qualifiedClassName != null-»
+		case «toUpperCase(eClassAnnotation.name)»_CLASSIFIER_ID: 
+			return «eClassAnnotation.qualifiedClassName».class;
+	«ENDIF-»
+	«ENDFOREACH-»
+	«FOREACH this.EDataTypeModelGenAnnotations AS eClassifierAnnotation-»
+	«IF eClassifierAnnotation.qualifiedClassName != null-»
+		case «toUpperCase(eClassifierAnnotation.name)»_CLASSIFIER_ID: 
+			return «eClassifierAnnotation.qualifiedClassName».class;
+	«ENDIF-»
+	«ENDFOREACH-»
+		}
+		throw new IllegalArgumentException("The EClassifier '" + eClassifier + "' is not defined in this EPackage");
+	}
+}
+«ENDFILE-»
+«ENDDEFINE»

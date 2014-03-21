@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_N27zoVFhEd-5f6YZTBw66g" type="EcoreTools" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_N_Eb8FFhEd-5f6YZTBw66g" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_OBbzcFFhEd-5f6YZTBw66g" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_OBcagFFhEd-5f6YZTBw66g" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_N_Eb8VFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="rental.ecore#//Date"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_N_Eb8lFhEd-5f6YZTBw66g" x="32" y="32"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_OBdBkFFhEd-5f6YZTBw66g" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_OBdooFFhEd-5f6YZTBw66g" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_OBonwFFhEd-5f6YZTBw66g" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_ODLf4FFhEd-5f6YZTBw66g" type="2001">
+        <element xmi:type="ecore:EAttribute" href="rental.ecore#//RentalBicycle/type"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODLf4VFhEd-5f6YZTBw66g"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_OBonwVFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_OBonwlFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_OBonw1FhEd-5f6YZTBw66g"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_OBpO0FFhEd-5f6YZTBw66g" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_OBpO0VFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_OBpO0lFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_OBpO01FhEd-5f6YZTBw66g"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_OBdBkVFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="rental.ecore#//RentalBicycle"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_OBdBklFhEd-5f6YZTBw66g" x="1024" y="176"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_ODMG8FFhEd-5f6YZTBw66g" type="1005">
+    <children xmi:type="notation:Node" xmi:id="_ODMuAFFhEd-5f6YZTBw66g" type="4010"/>
+    <children xmi:type="notation:Node" xmi:id="_ODNVEFFhEd-5f6YZTBw66g" type="5008">
+      <children xmi:type="notation:Node" xmi:id="_ODN8IFFhEd-5f6YZTBw66g" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="rental.ecore#//RentalBicycleType/Standard"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODN8IVFhEd-5f6YZTBw66g"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_ODOjMFFhEd-5f6YZTBw66g" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="rental.ecore#//RentalBicycleType/MountainBike"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODOjMVFhEd-5f6YZTBw66g"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODNVEVFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODNVElFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODNVE1FhEd-5f6YZTBw66g"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_ODMG8VFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EEnum" href="rental.ecore#//RentalBicycleType"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODMG8lFhEd-5f6YZTBw66g" x="288" y="32"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_ODOjMlFhEd-5f6YZTBw66g" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_ODPKQFFhEd-5f6YZTBw66g" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_ODPxUFFhEd-5f6YZTBw66g" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_ODOjM1FhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="rental.ecore#//RentalBicycleTypeObject"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODOjNFFhEd-5f6YZTBw66g" x="480" y="32"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_ODPxUVFhEd-5f6YZTBw66g" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_ODQYYFFhEd-5f6YZTBw66g" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_ODQYYVFhEd-5f6YZTBw66g" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_ODQ_cFFhEd-5f6YZTBw66g" type="2001">
+        <element xmi:type="ecore:EAttribute" href="rental.ecore#//RentalBusiness/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODQ_cVFhEd-5f6YZTBw66g"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODQYYlFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODQYY1FhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODQYZFFhEd-5f6YZTBw66g"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_ODQYZVFhEd-5f6YZTBw66g" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODQYZlFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODQYZ1FhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODQYaFFhEd-5f6YZTBw66g"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_ODPxUlFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="rental.ecore#//RentalBusiness"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODPxU1FhEd-5f6YZTBw66g" x="912" y="32"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_ODXtIFFhEd-5f6YZTBw66g" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_ODXtI1FhEd-5f6YZTBw66g" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_ODYUMFFhEd-5f6YZTBw66g" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_ODYUOFFhEd-5f6YZTBw66g" type="2001">
+        <element xmi:type="ecore:EAttribute" href="rental.ecore#//RentalCar/size"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODYUOVFhEd-5f6YZTBw66g"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODYUMVFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODYUMlFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODYUM1FhEd-5f6YZTBw66g"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_ODYUNFFhEd-5f6YZTBw66g" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODYUNVFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODYUNlFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODYUN1FhEd-5f6YZTBw66g"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_ODXtIVFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="rental.ecore#//RentalCar"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODXtIlFhEd-5f6YZTBw66g" x="1264" y="176"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_ODY7QFFhEd-5f6YZTBw66g" type="1005">
+    <children xmi:type="notation:Node" xmi:id="_ODY7Q1FhEd-5f6YZTBw66g" type="4010"/>
+    <children xmi:type="notation:Node" xmi:id="_ODY7RFFhEd-5f6YZTBw66g" type="5008">
+      <children xmi:type="notation:Node" xmi:id="_ODZiUFFhEd-5f6YZTBw66g" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="rental.ecore#//RentalCarSize/Small"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODZiUVFhEd-5f6YZTBw66g"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_ODZiUlFhEd-5f6YZTBw66g" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="rental.ecore#//RentalCarSize/Medium"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODZiU1FhEd-5f6YZTBw66g"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_ODZiVFFhEd-5f6YZTBw66g" type="2006">
+        <element xmi:type="ecore:EEnumLiteral" href="rental.ecore#//RentalCarSize/Family"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODZiVVFhEd-5f6YZTBw66g"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODY7RVFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODY7RlFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODY7R1FhEd-5f6YZTBw66g"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_ODY7QVFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EEnum" href="rental.ecore#//RentalCarSize"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODY7QlFhEd-5f6YZTBw66g" x="1088" y="32"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_ODaJYFFhEd-5f6YZTBw66g" type="1004">
+    <children xmi:type="notation:Node" xmi:id="_ODaJY1FhEd-5f6YZTBw66g" type="4008"/>
+    <children xmi:type="notation:Node" xmi:id="_ODaJZFFhEd-5f6YZTBw66g" type="4009"/>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_ODaJYVFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EDataType" href="rental.ecore#//RentalCarSizeObject"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODaJYlFhEd-5f6YZTBw66g" x="1488" y="32"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_ODaJZVFhEd-5f6YZTBw66g" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_ODawcFFhEd-5f6YZTBw66g" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_ODawcVFhEd-5f6YZTBw66g" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_ODbXgFFhEd-5f6YZTBw66g" type="2001">
+        <element xmi:type="ecore:EAttribute" href="rental.ecore#//RentalContract/rentToBusinessPartner"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODbXgVFhEd-5f6YZTBw66g"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_ODb-kFFhEd-5f6YZTBw66g" type="2001">
+        <element xmi:type="ecore:EAttribute" href="rental.ecore#//RentalContract/startDate"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODb-kVFhEd-5f6YZTBw66g"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_ODb-klFhEd-5f6YZTBw66g" type="2001">
+        <element xmi:type="ecore:EAttribute" href="rental.ecore#//RentalContract/endDate"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODb-k1FhEd-5f6YZTBw66g"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_ODb-lFFhEd-5f6YZTBw66g" type="2001">
+        <element xmi:type="ecore:EAttribute" href="rental.ecore#//RentalContract/cost"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODb-lVFhEd-5f6YZTBw66g"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODawclFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODawc1FhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODawdFFhEd-5f6YZTBw66g"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_ODawdVFhEd-5f6YZTBw66g" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODawdlFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODawd1FhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODaweFFhEd-5f6YZTBw66g"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_ODaJZlFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="rental.ecore#//RentalContract"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODaJZ1FhEd-5f6YZTBw66g" x="1488" y="176"/>
+  </children>
+  <children xmi:type="notation:Node" xmi:id="_ODcloFFhEd-5f6YZTBw66g" type="1001">
+    <children xmi:type="notation:Node" xmi:id="_ODclo1FhEd-5f6YZTBw66g" type="4001"/>
+    <children xmi:type="notation:Node" xmi:id="_ODclpFFhEd-5f6YZTBw66g" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_ODdMsFFhEd-5f6YZTBw66g" type="2001">
+        <element xmi:type="ecore:EAttribute" href="rental.ecore#//RentalUnit/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_ODdMsVFhEd-5f6YZTBw66g"/>
+      </children>
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODclpVFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODclplFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODclp1FhEd-5f6YZTBw66g"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_ODclqFFhEd-5f6YZTBw66g" type="5002">
+      <styles xmi:type="notation:DrawerStyle" xmi:id="_ODclqVFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:SortingStyle" xmi:id="_ODclqlFhEd-5f6YZTBw66g"/>
+      <styles xmi:type="notation:FilteringStyle" xmi:id="_ODclq1FhEd-5f6YZTBw66g"/>
+    </children>
+    <styles xmi:type="notation:ShapeStyle" xmi:id="_ODcloVFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10" fillColor="13761016" lineColor="8421504"/>
+    <element xmi:type="ecore:EClass" href="rental.ecore#//RentalUnit"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ODclolFhEd-5f6YZTBw66g" x="1280" y="32"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_N28asFFhEd-5f6YZTBw66g"/>
+  <element xmi:type="ecore:EPackage" href="rental.ecore#/"/>
+  <edges xmi:type="notation:Edge" xmi:id="_ODtrYFFhEd-5f6YZTBw66g" type="3003" source="_OBdBkFFhEd-5f6YZTBw66g" target="_ODcloFFhEd-5f6YZTBw66g">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_ODtrYVFhEd-5f6YZTBw66g" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_ODtrYlFhEd-5f6YZTBw66g" fontName="Bitstream Vera Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ODtrY1FhEd-5f6YZTBw66g" points="[0, 0, -192, 99]$[0, -30, -192, 69]$[192, -30, 0, 69]$[192, -99, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVafYlFhEd-5f6YZTBw66g" id="(0.5,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVbGcFFhEd-5f6YZTBw66g" id="(0.24503311258278146,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_ODuScFFhEd-5f6YZTBw66g" type="3003" source="_ODXtIFFhEd-5f6YZTBw66g" target="_ODcloFFhEd-5f6YZTBw66g">
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_ODuScVFhEd-5f6YZTBw66g" routing="Rectilinear" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_ODuSclFhEd-5f6YZTBw66g" fontName="Bitstream Vera Sans"/>
+    <element xsi:nil="true"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ODuSc1FhEd-5f6YZTBw66g" points="[0, 0, 0, 99]$[0, -99, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVafYFFhEd-5f6YZTBw66g" id="(0.4968152866242038,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVafYVFhEd-5f6YZTBw66g" id="(0.4966887417218543,1.0)"/>
+  </edges>
+  <edges xmi:type="notation:Edge" xmi:id="_ODu5gFFhEd-5f6YZTBw66g" type="3002" source="_ODaJZVFhEd-5f6YZTBw66g" target="_ODcloFFhEd-5f6YZTBw66g">
+    <children xmi:type="notation:Node" xmi:id="_ODvgkFFhEd-5f6YZTBw66g" type="4011">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ODvgkVFhEd-5f6YZTBw66g" x="-10" y="-10"/>
+    </children>
+    <children xmi:type="notation:Node" xmi:id="_ODx80FFhEd-5f6YZTBw66g" type="4012">
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_ODx80VFhEd-5f6YZTBw66g" x="10" y="10"/>
+    </children>
+    <styles xmi:type="notation:ConnectorStyle" xmi:id="_ODu5gVFhEd-5f6YZTBw66g" lineColor="4210752"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_ODu5glFhEd-5f6YZTBw66g" fontColor="4210752" fontName="Bitstream Vera Sans" fontHeight="10"/>
+    <element xmi:type="ecore:EReference" href="rental.ecore#//RentalContract/rentalUnits"/>
+    <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_ODu5g1FhEd-5f6YZTBw66g" points="[0, 0, 213, 99]$[-198, -61, 15, 38]$[-213, -99, 0, 0]"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVZRQFFhEd-5f6YZTBw66g" id="(0.49777777777777776,0.0)"/>
+    <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_OVZ4UFFhEd-5f6YZTBw66g" id="(0.7483443708609272,1.0)"/>
+  </edges>
+</notation:Diagram>

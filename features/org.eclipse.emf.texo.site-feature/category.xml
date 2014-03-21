@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.eclipse.emf.texo" version="0.0.0">
+      <category name="org.eclipse.emf.texo"/>
+   </feature>
+   <feature id="org.eclipse.emf.texo.sdk" version="0.0.0">
+      <category name="org.eclipse.emf.texo"/>
+   </feature>
+   <feature id="org.eclipse.emf.texo.runtime.core" version="0.0.0">
+      <category name="org.eclipse.emf.texo.runtime"/>
+   </feature>
+   <category-def name="org.eclipse.emf.texo" label="EMFT Texo (Incubation)"/>
+   <category-def name="org.eclipse.emf.texo.runtime" label="EMFT Texo Runtime (Incubation)"/>
+</site>

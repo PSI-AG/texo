@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<list:CountryStates xmlns:list="http://www.eclipse.org/emf/texo/test/model/schemaconstructs/list">
+  <Country>String1</Country>
+  <index>1</index>
+  <AllStates>State1;State2;State3</AllStates>
+</list:CountryStates>

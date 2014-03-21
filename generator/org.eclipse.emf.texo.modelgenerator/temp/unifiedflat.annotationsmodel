@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:modelannotations="http://www.eclipse.org/emf/texo/modelgenerator/modelannotations" xmlns:ormannotations="http://www.eclipse.org/emf/texo/orm/ormannotations">
+  <annotatedEPackages>
+    <ePackage href="unifiedflat.ecore#/"/>
+    <ePackageAnnotations xsi:type="modelannotations:EPackageModelGenAnnotation" name="vortex" packagePath="vortex.model" modelClassesPackagePath="vortex.model" qualifiedClassName="vortex.model.VortexModelPackage" simpleClassName="VortexModelPackage" simpleModelFactoryClassName="VortexModelFactory" ecoreFileName="vortex.ecore" generateSafeManyAccess="true" generateBidirectionalAssociationSupport="true"/>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="unifiedflat.ecore#//Identifiable"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" name="Identifiable" qualifiedClassName="vortex.model.Identifiable" simpleClassName="Identifiable" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="false" serializable="false" abstract="false"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <mappedSuperclass/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="unifiedflat.ecore#//Identifiable/DbID"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" name="DbID" getter="getDbID" type="java.lang.Long" objectType="java.lang.Long" itemType="java.lang.Long" defaultValue="null" setter="setDbID" validJavaMemberName="dbID" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.0/@eClassAnnotations.0" boolean="false" primitive="false"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <id>
+            <generatedValue/>
+          </id>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="unifiedflat.ecore#//Identifiable/DbVersion"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" name="DbVersion" getter="getDbVersion" type="java.lang.Integer" objectType="java.lang.Integer" itemType="java.lang.Integer" defaultValue="null" setter="setDbVersion" validJavaMemberName="dbVersion" many="false" useList="false" reference="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.0/@eClassAnnotations.0" boolean="false" primitive="false"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <version/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="unifiedflat.ecore#//Asset"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" name="Asset" qualifiedClassName="vortex.model.Asset" simpleClassName="Asset" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasManyFeatures="true" hasSuperEClass="true" serializable="false" abstract="false" superEClass="//@annotatedEPackages.0/@annotatedEClassifiers.0/@eClassAnnotations.0">
+        <classExtends>vortex.model.Identifiable</classExtends>
+      </eClassAnnotations>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <table>
+            <uniqueConstraint name="">
+              <columnName>iD</columnName>
+            </uniqueConstraint>
+          </table>
+        </entity>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eStructuralFeatureAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="TIMESTAMP"/>
+        </eStructuralFeatureAnnotations>
+        <eAttribute href="unifiedflat.ecore#//Asset/Created"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eStructuralFeatureAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="TIMESTAMP"/>
+        </eStructuralFeatureAnnotations>
+        <eAttribute href="unifiedflat.ecore#//Asset/Updated"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="unifiedflat.ecore#//Group"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <table name="GroupTbl"/>
+        </entity>
+      </eClassAnnotations>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="unifiedflat.ecore#//Session"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="unifiedflat.ecore#//Session/Created"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="TIMESTAMP"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="unifiedflat.ecore#//Session/Expires"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="TIMESTAMP"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="unifiedflat.ecore#//StateInfo"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="unifiedflat.ecore#//StateInfo/Updated"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="TIMESTAMP"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="unifiedflat.ecore#//MobileProvider"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="unifiedflat.ecore#//MobileProvider/Updated"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="TIMESTAMP"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="unifiedflat.ecore#//PhoneNumber"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="unifiedflat.ecore#//PhoneNumber/Updated"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="TIMESTAMP"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="unifiedflat.ecore#//SystemInfo"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="unifiedflat.ecore#//SystemInfo/Updated"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="TIMESTAMP"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

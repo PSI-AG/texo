@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mixed:letterBody xmlns:mixed="http://www.eclipse.org/emf/texo/test/model/schemaconstructs/mixed"><salutation><name>String7</name>String4<![CDATA[String5]]><!--String6--></salutation><quantity>1</quantity><productName>String1</productName><shipDate>2010-04-04+01:00</shipDate>String2</mixed:letterBody>

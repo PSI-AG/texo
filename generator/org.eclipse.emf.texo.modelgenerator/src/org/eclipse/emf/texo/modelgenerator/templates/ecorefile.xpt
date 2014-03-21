@@ -1,0 +1,9 @@
+«IMPORT org::eclipse::emf::texo::generator»
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(ModelController modelController) FOR EPackageModelGenAnnotation-»
+«FILE ecoreFileName(this)-»
+«this.ecoreFileContent»
+«ENDFILE-»
+«ENDDEFINE»

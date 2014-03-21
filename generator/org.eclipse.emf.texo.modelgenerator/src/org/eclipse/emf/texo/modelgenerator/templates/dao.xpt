@@ -1,0 +1,43 @@
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::texo::annotations::annotationsmodel»
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(ModelController modelController) FOR EClassModelGenAnnotation-»
+«LET ((EPackageModelGenAnnotation)this.ownerEPackageAnnotation) AS ePackageAnnotation»
+
+«REM»Only generate if not transient, in case of document root only generate if the model info needs to be generated«ENDREM»
+«IF ePackageAnnotation.addRuntimeModelBehavior-»
+«FILE daoClassFileName(this) java-»
+«ePackageAnnotation.javaFileHeader-»
+package «ePackageAnnotation.daoClassesPackagePath»;
+
+/** 
+ * The Dao implementation for the model object '<em><b>«this.name»</b></em>'.
+ * 
+ * @generated 
+*/
+public class «this.simpleClassName-»«ePackageAnnotation.daoPatternName.toFirstUpper()» extends «ePackageAnnotation.daoRootClass»<«this.qualifiedClassName»> {
+
+	/**
+	* @generated
+	*/
+	@Override
+  	public Class<«this.qualifiedClassName»> getEntityClass() {
+  		return «this.qualifiedClassName».class;
+  	}
+
+	/**
+	* @generated
+	*/
+	@Override
+	public org.eclipse.emf.ecore.EClass getEClass() {
+		return «ePackageAnnotation.qualifiedClassName».INSTANCE.get«toFirstUpper(this.name)»EClass();
+	}
+}
+«ENDFILE-»
+«ENDIF»
+«ENDLET»
+«ENDDEFINE»

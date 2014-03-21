@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.texo.orm/src" modelPluginID="org.eclipse.emf.texo.orm"
+    modelName="Texo-annotations-orm" nonNLSMarkers="true" suppressInterfaces="true"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0" copyrightFields="false"
+    usedGenPackages="eclipselink_orm.genmodel#//orm platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.emf.texo.annotations.model/model/texo-annotations-model.genmodel#//annotationsmodel">
+  <foreignModel>texo-annotations-orm.ecore</foreignModel>
+  <genPackages prefix="Ormannotations" basePackage="org.eclipse.emf.texo.orm" resource="XML"
+      disposableProviderFactory="true" ecorePackage="texo-annotations-orm.ecore#/">
+    <genClasses ecoreClass="texo-annotations-orm.ecore#//EPackageORMAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/generateFullDbSchemaNames"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/nameDictionaryPropertyFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/tableNamePrefix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/columnNamePrefix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/maximumSqlNameLength"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/lowerCasedNames"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/upperCasedNames"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/enforceUniqueNames"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/useJoinTablesForContainment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/useJoinTablesForNonContainment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EPackageORMAnnotation/defaultCascadeContainment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EPackageORMAnnotation/defaultCascadeNonContainment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EPackageORMAnnotation/entityMappings"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/generateJavaAnnotations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/addOrderColumnToListMappings"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/renameSQLReservedNames"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EPackageORMAnnotation/inheritance"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/uniqueEntityNames"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EPackageORMAnnotation/setDelimitedIdentifierTagInORM"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-orm.ecore#//ETypeElementORMAnnotation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//ETypeElementORMAnnotation/transient"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-orm.ecore#//EClassifierORMAnnotation"/>
+    <genClasses ecoreClass="texo-annotations-orm.ecore#//EClassORMAnnotation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EClassORMAnnotation/entity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EClassORMAnnotation/embeddable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EClassORMAnnotation/mappedSuperclass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EClassORMAnnotation/inheritance"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-orm.ecore#//EDataTypeORMAnnotationDefinition"/>
+    <genClasses image="false" ecoreClass="texo-annotations-orm.ecore#//EStructuralFeatureORMAnnotation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EStructuralFeatureORMAnnotation/collectionTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EStructuralFeatureORMAnnotation/elementCollection"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-orm.ecore#//EAttributeORMAnnotation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EAttributeORMAnnotation/basic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EAttributeORMAnnotation/id"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EAttributeORMAnnotation/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EAttributeORMAnnotation/oneToMany"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EAttributeORMAnnotation/featureMapEntity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EAttributeORMAnnotation/manyToOne"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-orm.ecore#//EReferenceORMAnnotation">
+      <genFeatures children="true" createChild="true" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/embedded"/>
+      <genFeatures property="None" children="true" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/embeddedId"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/joinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/joinTable"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/manyToMany"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/manyToOne"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/oneToMany"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/oneToOne"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/mapKey"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/mapKeyClass"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/mapKeyColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/mapKeyJoinColumn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EReferenceORMAnnotation/orderBy"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/orderColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/basicCollection"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/basicMap"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/associationOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/attributeOverride"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/primaryKeyJoinColumn"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EReferenceORMAnnotation/basic"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-orm.ecore#//EEnumORMAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-orm.ecore#//EEnumORMAnnotation/enumerated"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EEnumORMAnnotation/basic"/>
+      <genFeatures notify="false" children="true" createChild="true" propertySortChoices="true"
+          ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EEnumORMAnnotation/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EEnumORMAnnotation/elementCollection"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-orm.ecore#//EDataTypeORMAnnotation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EDataTypeORMAnnotation/basic"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EDataTypeORMAnnotation/id"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EDataTypeORMAnnotation/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference texo-annotations-orm.ecore#//EDataTypeORMAnnotation/elementCollection"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-orm.ecore#//ENamedElementORMAnnotation"/>
+  </genPackages>
+</genmodel:GenModel>

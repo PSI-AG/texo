@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.7 2011/10/26 05:48:12 mtaal Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/eclipselink/xsds/persistence/orm"
+            class="org.eclipse.emf.texo.orm.annotations.model.orm.OrmPackage"
+            genModel="model/eclipselink_orm_2_0.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <parser
+            type="orm"
+            class="org.eclipse.emf.texo.orm.annotations.model.orm.util.OrmResourceFactoryImpl"/>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.emf.texo.eclipse.contribution">
+            <visibility>
+                    <or>
+                        <objectState name="extension" value="ecore"/>
+                        <objectState name="extension" value="xsd"/>
+                        <objectState name="extension" value="xcore"/>
+                    </or>
+            </visibility>
+         <action
+             label="%menu.GenerateModelJPA"
+               class="org.eclipse.emf.texo.orm.annotator.GenerateModelJPACode"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group2"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.generatejpamodel"/>			   
+      </objectContribution>
+
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.emf.texo.eclipse.contribution">
+            <visibility>
+                    <or>
+                        <objectState name="extension" value="ecore"/>
+                        <objectState name="extension" value="xsd"/>
+                        <objectState name="extension" value="xcore"/>
+                    </or>
+            </visibility>
+         <action
+             label="%menu.GenerateModelJPADao"
+               class="org.eclipse.emf.texo.orm.annotator.GenerateModelJPADaoCode"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group2"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.generatejpamodeldao"/>			   
+      </objectContribution>
+   
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.emf.texo.eclipse.contribution">
+            <visibility>
+                    <or>
+                        <objectState name="extension" value="ecore"/>
+                        <objectState name="extension" value="xcore"/>
+                    </or>
+            </visibility>
+         <menu
+               label="%menu.Texo"
+               path="additions"
+               id="org.eclipse.emf.texo.eclipse.menu1">
+            <separator
+                  name="grouporm"/>
+         </menu>
+         <action
+             label="%menu.GenerateAnnotatedModel"
+               class="org.eclipse.emf.texo.orm.annotator.ORMAnnotatedModelGenerator"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group3"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.generateorm"/>
+      </objectContribution>
+
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.emf.texo.eclipse.contribution">
+            <visibility>
+                    <or>
+                        <objectState name="extension" value="ecore"/>
+                        <objectState name="extension" value="xsd"/>
+                        <objectState name="extension" value="xcore"/>
+                    </or>
+            </visibility>
+         <action
+             label="%menu.GenerateORM"
+               class="org.eclipse.emf.texo.orm.annotator.ORMGenerator"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group4"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.generateorm"/>			   
+      </objectContribution>
+
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.emf.texo.eclipse.contribution">
+            <visibility>
+                    <or>
+                        <objectState name="extension" value="ecore"/>
+                        <objectState name="extension" value="xsd"/>
+                        <objectState name="extension" value="xcore"/>
+                    </or>
+            </visibility>
+         <action
+             label="%menu.GenerateStandardORM"
+               class="org.eclipse.emf.texo.orm.annotator.StandardORMGenerator"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group4"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.generateorm"/>			   
+      </objectContribution>
+   
+   </extension>
+   
+   <extension
+         point="org.eclipse.emf.texo.extensionpoint.annotationmodels">
+      <annotationModel
+            class="org.eclipse.emf.texo.orm.ormannotations.OrmannotationsPackage">
+      </annotationModel>
+   </extension>
+   
+   <extension
+         point="org.eclipse.emf.texo.extensionpoint.modelannotators">
+      <modelAnnotator
+            class="org.eclipse.emf.texo.orm.annotator.ModelORMAnnotator">
+      </modelAnnotator>
+   </extension>
+   
+   
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated texo-annotations-orm -->
+      <package
+            uri="http://www.eclipse.org/emf/texo/orm/ormannotations"
+            class="org.eclipse.emf.texo.orm.ormannotations.OrmannotationsPackage"
+            genModel="model/texo-annotations-orm.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated texo-annotations-orm -->
+      <parser
+            type="ormannotations"
+            class="org.eclipse.emf.texo.orm.ormannotations.util.OrmannotationsResourceFactoryImpl"/>
+   </extension>
+</plugin>

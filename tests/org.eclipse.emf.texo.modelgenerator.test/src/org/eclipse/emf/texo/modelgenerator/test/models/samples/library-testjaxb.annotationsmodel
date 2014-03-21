@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:jaxbmodelannotations="http://www.eclipse.org/emf/texo/jaxb/modelannotations">
+  <annotatedEPackages>
+    <ePackage href="library.ecore#/"/>
+    <ePackageAnnotations xsi:type="jaxbmodelannotations:EPackageJAXBAnnotation"/>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="library.ecore#//Book"/>
+      <eClassAnnotations xsi:type="jaxbmodelannotations:EClassJAXBAnnotation"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="library.ecore#//Book/title"/>
+        <eAttributeAnnotations xsi:type="jaxbmodelannotations:EAttributeJAXBAnnotation"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="library.ecore#//Book/pages"/>
+        <eAttributeAnnotations xsi:type="jaxbmodelannotations:EAttributeJAXBAnnotation"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="library.ecore#//Book/category"/>
+        <eAttributeAnnotations xsi:type="jaxbmodelannotations:EAttributeJAXBAnnotation"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="library.ecore#//Book/author"/>
+        <eReferenceAnnotations xsi:type="jaxbmodelannotations:EReferenceJAXBAnnotation"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEEnum">
+      <eEnum href="library.ecore#//BookCategory"/>
+      <eEnumAnnotations xsi:type="jaxbmodelannotations:EEnumJAXBAnnotation">
+        <xmlEnum value="java.lang.String"/>
+      </eEnumAnnotations>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="library.ecore#//Writer"/>
+      <eClassAnnotations xsi:type="jaxbmodelannotations:EClassJAXBAnnotation"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="library.ecore#//Writer/name"/>
+        <eAttributeAnnotations xsi:type="jaxbmodelannotations:EAttributeJAXBAnnotation"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="library.ecore#//Writer/books"/>
+        <eReferenceAnnotations xsi:type="jaxbmodelannotations:EReferenceJAXBAnnotation"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="library.ecore#//Library"/>
+      <eClassAnnotations xsi:type="jaxbmodelannotations:EClassJAXBAnnotation"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="library.ecore#//Library/name"/>
+        <eAttributeAnnotations xsi:type="jaxbmodelannotations:EAttributeJAXBAnnotation"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="library.ecore#//Library/writers"/>
+        <eReferenceAnnotations xsi:type="jaxbmodelannotations:EReferenceJAXBAnnotation"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="library.ecore#//Library/books"/>
+        <eReferenceAnnotations xsi:type="jaxbmodelannotations:EReferenceJAXBAnnotation"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

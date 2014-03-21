@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="bz399086-hsqldb">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/mapping-files/base/identifiable-orm.xml</mapping-file>
+		<mapping-file>META-INF/mapping-files/issues/bz399086-orm.xml</mapping-file>
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:bz399086"/>
+         	<property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="bz399086-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="bz399086-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="bz399086-class-hsqldb">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>org.eclipse.emf.texo.test.model.base.identifiable.Identifiable</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz399086.MapElement</class>
+		<class>null</class>
+		<class>null</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz399086.TheMap</class>
+
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:classbz399086"/>
+         	<property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="bz399086-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="bz399086-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="bz399086-mysql">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/mapping-files/base/identifiable-orm.xml</mapping-file>
+		<mapping-file>META-INF/mapping-files/issues/bz399086-orm.xml</mapping-file>
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="Mysql"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/bz399086"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="bz399086-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="bz399086-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="bz399086-class-mysql">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/mapping-files/base/identifiable-orm.xml</mapping-file>
+		<class>org.eclipse.emf.texo.test.model.base.identifiable.Identifiable</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz399086.MapElement</class>
+		<class>null</class>
+		<class>null</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz399086.TheMap</class>
+
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="Mysql"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/classbz399086"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="bz399086-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="bz399086-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+		
+</persistence>

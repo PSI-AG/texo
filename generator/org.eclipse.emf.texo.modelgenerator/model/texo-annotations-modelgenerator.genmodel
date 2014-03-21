@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.eclipse.emf.texo.modelgenerator/src" modelPluginID="org.eclipse.emf.texo.modelgenerator"
+    modelName="Texo-annotations-modelgenerator" modelPluginClass="" nonNLSMarkers="true"
+    suppressInterfaces="true" importerID="org.eclipse.emf.importer.ecore" complianceLevel="5.0"
+    copyrightFields="false" language="" usedGenPackages="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../org.eclipse.emf.texo.annotations.model/model/texo-annotations-model.genmodel#//annotationsmodel">
+  <foreignModel>texo-annotations-modelgenerator.ecore</foreignModel>
+  <genPackages prefix="Modelcodegenerator" basePackage="org.eclipse.emf.texo.modelgenerator"
+      disposableProviderFactory="true" ecorePackage="texo-annotations-modelgenerator.ecore#/">
+    <genClasses ecoreClass="texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/addRuntimeModelBehavior"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/generateInterfaces"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/packagePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/modelClassesPackagePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/qualifiedClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/simpleClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/simpleModelFactoryClassName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/dependsOn"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/ecoreFileContent"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/ecoreFileName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/javaFileHeader"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/eClassModelGenAnnotations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/eDataTypeModelGenAnnotations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/eEnumModelGenAnnotations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/eClassifierModelGenAnnotations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/modelPackageClassNamePostFix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/modelFactoryClassNamePostFix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/featureGroupClassNamePostFix"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/generateSafeManyAccess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/rootClassExtends"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/rootInterfaceExtends"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/featureMapClassExtends"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/generateBidirectionalAssociationSupport"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/handleEcoreFile"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/daoClassesPackagePath"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/daoPatternName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/daoRootClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EPackageModelGenAnnotation/subPackageModelGens"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-modelgenerator.ecore#//ENamedElementModelGenAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//ENamedElementModelGenAnnotation/documentation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//ENamedElementModelGenAnnotation/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-modelgenerator.ecore#//EClassifierModelGenAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassifierModelGenAnnotation/qualifiedClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassifierModelGenAnnotation/simpleClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassifierModelGenAnnotation/generateCode"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EClassifierModelGenAnnotation/ownerEPackageAnnotation"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/hasManyFeatures"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/classExtends"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/hasSuperEClass"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/classImplements"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/serializable"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/abstract"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/superEClass"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/featureMapFeatures"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/eStructuralFeatureModelGenAnnotations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/daoQualifiedClassName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/daoFinders"/>
+      <genFeatures property="Readonly" notify="false" createChild="false" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EClassModelGenAnnotation/eAllStructuralFeatureModelGenAnnotations"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="texo-annotations-modelgenerator.ecore#//EDataTypeModelGenAnnotationDefinition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EDataTypeModelGenAnnotationDefinition/instanceClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EDataTypeModelGenAnnotationDefinition/objectClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EDataTypeModelGenAnnotationDefinition/enum"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EDataTypeModelGenAnnotationDefinition/dateType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EDataTypeModelGenAnnotationDefinition/automaticStringConversion"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EDataTypeModelGenAnnotationDefinition/baseTypeAnnotation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EDataTypeModelGenAnnotationDefinition/itemType"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/getter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/objectType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/itemType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/defaultValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/setter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/validJavaMemberName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/generateCode"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/featureMapQualifiedClassName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/featureMapSimpleClassName"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/featureMapFeature"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/memberFeatureMapFeatures"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/many"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/useList"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/reference"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EStructuralFeatureModelGenAnnotation/ownerEClassAnnotation"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-modelgenerator.ecore#//EAttributeModelGenAnnotation">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EAttributeModelGenAnnotation/boolean"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EAttributeModelGenAnnotation/primitive"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-modelgenerator.ecore#//EReferenceModelGenAnnotation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//EReferenceModelGenAnnotation/oppositeModelGenAnnotation"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EReferenceModelGenAnnotation/generateSafeManyAccess"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute texo-annotations-modelgenerator.ecore#//EReferenceModelGenAnnotation/generateBidirectionalAssociationSupport"/>
+    </genClasses>
+    <genClasses ecoreClass="texo-annotations-modelgenerator.ecore#//EEnumModelGenAnnotation"/>
+    <genClasses ecoreClass="texo-annotations-modelgenerator.ecore#//EDataTypeModelGenAnnotation"/>
+    <genClasses ecoreClass="texo-annotations-modelgenerator.ecore#//DaoFinderDefinition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference texo-annotations-modelgenerator.ecore#//DaoFinderDefinition/findPart"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

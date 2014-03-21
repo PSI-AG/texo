@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.eclipse.org/emf/texo/test/model/issues/bz378642"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.eclipse.org/emf/texo/test/model/issues/bz378642">
+
+	<xs:complexType name="priceType">
+		<xs:attribute name="value" type="big1IdType" />
+	</xs:complexType>
+
+	<xs:simpleType name="big1IdType">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="1" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

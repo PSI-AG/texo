@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.server.model.request.ActionType" name="request_ActionType">
+    <orm:table name="request_ActionType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:element-collection name="update">
+        <orm:order-column name="request_ActionType_update_ind"/>
+        <orm:convert>TexoTestObjectConverter</orm:convert>
+        <orm:collection-table name="request_ActionType_update"/>
+        <orm:cascade-on-delete>true</orm:cascade-on-delete>
+      </orm:element-collection>
+      <orm:element-collection name="insert">
+        <orm:order-column name="request_ActionType_insert_ind"/>
+        <orm:convert>TexoTestObjectConverter</orm:convert>
+        <orm:collection-table name="request_ActionType_insert"/>
+        <orm:cascade-on-delete>true</orm:cascade-on-delete>
+      </orm:element-collection>
+      <orm:element-collection name="delete">
+        <orm:order-column name="request_ActionType_delete_ind"/>
+        <orm:convert>TexoTestObjectConverter</orm:convert>
+        <orm:collection-table name="request_ActionType_delete"/>
+        <orm:cascade-on-delete>true</orm:cascade-on-delete>
+      </orm:element-collection>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.server.model.request.QueryType" name="request_QueryType">
+    <orm:table name="request_QueryType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="namedQuery">
+        <orm:column name="namedQuery"/>
+      </orm:basic>
+      <orm:basic name="query">
+        <orm:column name="query"/>
+      </orm:basic>
+      <orm:basic name="firstResult">
+        <orm:column name="firstResult"/>
+      </orm:basic>
+      <orm:basic name="maxResults">
+        <orm:column name="maxResults"/>
+      </orm:basic>
+      <orm:basic name="doCount">
+        <orm:column name="doCount"/>
+      </orm:basic>
+      <orm:basic name="countOperation">
+        <orm:column name="countOperation"/>
+      </orm:basic>
+      <orm:one-to-many name="parameters">
+        <orm:order-column name="request_QueryType_parameters_ind"/>
+        <orm:join-column name="request_QueryType_parameters"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.server.model.request.QueryReferingObjectsType" name="request_QueryReferingObjectsType">
+    <orm:table name="request_QueryReferingObjectsType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="targetUri" optional="false">
+        <orm:column name="targetUri"/>
+      </orm:basic>
+      <orm:basic name="includeContainerReferences">
+        <orm:column name="includeContainerReferences"/>
+      </orm:basic>
+      <orm:basic name="maxResults">
+        <orm:column name="maxResults"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.server.model.request.Parameter" name="request_Parameter">
+    <orm:table name="request_Parameter"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="value" optional="false">
+        <orm:column name="T_value"/>
+        <orm:convert>TexoTestObjectConverter</orm:convert>
+      </orm:basic>
+      <orm:basic name="type">
+        <orm:column name="T_type"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

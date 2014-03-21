@@ -1,0 +1,8 @@
+package org.eclipse.emf.texo.test.model.samples.sport.competition
+
+import org.eclipse.emf.texo.test.model.samples.sport.club.Team
+
+class Competition {
+	String name
+	refers Team[] teams
+}

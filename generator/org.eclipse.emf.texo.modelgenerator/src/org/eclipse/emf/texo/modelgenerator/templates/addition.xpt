@@ -1,0 +1,15 @@
+«REM»Template file which can be overridden to generate additional files or code«ENDREM»
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«REM»Called for EPackages, even if you don't want to generate code for EPackages, still keep this empty DEFINE«ENDREM»
+«DEFINE root(ModelController modelController) FOR EPackageModelGenAnnotation-»
+«ENDDEFINE»
+
+«REM»Called for EClasses, even if you don't want to generate code for EClasses, still keep this empty DEFINE«ENDREM»
+«DEFINE root(ModelController modelController) FOR EClassModelGenAnnotation-»
+«ENDDEFINE»
+
+«REM»Called for EEnums, even if you don't want to generate code for EEnums, still keep this empty DEFINE«ENDREM»
+«DEFINE root(ModelController modelController) FOR EEnumModelGenAnnotation-»
+«ENDDEFINE»

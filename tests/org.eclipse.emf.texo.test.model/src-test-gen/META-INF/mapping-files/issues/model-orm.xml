@@ -1,0 +1,786 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.SimCard" name="m_SimCard">
+    <orm:table name="m_SimCard"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="phoneNumber">
+        <orm:column name="phoneNumber"/>
+      </orm:basic>
+      <orm:basic name="number">
+        <orm:column name="T_number"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.SimContract" name="m_SimContract">
+    <orm:table name="m_SimContract"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="contractNumber">
+        <orm:column name="contractNumber"/>
+      </orm:basic>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="descritpion">
+        <orm:column name="descritpion"/>
+      </orm:basic>
+      <orm:many-to-one name="paymentInfo">
+        <orm:join-column name="m_SimContract_paymentInfo"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.PaymentInfo" name="m_PaymentInfo">
+    <orm:table name="m_PaymentInfo"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:many-to-one name="tariff">
+        <orm:join-column name="m_PaymentInfo_tariff"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-many access="FIELD" name="factPayments">
+        <orm:order-column name="m_PaymentInfo_factPayments_ind"/>
+        <orm:join-table name="m_PaymentInfo_factPayments">
+          <orm:join-column name="m_PaymentInfo_factPayments"/>
+          <orm:inverse-join-column name="factPayments_m_PaymentItem"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.SimCardXSimContract" name="m_SimCardXSimContract">
+    <orm:table name="m_SimCardXSimContract"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:many-to-one name="simCard">
+        <orm:join-column name="m_SimCardXSimContract_simCard"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="simContract">
+        <orm:join-column name="m_SimCardXSimContract_simContract"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.SimTariff" name="m_SimTariff">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes/>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Tariff" name="m_Tariff">
+    <orm:table name="m_Tariff"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="active">
+        <orm:column name="active"/>
+      </orm:basic>
+      <orm:many-to-many access="FIELD" name="volumePayments">
+        <orm:order-column name="m_Tariff_volumePayments_ind"/>
+        <orm:join-table name="m_Tariff_volumePayments">
+          <orm:join-column name="m_Tariff_volumePayments"/>
+          <orm:inverse-join-column name="volumePayments_m_VolumePayment"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+      <orm:many-to-many access="FIELD" name="periodicalPayments">
+        <orm:order-column name="m_Tariff_periodicalPayments_ind"/>
+        <orm:join-table name="m_Tariff_periodicalPayments">
+          <orm:join-column name="m_Tariff_periodicalPayments"/>
+          <orm:inverse-join-column name="periodicalPayments_m_PeriodicalPayment"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+      <orm:many-to-many access="FIELD" name="initialPayment">
+        <orm:order-column name="m_Tariff_initialPayment_ind"/>
+        <orm:join-table name="m_Tariff_initialPayment">
+          <orm:join-column name="m_Tariff_initialPayment"/>
+          <orm:inverse-join-column name="initialPayment_m_OneTimePayment"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+      <orm:many-to-many access="FIELD" name="services">
+        <orm:order-column name="m_Tariff_services_ind"/>
+        <orm:join-table name="m_Tariff_services">
+          <orm:join-column name="m_Tariff_services"/>
+          <orm:inverse-join-column name="services_m_Service"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.PaymentItem" name="m_PaymentItem">
+    <orm:table name="m_PaymentItem"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="sum">
+        <orm:column name="T_sum" precision="15" scale="7"/>
+      </orm:basic>
+      <orm:basic name="currency">
+        <orm:column name="currency"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:basic name="date">
+        <orm:column name="T_date"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="description">
+        <orm:column name="description"/>
+      </orm:basic>
+      <orm:basic name="paymentType">
+        <orm:column name="paymentType"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.VolumePayment" name="m_VolumePayment">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="volume">
+        <orm:column name="volume" nullable="true" precision="15" scale="7"/>
+      </orm:basic>
+      <orm:basic name="price">
+        <orm:column name="price" nullable="true" precision="15" scale="7"/>
+      </orm:basic>
+      <orm:many-to-one name="unit">
+        <orm:join-column name="m_VolumePayment_unit" nullable="true"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.PeriodicalPayment" name="m_PeriodicalPayment">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="periodicity">
+        <orm:column name="periodicity" nullable="true"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.OneTimePayment" name="m_OneTimePayment">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes/>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Service" name="m_Service">
+    <orm:table name="m_Service"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="active">
+        <orm:column name="active"/>
+      </orm:basic>
+      <orm:many-to-one name="initialPayment">
+        <orm:join-column name="m_Service_initialPayment"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="periodicalPayment">
+        <orm:join-column name="m_Service_periodicalPayment"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="volumePayment">
+        <orm:join-column name="m_Service_volumePayment"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Units" name="m_Units">
+    <orm:table name="m_Units"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Price" name="m_Price">
+    <orm:table name="m_Price"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes/>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.CarProducer" name="m_CarProducer">
+    <orm:table name="m_CarProducer"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.CarModel" name="m_CarModel">
+    <orm:table name="m_CarModel"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:many-to-one name="producer">
+        <orm:join-column name="m_CarModel_producer"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.CarRegInfo" name="m_CarRegInfo">
+    <orm:table name="m_CarRegInfo"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="series">
+        <orm:column name="series"/>
+      </orm:basic>
+      <orm:basic name="number">
+        <orm:column name="T_number"/>
+      </orm:basic>
+      <orm:basic name="issueDate">
+        <orm:column name="issueDate"/>
+      </orm:basic>
+      <orm:basic name="issued">
+        <orm:column name="issued"/>
+      </orm:basic>
+      <orm:basic name="regNumber">
+        <orm:column name="regNumber"/>
+      </orm:basic>
+      <orm:basic name="vin">
+        <orm:column name="vin"/>
+      </orm:basic>
+      <orm:basic name="releaseYear">
+        <orm:column name="releaseYear"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="engineNumber">
+        <orm:column name="engineNumber"/>
+      </orm:basic>
+      <orm:basic name="chassisNumber">
+        <orm:column name="chassisNumber"/>
+      </orm:basic>
+      <orm:basic name="bodyNumber">
+        <orm:column name="bodyNumber"/>
+      </orm:basic>
+      <orm:basic name="color">
+        <orm:column name="color"/>
+      </orm:basic>
+      <orm:many-to-one name="owner">
+        <orm:join-column name="m_CarRegInfo_owner"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Person" name="m_Person">
+    <orm:table name="m_Person"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="surname">
+        <orm:column name="surname"/>
+      </orm:basic>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="patronimic">
+        <orm:column name="patronimic"/>
+      </orm:basic>
+      <orm:basic name="birthday">
+        <orm:column name="birthday"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:many-to-one name="registrationAddress">
+        <orm:join-column name="m_Person_registrationAddress"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="factAddress">
+        <orm:join-column name="m_Person_factAddress"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="passport">
+        <orm:join-column name="m_Person_passport"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="drivingLicense">
+        <orm:join-column name="m_Person_drivingLicense"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-many access="FIELD" name="phones">
+        <orm:order-column name="m_Person_phones_ind"/>
+        <orm:join-table name="m_Person_phones">
+          <orm:join-column name="m_Person_phones"/>
+          <orm:inverse-join-column name="phones_m_Phone"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Car" name="m_Car">
+    <orm:table name="m_Car"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:many-to-one name="model">
+        <orm:join-column name="m_Car_model"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="regInfo">
+        <orm:join-column name="m_Car_regInfo"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="carPassport">
+        <orm:join-column name="m_Car_carPassport"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.CarPassport" name="m_CarPassport">
+    <orm:table name="m_CarPassport"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="series">
+        <orm:column name="series"/>
+      </orm:basic>
+      <orm:basic name="number">
+        <orm:column name="T_number"/>
+      </orm:basic>
+      <orm:basic name="issueDate">
+        <orm:column name="issueDate"/>
+      </orm:basic>
+      <orm:basic name="issued">
+        <orm:column name="issued"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Phone" name="m_Phone">
+    <orm:table name="m_Phone"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="number">
+        <orm:column name="T_number"/>
+      </orm:basic>
+      <orm:basic name="description">
+        <orm:column name="description"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Address" name="m_Address">
+    <orm:table name="m_Address"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="zipCode">
+        <orm:column name="zipCode"/>
+      </orm:basic>
+      <orm:basic name="country">
+        <orm:column name="country"/>
+      </orm:basic>
+      <orm:basic name="region">
+        <orm:column name="region"/>
+      </orm:basic>
+      <orm:basic name="city">
+        <orm:column name="city"/>
+      </orm:basic>
+      <orm:basic name="street">
+        <orm:column name="street"/>
+      </orm:basic>
+      <orm:basic name="building">
+        <orm:column name="building"/>
+      </orm:basic>
+      <orm:basic name="flat">
+        <orm:column name="flat"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Passport" name="m_Passport">
+    <orm:table name="m_Passport"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="series">
+        <orm:column name="series"/>
+      </orm:basic>
+      <orm:basic name="number">
+        <orm:column name="T_number"/>
+      </orm:basic>
+      <orm:basic name="issueDate">
+        <orm:column name="issueDate"/>
+      </orm:basic>
+      <orm:basic name="issued">
+        <orm:column name="issued"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.DrivingLicense" name="m_DrivingLicense">
+    <orm:table name="m_DrivingLicense"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="series">
+        <orm:column name="series"/>
+      </orm:basic>
+      <orm:basic name="number">
+        <orm:column name="T_number"/>
+      </orm:basic>
+      <orm:basic name="issueDate">
+        <orm:column name="issueDate"/>
+      </orm:basic>
+      <orm:basic name="issued">
+        <orm:column name="issued"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Contract" name="m_Contract">
+    <orm:table name="m_Contract"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="signDate">
+        <orm:column name="signDate"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="number">
+        <orm:column name="T_number"/>
+      </orm:basic>
+      <orm:many-to-one name="simCard">
+        <orm:join-column name="m_Contract_simCard"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="paymentInfo">
+        <orm:join-column name="m_Contract_paymentInfo"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="car">
+        <orm:join-column name="m_Contract_car"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-many access="FIELD" name="secretQuestions">
+        <orm:order-column name="m_Contract_secretQuestions_ind"/>
+        <orm:join-table name="m_Contract_secretQuestions">
+          <orm:join-column name="m_Contract_secretQuestions"/>
+          <orm:inverse-join-column name="secretQuestions_m_SecretQuestion"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.SecretQuestion" name="m_SecretQuestion">
+    <orm:table name="m_SecretQuestion"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="question">
+        <orm:column name="question"/>
+      </orm:basic>
+      <orm:basic name="correctAnswer">
+        <orm:column name="correctAnswer"/>
+      </orm:basic>
+      <orm:basic name="alarmAnswer">
+        <orm:column name="alarmAnswer"/>
+      </orm:basic>
+      <orm:basic name="active">
+        <orm:column name="active"/>
+      </orm:basic>
+      <orm:basic name="type">
+        <orm:column name="T_type"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.ClientTariff" name="m_ClientTariff">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes/>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.ContractPackage" name="m_ContractPackage">
+    <orm:table name="m_ContractPackage"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:many-to-one name="client">
+        <orm:join-column name="m_ContractPackage_client"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="user">
+        <orm:join-column name="m_ContractPackage_user"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-many access="FIELD" name="contracts">
+        <orm:order-column name="m_ContractPackage_contracts_ind"/>
+        <orm:join-table name="m_ContractPackage_contracts">
+          <orm:join-column name="m_ContractPackage_contracts"/>
+          <orm:inverse-join-column name="contracts_m_Contract"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.User" name="m_User">
+    <orm:table name="m_User"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="login">
+        <orm:column name="T_login"/>
+      </orm:basic>
+      <orm:basic name="password">
+        <orm:column name="T_password"/>
+      </orm:basic>
+      <orm:many-to-one name="group">
+        <orm:join-column name="m_User_group"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.UserGroup" name="m_UserGroup">
+    <orm:table name="m_UserGroup"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes/>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Message" name="m_Message">
+    <orm:table name="m_Message"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="text">
+        <orm:column name="T_text"/>
+      </orm:basic>
+      <orm:basic name="type">
+        <orm:column name="T_type"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:basic name="dateTime">
+        <orm:column name="T_dateTime"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:many-to-one name="from">
+        <orm:join-column name="m_Message_from"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="to">
+        <orm:join-column name="m_Message_to"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Event" name="m_Event">
+    <orm:table name="m_Event"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="eventType">
+        <orm:column name="eventType"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:many-to-one name="message">
+        <orm:join-column name="m_Event_message"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="coordinates">
+        <orm:join-column name="m_Event_coordinates"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz331009.Coordinates" name="m_Coordinates">
+    <orm:table name="m_Coordinates"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="x">
+        <orm:column name="x" precision="15" scale="7"/>
+      </orm:basic>
+      <orm:basic name="y">
+        <orm:column name="y" precision="15" scale="7"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

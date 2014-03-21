@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.list.StatesByCountry" name="list_statesByCountry">
+    <orm:table name="list_statesByCountry"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="country" optional="false">
+        <orm:column name="country"/>
+      </orm:basic>
+      <orm:basic name="index" optional="false">
+        <orm:column name="T_index"/>
+      </orm:basic>
+      <orm:basic name="allStates" optional="false">
+        <orm:column name="allStates"/>
+      </orm:basic>
+      <orm:basic name="sixImportantStates" optional="false">
+        <orm:column name="sixImportantStates"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

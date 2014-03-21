@@ -1,0 +1,6 @@
+package org.eclipse.emf.texo.test.model.samples.sport.society
+
+class Society 
+{
+	String name
+}

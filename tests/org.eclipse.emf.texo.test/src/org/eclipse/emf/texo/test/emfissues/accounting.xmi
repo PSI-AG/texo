@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:accounting="http://www.eclipse.org/emf/texo/test/model/samples/accounting">
+  <accounting:Accounting name="publicae sunt" vatAccount="/1">
+    <accountGroup name="quisque suppliciis">
+      <account xsi:type="accounting:BalanceAccount" name="incitamento quidam" report="/0/@report/@debitReportGroup/@reportGroup.0"/>
+    </accountGroup>
+    <vat name="coram statuetur" rate="0.2"/>
+    <report name="et Omnium">
+      <debitReportGroup name="institutis eam" account="/1">
+        <reportGroup name="prehendi iusta" account="/0/@accountGroup.0/@account.0"/>
+      </debitReportGroup>
+      <creditReportGroup name="pares commercium" account="/1"/>
+    </report>
+    <journalGroup name="incolumitatis discrimine"/>
+  </accounting:Accounting>
+  <accounting:BalanceAccount name="nullum ea" report="/0/@report/@debitReportGroup /0/@report/@creditReportGroup"/>
+  <accounting:JournalStatement description="patria personae" date="2010-04-02T14:02:00.281+0200" amount="0.1" debitAccount="/0/@accountGroup.0/@account.0" creditAccount="/0/@accountGroup.0/@account.0" vat="/0/@vat.0"/>
+  <accounting:PLAccount name="divitiis nemo"/>
+</xmi:XMI>

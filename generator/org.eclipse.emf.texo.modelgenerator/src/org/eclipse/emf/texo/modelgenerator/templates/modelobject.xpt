@@ -1,0 +1,141 @@
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(ModelController modelController) FOR EClassModelGenAnnotation-»
+«LET ((EPackageModelGenAnnotation)this.ownerEPackageAnnotation) AS ePackageAnnotation»
+
+/**
+ * The adapter/wrapper for the EClass '<em><b>«this.name»</b></em>'.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+ *
+ * @param <E> the domain class
+ *
+ * @generated
+*/
+public static class «this.simpleClassName-»ModelObject<E extends «this.qualifiedClassName-»>
+«IF this.hasSuperEClass-»
+	«LET this.superEClass AS eSuperClassAnnotation-»
+	«LET ((EPackageModelGenAnnotation)this.superEClass.ownerEPackageAnnotation) AS eSuperPackageAnnotation-»
+	«IF eSuperPackageAnnotation.EPackage != this.EClass.EPackage-»
+	 extends «eSuperPackageAnnotation.modelClassesPackagePath-».«eSuperPackageAnnotation.simpleModelFactoryClassName-».«eSuperClassAnnotation.simpleClassName»ModelObject<E>
+	«ELSE-»
+	 extends «eSuperClassAnnotation.simpleClassName»ModelObject<E>
+	«ENDIF-»
+	«ENDLET-»
+	«ENDLET-»
+«ELSE-»
+extends org.eclipse.emf.texo.model.AbstractModelObject<E>
+«ENDIF-»
+{
+	/**
+	* @generated
+	*/
+	«IF this.hasSuperEClass-»
+	@Override
+	«ENDIF-»
+	public org.eclipse.emf.ecore.EClass eClass() {
+		return «ePackageAnnotation.qualifiedClassName».INSTANCE.get«toFirstUpper(this.name)»EClass();
+	}
+
+	/**
+	* @generated
+	*/
+	«IF this.hasSuperEClass-»
+	@Override
+	«ENDIF-»
+	public org.eclipse.emf.texo.model.ModelPackage getModelPackage() {
+		return «ePackageAnnotation.qualifiedClassName».INSTANCE;
+	}
+
+	/**
+	 * @generated
+	 */
+	@Override
+	public Object eGet(org.eclipse.emf.ecore.EStructuralFeature eStructuralFeature) {
+		final int featureID = eClass().getFeatureID(eStructuralFeature);
+		switch (featureID) {
+		«FOREACH this.EStructuralFeatureModelGenAnnotations AS featureAnnotation-»
+			case «ePackageAnnotation.qualifiedClassName».«toUpperCase(this.name)»_«toUpperCase(featureAnnotation.name)»_FEATURE_ID:
+				return getTarget().«featureAnnotation.getter»();
+		«ENDFOREACH-»
+		}
+		return super.eGet(eStructuralFeature);
+	}
+
+	/**
+	 * @generated
+	 */
+	«IF this.EStructuralFeatureModelGenAnnotations.exists(e|e.EStructuralFeature.many && e.EStructuralFeature.changeable)-»
+	@SuppressWarnings("unchecked")
+	«ENDIF-»
+	@Override
+	public void eSet(org.eclipse.emf.ecore.EStructuralFeature eStructuralFeature, Object value) {
+		final int featureID = eClass().getFeatureID(eStructuralFeature);
+		switch (featureID) {
+		«FOREACH this.EStructuralFeatureModelGenAnnotations AS featureAnnotation-»
+			«IF featureAnnotation.EStructuralFeature.changeable-»
+			case «ePackageAnnotation.qualifiedClassName».«toUpperCase(this.name)»_«toUpperCase(featureAnnotation.name)»_FEATURE_ID:
+				getTarget().«featureAnnotation.setter»(«cast(featureAnnotation.objectType)»value);
+				return;
+			«ENDIF-»
+		«ENDFOREACH-»
+		}
+		super.eSet(eStructuralFeature, value);
+	}
+
+	/**
+	 * @generated
+	 */
+	@Override
+	public boolean eAddTo(org.eclipse.emf.ecore.EStructuralFeature eStructuralFeature, Object value) {
+		final int featureID = eClass().getFeatureID(eStructuralFeature);
+		switch (featureID) {
+		«FOREACH this.EStructuralFeatureModelGenAnnotations AS featureAnnotation-»
+			«REM»
+				The check !featureAnnotation.itemType.contains(",") prevents maps to be handled here
+			«ENDREM»
+			«IF featureAnnotation.EStructuralFeature.changeable && featureAnnotation.many && !featureAnnotation.itemType.contains(",")»
+			«IF featureAnnotation.reference && featureAnnotation.featureMapFeature == null && ((EReferenceModelGenAnnotation)featureAnnotation).generateSafeManyAccess-»
+			case «ePackageAnnotation.qualifiedClassName».«toUpperCase(this.name)»_«toUpperCase(featureAnnotation.name)»_FEATURE_ID:
+				return getTarget().addTo«toFirstUpper(featureAnnotation.validJavaMemberName)»(«cast(featureAnnotation.itemType)»value);
+			«ELSE-»
+			case «ePackageAnnotation.qualifiedClassName».«toUpperCase(this.name)»_«toUpperCase(featureAnnotation.name)»_FEATURE_ID:
+				return getTarget().«featureAnnotation.getter»().add(«(featureAnnotation.itemType)»value);
+			«ENDIF-»
+			«ENDIF-»
+		«ENDFOREACH-»
+		}
+		return super.eAddTo(eStructuralFeature, value);
+	}
+
+	/**
+	 * @generated
+	 */
+	@Override
+	public boolean eRemoveFrom(org.eclipse.emf.ecore.EStructuralFeature eStructuralFeature, Object value) {
+		final int featureID = eClass().getFeatureID(eStructuralFeature);
+		switch (featureID) {
+		«FOREACH this.EStructuralFeatureModelGenAnnotations AS featureAnnotation-»
+			«REM»
+				The check !featureAnnotation.itemType.contains(",") prevents maps to be handled here
+			«ENDREM»
+			«IF featureAnnotation.EStructuralFeature.changeable && featureAnnotation.many && !featureAnnotation.itemType.contains(",")»
+			«IF featureAnnotation.reference && featureAnnotation.featureMapFeature == null && ((EReferenceModelGenAnnotation)featureAnnotation).generateSafeManyAccess-»
+			case «ePackageAnnotation.qualifiedClassName».«toUpperCase(this.name)»_«toUpperCase(featureAnnotation.name)»_FEATURE_ID:
+				return getTarget().removeFrom«toFirstUpper(featureAnnotation.validJavaMemberName)»(«cast(featureAnnotation.itemType)»value);
+			«ELSE-»
+			case «ePackageAnnotation.qualifiedClassName».«toUpperCase(this.name)»_«toUpperCase(featureAnnotation.name)»_FEATURE_ID:
+				return getTarget().«featureAnnotation.getter»().remove(value);
+			«ENDIF-»
+			«ENDIF-»
+		«ENDFOREACH-»
+		}
+		return super.eRemoveFrom(eStructuralFeature, value);
+	}
+}
+«ENDLET-»
+«ENDDEFINE»

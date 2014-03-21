@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:ormannotations="http://www.eclipse.org/emf/texo/orm/ormannotations">
+  <annotatedEPackages>
+    <ePackage href="bz386923.ecore#/"/>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="bz386923.ecore#//Test386923"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity>
+          <sqlResultSetMapping description="Test" name="Test">
+            <entityResult discriminatorColumn="DCCOL" entityClass="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <entityResult discriminatorColumn="DCCOL2" entityClass="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <columnResult name="T1"/>
+            <columnResult name="T1"/>
+          </sqlResultSetMapping>
+        </entity>
+      </eClassAnnotations>
+    </annotatedEClassifiers>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

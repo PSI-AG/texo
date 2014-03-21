@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:modelannotations="http://www.eclipse.org/emf/texo/modelgenerator/modelannotations">
+  <annotatedEPackages>
+    <ePackage href="rental.ecore#/"/>
+    <ePackageAnnotations xsi:type="modelannotations:EPackageModelGenAnnotation" name="rental" packagePath="org.eclipse.emf.texo.test.model.samples.rental" modelClassesPackagePath="org.eclipse.emf.texo.test.model.samples.rental" qualifiedClassName="org.eclipse.emf.texo.test.model.samples.rental.RentalModelPackage" simpleClassName="RentalModelPackage" simpleModelFactoryClassName="RentalModelFactory" ecoreFileName="org.eclipse.emf.texo.test.model.samples.rental.ecore" javaFileHeader="" generateSafeManyAccess="true" rootClassExtends="org.eclipse.emf.texo.demo.BaseObject" generateBidirectionalAssociationSupport="true"/>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="rental.ecore#//RentalContract"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="rental.ecore#//RentalContract/rentalContractLines"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" validJavaMemberName="" useList="false" generateSafeManyAccess="true" generateBidirectionalAssociationSupport="false"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

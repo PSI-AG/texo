@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.Book" name="extlib_Book">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="title">
+        <orm:column name="title" nullable="true"/>
+      </orm:basic>
+      <orm:basic name="pages">
+        <orm:column name="pages" nullable="true"/>
+      </orm:basic>
+      <orm:basic name="category">
+        <orm:column name="category" nullable="true"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:many-to-one name="author" optional="false">
+        <orm:join-column name="extlib_Book_author" nullable="true"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.Item" name="extlib_Item">
+    <orm:table name="extlib_Item"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="publicationDate">
+        <orm:column name="publicationDate"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.CirculatingItem" name="extlib_CirculatingItem">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="copies" optional="false">
+        <orm:column name="copies"/>
+      </orm:basic>
+      <orm:many-to-many mapped-by="borrowed" name="borrowers">
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.Writer" name="extlib_Writer">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="books">
+        <orm:order-column name="extlib_Writer_books_ind"/>
+        <orm:join-table name="extlib_Writer_books">
+          <orm:join-column name="extlib_Writer_books"/>
+          <orm:inverse-join-column name="books_extlib_Book"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.Person" name="extlib_Person">
+    <orm:table name="extlib_Person"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="address">
+        <orm:column name="address"/>
+      </orm:basic>
+      <orm:basic name="firstName" optional="false">
+        <orm:column name="firstName"/>
+      </orm:basic>
+      <orm:basic name="lastName" optional="false">
+        <orm:column name="lastName"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.LibraryPeopleFeatureGroup" name="extlib_Library_people">
+    <orm:attributes>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:many-to-one name="writers" optional="false">
+        <orm:join-column name="extlib_Library_writers"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="employees" optional="false">
+        <orm:join-column name="extlib_Library_employees"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="borrowers" optional="false">
+        <orm:join-column name="extlib_Library_borrowers"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.Library" name="extlib_Library">
+    <orm:table name="extlib_Library"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="address">
+        <orm:column name="address"/>
+      </orm:basic>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:many-to-one name="parentBranch">
+        <orm:join-column name="extlib_Library_parentBranch"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:one-to-many name="people" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.samples.extlibrary.LibraryPeopleFeatureGroup">
+        <orm:join-table name="extlib_Library_people_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+      <orm:one-to-many name="stock">
+        <orm:join-column name="extlib_Library_stock"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+      <orm:one-to-many name="branches">
+        <orm:order-column name="extlib_Library_branches_ind"/>
+        <orm:join-column name="extlib_Library_branches"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+      <orm:many-to-many access="PROPERTY" name="books">
+        <orm:join-table name="extlib_Library_books">
+          <orm:join-column name="extlib_Library_books"/>
+          <orm:inverse-join-column name="books_extlib_Book"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.Employee" name="extlib_Employee">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:many-to-one name="manager">
+        <orm:join-column name="extlib_Employee_manager" nullable="true"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.Borrower" name="extlib_Borrower">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:many-to-many name="borrowed">
+        <orm:order-column name="extlib_Borrower_borrowed_ind"/>
+        <orm:join-table name="extlib_Borrower_borrowed">
+          <orm:join-column name="extlib_Borrower_borrowed"/>
+          <orm:inverse-join-column name="borrowed_extlib_Lendable"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.Periodical" name="extlib_Periodical">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="title">
+        <orm:column name="title" nullable="true"/>
+      </orm:basic>
+      <orm:basic name="issuesPerYear" optional="false">
+        <orm:column name="issuesPerYear" nullable="true"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.AudioVisualItem" name="extlib_AudioVisualItem">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="title">
+        <orm:column name="title" nullable="true"/>
+      </orm:basic>
+      <orm:basic name="minutesLength" optional="false">
+        <orm:column name="minutesLength" nullable="true"/>
+      </orm:basic>
+      <orm:basic name="damaged">
+        <orm:column name="damaged" nullable="true"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.BookOnTape" name="extlib_BookOnTape">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:many-to-one name="reader">
+        <orm:join-column name="extlib_BookOnTape_reader" nullable="true"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="author">
+        <orm:join-column name="extlib_BookOnTape_author" nullable="true"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extlibrary.VideoCassette" name="extlib_VideoCassette">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:many-to-many name="cast">
+        <orm:order-column name="extlib_VideoCassette_cast_ind"/>
+        <orm:join-table name="extlib_VideoCassette_cast">
+          <orm:join-column name="extlib_VideoCassette_cast"/>
+          <orm:inverse-join-column name="cast_extlib_Person"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

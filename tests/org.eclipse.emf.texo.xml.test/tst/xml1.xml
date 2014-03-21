@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:accounting="http://www.eclipse.org/emf/texo/test/model/samples/accounting">
+  <accounting:Accounting name="incitamento quidam" vatAccount="/0/@accountGroup.0/@account.0">
+    <accountGroup name="nullum ea">
+      <account xsi:type="accounting:BalanceAccount" name="quisque id" report="/0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /2/@report/@debitReportGroup/@reportGroup.4"/>
+      <account xsi:type="accounting:BalanceAccount" name="modi adhibendis" report="/0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.0"/>
+      <account xsi:type="accounting:BalanceAccount" name="ut liberum" report="/2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.0"/>
+      <account xsi:type="accounting:BalanceAccount" name="studio a" report="/2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.0"/>
+      <account xsi:type="accounting:BalanceAccount" name="cuiuslibet civitatis" report="/1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.0"/>
+    </accountGroup>
+    <accountGroup name="incolumitatis discrimine">
+      <account xsi:type="accounting:BalanceAccount" name="homines iugo" report="/1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.0"/>
+      <account xsi:type="accounting:BalanceAccount" name="hac in" report="/0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.1"/>
+      <account xsi:type="accounting:BalanceAccount" name="habet est" report="/0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.1"/>
+      <account xsi:type="accounting:BalanceAccount" name="poterit; natione" report="/2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.1"/>
+      <account xsi:type="accounting:BalanceAccount" name="rationis Suae" report="/2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.1"/>
+    </accountGroup>
+    <accountGroup name="patria personae">
+      <account xsi:type="accounting:BalanceAccount" name="Homo efficiendum" report="/1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.1"/>
+      <account xsi:type="accounting:BalanceAccount" name="servitute ab" report="/1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.2"/>
+      <account xsi:type="accounting:BalanceAccount" name="idonea iudices" report="/0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.2"/>
+      <account xsi:type="accounting:BalanceAccount" name="pari inter" report="/0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.2"/>
+      <account xsi:type="accounting:BalanceAccount" name="sunt nullo" report="/2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.2"/>
+    </accountGroup>
+    <accountGroup name="divitiis nemo">
+      <account xsi:type="accounting:BalanceAccount" name="generisvultus officiaque" report="/2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.2"/>
+      <account xsi:type="accounting:BalanceAccount" name="ullo linguae" report="/1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.3"/>
+      <account xsi:type="accounting:BalanceAccount" name="ipsius contra" report="/1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.3"/>
+      <account xsi:type="accounting:BalanceAccount" name="aeque iure" report="/0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.3"/>
+      <account xsi:type="accounting:BalanceAccount" name="administrationis violent" report="/0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.3"/>
+    </accountGroup>
+    <accountGroup name="et Omnium">
+      <account xsi:type="accounting:BalanceAccount" name="pacto cruciatum" report="/2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.3"/>
+      <account xsi:type="accounting:BalanceAccount" name="aequo libertatis" report="/2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /1/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.4"/>
+      <account xsi:type="accounting:BalanceAccount" name="iustae servitus" report="/1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /0/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.4"/>
+      <account xsi:type="accounting:BalanceAccount" name="propria oppressus" report="/1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /0/@report/@debitReportGroup /2/@report/@creditReportGroup/@reportGroup.4"/>
+      <account xsi:type="accounting:BalanceAccount" name="poterit fiduciariae" report="/0/@report/@creditReportGroup /1/@report/@debitReportGroup /1/@report/@creditReportGroup /2/@report/@debitReportGroup /2/@report/@creditReportGroup /2/@report/@creditReportGroup/@reportGroup.4"/>
+    </accountGroup>
+    <vat name="institutis eam" rate="0.1"/>
+    <vat name="coram statuetur" rate="0.2"/>
+    <vat name="prehendi iusta" rate="0.3"/>
+    <vat name="pares commercium" rate="0.4"/>
+    <vat name="vel iure" rate="0.5"/>
+    <report name="quibus tribunalia">
+      <debitReportGroup name="iuris constituantur" account="/0/@accountGroup.0/@account.1 /0/@accountGroup.0/@account.2 /0/@accountGroup.0/@account.3 /0/@accountGroup.0/@account.4 /0/@accountGroup.1/@account.0 /0/@accountGroup.1/@account.2 /0/@accountGroup.1/@account.3 /0/@accountGroup.1/@account.4 /0/@accountGroup.2/@account.0 /0/@accountGroup.2/@account.1 /0/@accountGroup.2/@account.3 /0/@accountGroup.2/@account.4 /0/@accountGroup.3/@account.0 /0/@accountGroup.3/@account.1 /0/@accountGroup.3/@account.2 /0/@accountGroup.3/@account.4 /0/@accountGroup.4/@account.0 /0/@accountGroup.4/@account.1 /0/@accountGroup.4/@account.2 /0/@accountGroup.4/@account.3 /1/@accountGroup.0/@account.2 /1/@accountGroup.1/@account.0 /1/@accountGroup.1/@account.3 /1/@accountGroup.2/@account.1 /1/@accountGroup.2/@account.4 /1/@accountGroup.3/@account.3 /1/@accountGroup.4/@account.1 /1/@accountGroup.4/@account.4 /2/@accountGroup.0/@account.4 /2/@accountGroup.1/@account.4 /2/@accountGroup.3/@account.0 /2/@accountGroup.4/@account.0">
+        <reportGroup name="omnibus discrimine" account="/1/@accountGroup.0/@account.0 /1/@accountGroup.0/@account.3 /1/@accountGroup.1/@account.1 /1/@accountGroup.1/@account.4 /1/@accountGroup.2/@account.2 /1/@accountGroup.3/@account.1 /1/@accountGroup.3/@account.4 /1/@accountGroup.4/@account.2 /2/@accountGroup.0/@account.0 /2/@accountGroup.1/@account.0 /2/@accountGroup.2/@account.1 /2/@accountGroup.3/@account.1 /2/@accountGroup.4/@account.1">
+          <reportGroup name="vel iure"/>
+          <reportGroup name="quibus tribunalia"/>
+          <reportGroup name="teneri se"/>
+          <reportGroup name="discrimen participes"/>
+          <reportGroup name="DECLARATIONEM enuntiantur"/>
+        </reportGroup>
+        <reportGroup name="gentium sui" account="/1/@accountGroup.0/@account.0 /1/@accountGroup.0/@account.3 /1/@accountGroup.1/@account.1 /1/@accountGroup.1/@account.4 /1/@accountGroup.2/@account.3 /1/@accountGroup.3/@account.1 /1/@accountGroup.3/@account.4 /1/@accountGroup.4/@account.2 /2/@accountGroup.0/@account.0 /2/@accountGroup.1/@account.1 /2/@accountGroup.2/@account.1 /2/@accountGroup.3/@account.1 /2/@accountGroup.4/@account.1...

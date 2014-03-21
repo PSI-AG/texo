@@ -1,0 +1,30 @@
+package org.eclipse.emf.texo.test.model.samples.rental.dao;
+
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.texo.server.store.BaseDao;
+import org.eclipse.emf.texo.test.model.samples.rental.RentalModelPackage;
+import org.eclipse.emf.texo.test.model.samples.rental.RentalUnit;
+
+/**
+ * The Dao implementation for the model object '<em><b>RentalUnit</b></em>'.
+ * 
+ * @generated
+ */
+public class RentalUnitDao extends BaseDao<RentalUnit> {
+
+  /**
+   * @generated
+   */
+  @Override
+  public Class<RentalUnit> getEntityClass() {
+    return RentalUnit.class;
+  }
+
+  /**
+   * @generated
+   */
+  @Override
+  public EClass getEClass() {
+    return RentalModelPackage.INSTANCE.getRentalUnitEClass();
+  }
+}

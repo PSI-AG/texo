@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="ASCII"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:ormannotations="http://www.eclipse.org/emf/texo/orm/ormannotations">
+  <annotatedEPackages>
+    <ePackage href="rental.ecore#/"/>
+    <ePackageAnnotations xsi:type="ormannotations:EPackageORMAnnotation"/>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="rental.ecore#//RentalContract"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity class="org.eclipse.emf.texo.test.model.samples.rental.RentalContract" name="RentalContract"/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="rental.ecore#//RentalContract/rentalContractLines"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToMany mappedBy="rentalContract" name="rentalContractLines" targetEntity="org.eclipse.emf.texo.test.model.samples.rental.RentalContractLine">
+            <cascade>
+              <cascadeAll/>
+            </cascade>
+          </oneToMany>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalContract/rentToBusinessPartner"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic name="rentToBusinessPartner" optional="false"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalContract/startDate"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="DATE" name="startDate" optional="false"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalContract/endDate"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic temporal="DATE" name="endDate" optional="false"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalContract/cost"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic name="cost" optional="false"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEDataType">
+      <eDataType href="rental.ecore#//Date"/>
+      <eDataTypeAnnotations xsi:type="ormannotations:EDataTypeORMAnnotation"/>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="rental.ecore#//RentalBicycle"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity class="org.eclipse.emf.texo.test.model.samples.rental.RentalBicycle" name="RentalBicycle"/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalBicycle/type"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic name="type" optional="false"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="rental.ecore#//RentalBicycle/rentalCar"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <manyToOne name="rentalCar" optional="true" targetEntity="org.eclipse.emf.texo.test.model.samples.rental.RentalCar">
+            <joinColumn/>
+            <cascade>
+              <cascadePersist/>
+              <cascadeMerge/>
+              <cascadeRefresh/>
+            </cascade>
+          </manyToOne>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="rental.ecore#//RentalUnit"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity class="org.eclipse.emf.texo.test.model.samples.rental.RentalUnit" name="RentalUnit"/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalUnit/description"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic name="description" optional="false"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEEnum">
+      <eEnum href="rental.ecore#//RentalBicycleType"/>
+      <eEnumAnnotations xsi:type="ormannotations:EEnumORMAnnotation"/>
+      <annotatedEEnumLiterals>
+        <eEnumLiteral href="rental.ecore#//RentalBicycleType/Standard"/>
+      </annotatedEEnumLiterals>
+      <annotatedEEnumLiterals>
+        <eEnumLiteral href="rental.ecore#//RentalBicycleType/MountainBike"/>
+      </annotatedEEnumLiterals>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="rental.ecore#//RentalCar"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity class="org.eclipse.emf.texo.test.model.samples.rental.RentalCar" name="RentalCar"/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalCar/size"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic name="size" optional="false"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="rental.ecore#//RentalCar/currentDriver"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToOne name="currentDriver" optional="true" targetEntity="org.eclipse.emf.texo.test.model.samples.rental.RentalCarDriver">
+            <cascade>
+              <cascadePersist/>
+              <cascadeMerge/>
+              <cascadeRefresh/>
+            </cascade>
+          </oneToOne>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEDataType">
+      <eDataType href="rental.ecore#//RentalBicycleTypeObject"/>
+      <eDataTypeAnnotations xsi:type="ormannotations:EDataTypeORMAnnotation"/>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="rental.ecore#//RentalBusiness"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity class="org.eclipse.emf.texo.test.model.samples.rental.RentalBusiness" name="RentalBusiness"/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalBusiness/name"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic name="name" optional="false"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEEnum">
+      <eEnum href="rental.ecore#//RentalCarSize"/>
+      <eEnumAnnotations xsi:type="ormannotations:EEnumORMAnnotation"/>
+      <annotatedEEnumLiterals>
+        <eEnumLiteral href="rental.ecore#//RentalCarSize/Small"/>
+      </annotatedEEnumLiterals>
+      <annotatedEEnumLiterals>
+        <eEnumLiteral href="rental.ecore#//RentalCarSize/Medium"/>
+      </annotatedEEnumLiterals>
+      <annotatedEEnumLiterals>
+        <eEnumLiteral href="rental.ecore#//RentalCarSize/Family"/>
+      </annotatedEEnumLiterals>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="rental.ecore#//RentalCarDriver"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity class="org.eclipse.emf.texo.test.model.samples.rental.RentalCarDriver" name="RentalCarDriver"/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalCarDriver/name"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic name="name" optional="false"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="rental.ecore#//RentalCarDriver/currentRentalCar"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <oneToOne mappedBy="currentDriver" name="currentRentalCar" optional="true" targetEntity="org.eclipse.emf.texo.test.model.samples.rental.RentalCar">
+            <cascade>
+              <cascadePersist/>
+              <cascadeMerge/>
+              <cascadeRefresh/>
+            </cascade>
+          </oneToOne>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEDataType">
+      <eDataType href="rental.ecore#//RentalCarSizeObject"/>
+      <eDataTypeAnnotations xsi:type="ormannotations:EDataTypeORMAnnotation"/>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="rental.ecore#//RentalContractLine"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity class="org.eclipse.emf.texo.test.model.samples.rental.RentalContractLine" name="RentalContractLine"/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="rental.ecore#//RentalContractLine/rentalContract"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <manyToOne name="rentalContract" optional="true" targetEntity="org.eclipse.emf.texo.test.model.samples.rental.RentalContract">
+            <joinColumn/>
+            <cascade>
+              <cascadePersist/>
+              <cascadeMerge/>
+              <cascadeRefresh/>
+            </cascade>
+          </manyToOne>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="rental.ecore#//RentalContractLine/number"/>
+        <eAttributeAnnotations xsi:type="ormannotations:EAttributeORMAnnotation">
+          <basic name="number" optional="true"/>
+        </eAttributeAnnotations>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="rental.ecore#//RentalContractLine/rentalUnit"/>
+        <eReferenceAnnotations xsi:type="ormannotations:EReferenceORMAnnotation">
+          <manyToOne name="rentalUnit" optional="true" targetEntity="org.eclipse.emf.texo.test.model.samples.rental.RentalUnit">
+            <joinColumn/>
+            <cascade>
+              <cascadePersist/>
+              <cascadeMerge/>
+              <cascadeRefresh/>
+            </cascade>
+          </manyToOne>
+        </eReferenceAnnotations>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

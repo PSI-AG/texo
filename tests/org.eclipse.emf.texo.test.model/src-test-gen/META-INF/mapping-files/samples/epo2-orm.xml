@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extendedpo2.Item" name="com_example_epo2_Item">
+    <orm:table name="com_example_epo2_Item"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="productName">
+        <orm:column name="productName"/>
+      </orm:basic>
+      <orm:basic name="quantity">
+        <orm:column name="quantity"/>
+      </orm:basic>
+      <orm:basic name="uSPrice">
+        <orm:column name="USPrice"/>
+      </orm:basic>
+      <orm:basic name="comment">
+        <orm:column name="T_comment"/>
+      </orm:basic>
+      <orm:basic name="shipDate">
+        <orm:column name="shipDate"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="partNum">
+        <orm:column name="partNum"/>
+      </orm:basic>
+      <orm:many-to-one name="order" optional="false">
+        <orm:join-column name="com_example_epo2_Item_order"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extendedpo2.PurchaseOrder" name="com_example_epo2_PurchaseOrder">
+    <orm:table name="com_example_epo2_PurchaseOrder"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="comment">
+        <orm:column name="T_comment"/>
+      </orm:basic>
+      <orm:basic name="orderDate">
+        <orm:column name="orderDate"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="status">
+        <orm:column name="T_status"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:many-to-one name="billTo" optional="false">
+        <orm:join-column name="com_example_epo2_PurchaseOrder_billTo"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="shipTo">
+        <orm:join-column name="com_example_epo2_PurchaseOrder_shipTo"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="customer" optional="false">
+        <orm:join-column name="com_example_epo2_PurchaseOrder_customer"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="previousOrder">
+        <orm:join-column name="com_example_epo2_PurchaseOrder_previousOrder"/>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:one-to-many name="items">
+        <orm:order-column name="com_example_epo2_PurchaseOrder_items_ind"/>
+        <orm:join-column name="com_example_epo2_PurchaseOrder_items"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extendedpo2.USAddress" name="com_example_epo2_USAddress">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="street">
+        <orm:column name="street" nullable="true"/>
+      </orm:basic>
+      <orm:basic name="city">
+        <orm:column name="city" nullable="true"/>
+      </orm:basic>
+      <orm:basic name="state">
+        <orm:column name="T_state" nullable="true"/>
+      </orm:basic>
+      <orm:basic name="zip">
+        <orm:column name="zip" nullable="true"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extendedpo2.Address" name="com_example_epo2_Address">
+    <orm:table name="com_example_epo2_Address"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="country">
+        <orm:column name="country"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extendedpo2.Customer" name="com_example_epo2_Customer">
+    <orm:table name="com_example_epo2_Customer"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="customerID">
+        <orm:column name="customerID"/>
+      </orm:basic>
+      <orm:one-to-many name="orders">
+        <orm:order-column name="com_example_epo2_Customer_orders_ind"/>
+        <orm:join-table name="com_example_epo2_Customer_orders">
+          <orm:join-column name="com_example_epo2_Customer_orders"/>
+          <orm:inverse-join-column name="orders_com_example_epo2_PurchaseOrder"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extendedpo2.Supplier" name="com_example_epo2_Supplier">
+    <orm:table name="com_example_epo2_Supplier"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:one-to-many name="customers">
+        <orm:order-column name="com_example_epo2_Supplier_customers_ind"/>
+        <orm:join-column name="com_example_epo2_Supplier_customers"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+      <orm:one-to-many name="orders">
+        <orm:order-column name="com_example_epo2_Supplier_orders_ind"/>
+        <orm:join-column name="com_example_epo2_Supplier_orders"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extendedpo2.GlobalAddress" name="com_example_epo2_GlobalAddress">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:element-collection name="location">
+        <orm:order-column name="com_example_epo2_GlobalAddress_location_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="com_example_epo2_GlobalAddress_location">
+          <orm:join-column name="com_example_epo2_GlobalAddress_location"/>
+        </orm:collection-table>
+      </orm:element-collection>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.extendedpo2.GlobalLocation" name="com_example_epo2_GlobalLocation">
+    <orm:table name="com_example_epo2_GlobalLocation"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="countryCode">
+        <orm:column name="countryCode"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

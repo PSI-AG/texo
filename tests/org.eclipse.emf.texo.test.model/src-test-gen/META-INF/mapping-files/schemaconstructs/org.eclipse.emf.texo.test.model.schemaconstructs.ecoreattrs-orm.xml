@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.ElementNameMapFeatureGroup" name="ecoreattrs_Element_nameMap">
+    <orm:attributes>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:many-to-one name="names" optional="false">
+        <orm:join-column name="ecoreattrs_Element_names"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.Element" name="ecoreattrs_Element">
+    <orm:table name="ecoreattrs_Element"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="nameMap" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.ElementNameMapFeatureGroup">
+        <orm:join-table name="ecoreattrs_Element_nameMap_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.NameList" name="ecoreattrs_NameList">
+    <orm:table name="ecoreattrs_NameList"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="firstName" optional="false">
+        <orm:column name="firstName"/>
+      </orm:basic>
+      <orm:basic name="middleName" optional="false">
+        <orm:column name="middleName"/>
+      </orm:basic>
+      <orm:basic name="lastName" optional="false">
+        <orm:column name="lastName"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.FeatureAMapFeatureGroup" name="ecoreattrs_Feature_aMap">
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="value_" optional="false">
+        <orm:column name="T_value"/>
+      </orm:basic>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.Feature" name="ecoreattrs_Feature">
+    <orm:table name="ecoreattrs_Feature"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="aMap" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.FeatureAMapFeatureGroup">
+        <orm:join-table name="ecoreattrs_Feature_aMap_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.MixedMixedFeatureGroup" name="ecoreattrs_Mixed_mixed">
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="value_" optional="false">
+        <orm:column name="T_value"/>
+      </orm:basic>
+      <orm:basic name="text" optional="true">
+        <orm:lob/>
+      </orm:basic>
+      <orm:basic name="cDATA" optional="true">
+        <orm:lob/>
+      </orm:basic>
+      <orm:basic name="comment" optional="true">
+        <orm:lob/>
+      </orm:basic>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.Mixed" name="ecoreattrs_Mixed">
+    <orm:table name="ecoreattrs_Mixed"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="mixed" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.schemaconstructs.ecoreattrs.MixedMixedFeatureGroup">
+        <orm:join-table name="ecoreattrs_Mixed_mixed_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

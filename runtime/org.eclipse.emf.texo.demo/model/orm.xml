@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://java.sun.com/xml/ns/persistence/orm" version="2.0">
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="com.nterpriseapps.test.order.Customer" name="Customer">
+    <orm:table name="Order_Customer"/>
+    <orm:attributes>
+      <orm:basic name="firstName" optional="true">
+        <orm:column name="firstName"/>
+      </orm:basic>
+      <orm:basic name="lastName" optional="true">
+        <orm:column name="lastName"/>
+      </orm:basic>
+      <orm:basic name="id" optional="true">
+        <orm:column name="id"/>
+      </orm:basic>
+      <orm:embedded name="address"/>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz377606.Address" name="Order_Address">
+    <orm:table name="Order_Address"/>
+    <orm:attributes>
+      <orm:basic name="city" optional="true">
+        <orm:column name="city"/>
+      </orm:basic>
+      <orm:basic name="street" optional="true">
+        <orm:column name="street"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

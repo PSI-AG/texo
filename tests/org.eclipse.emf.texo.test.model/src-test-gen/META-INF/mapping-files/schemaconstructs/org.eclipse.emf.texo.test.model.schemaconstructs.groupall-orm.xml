@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.AddressGroupType" name="groupall_AddressGroupType">
+    <orm:table name="groupall_AddressGroupType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="groupName" optional="false">
+        <orm:column name="groupName"/>
+      </orm:basic>
+      <orm:basic name="simpleAddress">
+        <orm:column name="simpleAddress"/>
+      </orm:basic>
+      <orm:many-to-one name="shipTo">
+        <orm:join-column name="groupall_AddressGroupType_shipTo"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="billTo">
+        <orm:join-column name="groupall_AddressGroupType_billTo"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.AddressTypeGroupFeatureGroup" name="groupall_AddressType_group">
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="longName" optional="false">
+        <orm:column name="longName"/>
+      </orm:basic>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.AddressType" name="groupall_AddressType">
+    <orm:table name="groupall_AddressType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="group" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.AddressTypeGroupFeatureGroup">
+        <orm:join-table name="groupall_AddressType_group_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.AddressListAddrsFeatureGroup" name="groupall_AddressList_addrs">
+    <orm:attributes>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:many-to-one name="shipTo" optional="false">
+        <orm:join-column name="groupall_AddressList_shipTo"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="billTo" optional="false">
+        <orm:join-column name="groupall_AddressList_billTo"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.AddressList" name="groupall_AddressList">
+    <orm:table name="groupall_AddressList"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="groupName" optional="false">
+        <orm:column name="groupName"/>
+      </orm:basic>
+      <orm:one-to-many name="addrs" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.AddressListAddrsFeatureGroup">
+        <orm:join-table name="groupall_AddressList_addrs_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.SimpleAllType" name="groupall_SimpleAllType">
+    <orm:table name="groupall_SimpleAllType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="aaa" optional="false">
+        <orm:column name="aaa"/>
+      </orm:basic>
+      <orm:basic name="bbb" optional="false">
+        <orm:column name="bbb"/>
+      </orm:basic>
+      <orm:basic name="ccc" optional="false">
+        <orm:column name="ccc"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.SimpleAllMapTypeAllMapFeatureGroup" name="groupall_SimpleAllMapType_allMap">
+    <orm:attributes>
+      <orm:basic name="aaa" optional="false">
+        <orm:column name="aaa"/>
+      </orm:basic>
+      <orm:basic name="bbb" optional="false">
+        <orm:column name="bbb"/>
+      </orm:basic>
+      <orm:basic name="ccc" optional="false">
+        <orm:column name="ccc"/>
+      </orm:basic>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.SimpleAllMapType" name="groupall_SimpleAllMapType">
+    <orm:table name="groupall_SimpleAllMapType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="allMap" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.schemaconstructs.groupall.SimpleAllMapTypeAllMapFeatureGroup">
+        <orm:join-table name="groupall_SimpleAllMapType_allMap_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

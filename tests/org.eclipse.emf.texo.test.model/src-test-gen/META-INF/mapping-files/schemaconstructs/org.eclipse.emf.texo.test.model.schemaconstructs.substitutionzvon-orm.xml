@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.substitutionzvon.ComplexAAA" name="substitutionzvon_ComplexAAA">
+    <orm:table name="substitutionzvon_ComplexAAA"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="value" optional="false">
+        <orm:column name="T_value"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.substitutionzvon.ComplexEvenType" name="substitutionzvon_ComplexEvenType">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes/>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.substitutionzvon.ComplexOddType" name="substitutionzvon_ComplexOddType">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes/>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.substitutionzvon.RootTypeMyAbstractGroupFeatureGroup" name="substitutionzvon_RootType_myAbstractGroup">
+    <orm:attributes>
+      <orm:basic access="FIELD" name="myAbstract" optional="false">
+        <orm:column name="myAbstract"/>
+      </orm:basic>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.substitutionzvon.RootTypeMyComplexAbstractGroupFeatureGroup" name="substitutionzvon_RootType_myComplexAbstractGroup">
+    <orm:attributes>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:many-to-one access="FIELD" name="myComplexAbstract" optional="false">
+        <orm:join-column name="substitutionzvon_RootType_myComplexAbstract"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.substitutionzvon.RootType" name="substitutionzvon_RootType">
+    <orm:table name="substitutionzvon_RootType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="myAbstractGroup" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.schemaconstructs.substitutionzvon.RootTypeMyAbstractGroupFeatureGroup">
+        <orm:join-table name="substitutionzvon_RootType_myAbstractGroup_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+      <orm:one-to-many name="myComplexAbstractGroup" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.schemaconstructs.substitutionzvon.RootTypeMyComplexAbstractGroupFeatureGroup">
+        <orm:join-table name="substitutionzvon_RootType_myComplexAbstractGroup_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

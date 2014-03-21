@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.schemaprimerpo.PurchaseOrder" name="schemaprimerpo_PurchaseOrder">
+    <orm:table name="schemaprimerpo_PurchaseOrder"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="comment">
+        <orm:column name="T_comment"/>
+      </orm:basic>
+      <orm:basic name="orderDate">
+        <orm:column name="orderDate"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:many-to-one name="shipTo">
+        <orm:join-column name="schemaprimerpo_PurchaseOrder_shipTo"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="billTo" optional="false">
+        <orm:join-column name="schemaprimerpo_PurchaseOrder_billTo"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:one-to-many name="items">
+        <orm:order-column name="schemaprimerpo_PurchaseOrder_items_ind"/>
+        <orm:join-column name="schemaprimerpo_PurchaseOrder_items"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.schemaprimerpo.Item" name="schemaprimerpo_Item">
+    <orm:table name="schemaprimerpo_Item"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="productName" optional="false">
+        <orm:column name="productName"/>
+      </orm:basic>
+      <orm:basic name="quantity" optional="false">
+        <orm:column name="quantity"/>
+      </orm:basic>
+      <orm:basic name="uSPrice" optional="false">
+        <orm:column name="uSPrice" precision="15" scale="7"/>
+      </orm:basic>
+      <orm:basic name="comment">
+        <orm:column name="T_comment"/>
+      </orm:basic>
+      <orm:basic name="shipDate">
+        <orm:column name="shipDate"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="partNum" optional="false">
+        <orm:column name="partNum"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.schemaprimerpo.USAddress" name="schemaprimerpo_USAddress">
+    <orm:table name="schemaprimerpo_USAddress"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="street" optional="false">
+        <orm:column name="street"/>
+      </orm:basic>
+      <orm:basic name="city" optional="false">
+        <orm:column name="city"/>
+      </orm:basic>
+      <orm:basic name="state" optional="false">
+        <orm:column name="T_state"/>
+      </orm:basic>
+      <orm:basic name="zip" optional="false">
+        <orm:column name="zip" precision="15" scale="7"/>
+      </orm:basic>
+      <orm:basic name="country">
+        <orm:column name="country"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

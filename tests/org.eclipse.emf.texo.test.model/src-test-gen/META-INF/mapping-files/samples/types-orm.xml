@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.types.ManyTypes" name="types_ManyTypes">
+    <orm:table name="types_ManyTypes"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:element-collection name="string">
+        <orm:order-column name="types_ManyTypes_string_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="types_ManyTypes_string">
+          <orm:join-column name="types_ManyTypes_string"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="integerObject">
+        <orm:order-column name="types_ManyTypes_integerObject_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="types_ManyTypes_integerObject">
+          <orm:join-column name="types_ManyTypes_integerObject"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="long_">
+        <orm:column name="T_element"/>
+        <orm:collection-table name="types_ManyTypes_long">
+          <orm:join-column name="types_ManyTypes_long"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="doubleObject">
+        <orm:column name="T_element"/>
+        <orm:collection-table name="types_ManyTypes_doubleObject">
+          <orm:join-column name="types_ManyTypes_doubleObject"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="floatObject">
+        <orm:order-column name="types_ManyTypes_floatObject_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="types_ManyTypes_floatObject">
+          <orm:join-column name="types_ManyTypes_floatObject"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="charObject">
+        <orm:order-column name="types_ManyTypes_charObject_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="types_ManyTypes_charObject">
+          <orm:join-column name="types_ManyTypes_charObject"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="byteObject">
+        <orm:order-column name="types_ManyTypes_byteObject_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="types_ManyTypes_byteObject">
+          <orm:join-column name="types_ManyTypes_byteObject"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="byteArray">
+        <orm:order-column name="types_ManyTypes_byteArray_ind"/>
+        <orm:column name="T_element"/>
+        <orm:lob/>
+        <orm:collection-table name="types_ManyTypes_byteArray">
+          <orm:join-column name="types_ManyTypes_byteArray"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="bigDecimal">
+        <orm:order-column name="types_ManyTypes_bigDecimal_ind"/>
+        <orm:column name="T_element" precision="15" scale="7"/>
+        <orm:collection-table name="types_ManyTypes_bigDecimal">
+          <orm:join-column name="types_ManyTypes_bigDecimal"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="bigInteger">
+        <orm:column name="T_element"/>
+        <orm:collection-table name="types_ManyTypes_bigInteger">
+          <orm:join-column name="types_ManyTypes_bigInteger"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="enum_">
+        <orm:order-column name="types_ManyTypes_enum_ind"/>
+        <orm:column name="T_element"/>
+        <orm:enumerated>STRING</orm:enumerated>
+        <orm:collection-table name="types_ManyTypes_enum">
+          <orm:join-column name="types_ManyTypes_enum"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="date">
+        <orm:column name="T_element"/>
+        <orm:temporal>DATE</orm:temporal>
+        <orm:collection-table name="types_ManyTypes_date">
+          <orm:join-column name="types_ManyTypes_date"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:transient name="clazz"/>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.types.SingleTypes" name="types_SingleTypes">
+    <orm:table name="types_SingleTypes"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="string">
+        <orm:column name="T_string"/>
+      </orm:basic>
+      <orm:basic name="integer">
+        <orm:column name="T_integer"/>
+      </orm:basic>
+      <orm:basic name="integerObject">
+        <orm:column name="integerObject"/>
+      </orm:basic>
+      <orm:basic name="long_">
+        <orm:column name="T_long"/>
+      </orm:basic>
+      <orm:basic name="longObject">
+        <orm:column name="longObject"/>
+      </orm:basic>
+      <orm:basic name="double_">
+        <orm:column name="T_double"/>
+      </orm:basic>
+      <orm:basic name="doubleObject">
+        <orm:column name="doubleObject"/>
+      </orm:basic>
+      <orm:basic name="float_">
+        <orm:column name="T_float"/>
+      </orm:basic>
+      <orm:basic name="floatObject">
+        <orm:column name="floatObject"/>
+      </orm:basic>
+      <orm:basic name="char_">
+        <orm:column name="T_char"/>
+      </orm:basic>
+      <orm:basic name="charObject">
+        <orm:column name="charObject"/>
+      </orm:basic>
+      <orm:basic name="byte_">
+        <orm:column name="byte"/>
+      </orm:basic>
+      <orm:basic name="byteObject">
+        <orm:column name="byteObject"/>
+      </orm:basic>
+      <orm:basic name="byteArray">
+        <orm:column name="byteArray"/>
+        <orm:lob/>
+      </orm:basic>
+      <orm:basic name="bigDecimal">
+        <orm:column name="bigDecimal" precision="15" scale="7"/>
+      </orm:basic>
+      <orm:basic name="bigInteger">
+        <orm:column name="bigInteger"/>
+      </orm:basic>
+      <orm:basic name="enum_">
+        <orm:column name="T_enum"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:basic name="date">
+        <orm:column name="T_date"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="stringArray">
+        <orm:column name="stringArray"/>
+      </orm:basic>
+      <orm:basic name="longArray">
+        <orm:column name="longArray"/>
+      </orm:basic>
+      <orm:basic name="nextEnum">
+        <orm:column name="nextEnum"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:transient name="clazz"/>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

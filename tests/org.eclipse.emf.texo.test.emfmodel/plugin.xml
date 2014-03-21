@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id$
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated bz403743 -->
+      <package
+            uri="http://www.eclipse.org/emf/texo/test/model/issues/bz403743"
+            class="org.eclipse.emf.texo.test.emfmodel.bz403743.Bz403743Package"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated interface_abstract_class_wrong_featureid -->
+      <package
+            uri="http://www.eclipse.org/emf/texo/test/model/issues/bzWrongFeatureId"
+            class="org.eclipse.emf.texo.test.emfmodel.bzWrongFeatureId.BzWrongFeatureIdPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/emf/texo/test/model/base/identifiable"
+            class="org.eclipse.emf.texo.test.emfmodel.identifiable.IdentifiablePackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/emf/texo/test/model/samples/library"
+            class="org.eclipse.emf.texo.test.emfmodel.library.LibraryPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/emf/texo/test/model/samples/schoollibrary"
+            class="org.eclipse.emf.texo.test.emfmodel.schoollibrary.SchoollibraryPackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://www.eclipse.org/emf/texo/test/model/base/identifiable"
+            class="org.eclipse.emf.texo.test.emfmodel.identifiable.IdentifiablePackage"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated bz391624 -->
+      <package
+            uri="http://www.eclipse.org/emf/texo/test/model/issues/bz391624"
+            class="org.eclipse.emf.texo.test.emfmodel.bz391624.Bz391624Package"/>
+   </extension>
+
+</plugin>

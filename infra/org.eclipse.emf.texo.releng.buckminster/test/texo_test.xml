@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+Copyright (c) 2010 Cloudsmith Inc, Martin Taal (Doorn, The Netherlands) and others.
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+  Cloudsmith Inc - build.xml for Buckminster project
+   Martin Taal - changes for Texo
+
+Some important parts have been copied from Buckminster's own
+build setup:
+http://dev.eclipse.org/viewsvn/index.cgi/trunk/org.eclipse.buckminster.releng/build.xml?root=Tools_BUCKMINSTER&view=markup
+-->
+<project default="run" name="Texo Tests">
+
+	<!--
+		Inherited properties:
+		toolsPath: path containing buckminster
+		buildSitePath: the path to which the p2 site should be copied
+		buildZipsPath: the path to the directory with zip files
+		
+		buckminster.output.root
+		buckminster.temp.root
+	-->
+
+	<property name="targetPlatformPath" location="${testPath}/tp" />
+	<property name="workspacePath" location="${testPath}/workspace" />
+
+	<property name="genTargetPlatformPath" location="${testPath}/gen-tp" />
+	<property name="genWorkspacePath" location="${testPath}/gen-workspace" />
+
+	<import file="../ant_common.xml" />
+
+	<target name="run" depends="init.build.properties">
+		<echo message="+++++++++++++++++++++++++++++++++++"/>
+		<echo message="Test Step" />
+		<echo message="+++++++++++++++++++++++++++++++++++"/>
+
+		<antcall target="create.test.workspace" inheritRefs="true" inheritAll="true"/>		
+		
+		<echo message="-----------------------------------"/>
+		<echo message="Building test workspace" />
+		<echo message="-----------------------------------"/>
+		<buckminster command="build" workspace="${workspacePath}">
+			<cmdargs>
+				<arg value="--thorough" />
+			</cmdargs>		
+		</buckminster>
+		
+		<antcall target="generate.model.code" inheritRefs="true" inheritAll="true"/>
+		
+		<echo message="-----------------------------------"/>
+		<echo message="Building test workspace" />
+		<echo message="-----------------------------------"/>
+		<buckminster command="build" workspace="${workspacePath}">
+			<cmdargs>
+				<arg value="--thorough" />
+			</cmdargs>		
+		</buckminster>
+
+		<echo message="-----------------------------------"/>
+		<echo message="Running Texo Tests" />
+		<echo message="-----------------------------------"/>
+		<buckminster command="junit" workspace="${workspacePath}">
+			<cmdargs>
+				<arg value="-l" />
+				<arg value="org.eclipse.emf.texo.test.all/TexoAllTests.launch" />
+				<arg value="-o" />
+				<arg value="${testResultsPath}/test-results-texo.xml" />
+				<arg value="--stdout" />
+				<arg value="${testResultsPath}/stdout.txt" />
+				<arg value="--stderr" />
+				<arg value="${testResultsPath}/stderr.txt" />
+				<arg value="--flatXML"/>
+			</cmdargs>
+		</buckminster>		
+	</target>
+	
+	<target name="create.test.workspace">
+		<echo message="-----------------------------------"/>
+		<echo message="Create test workspace" />
+		<echo message="-----------------------------------"/>
+
+		<mkdir dir="${targetPlatformPath}" />
+		<mkdir dir="${workspacePath}" />
+		
+		<echo message="Setting jre to ${env.JAVA_HOME}"/>
+		<buckminster command="installJRE" workspace="${workspacePath}">
+		    <cmdargs>
+		       <arg value="--location" />
+		       <arg value="${env.JAVA_HOME}" />
+		    </cmdargs>
+		</buckminster> 
+
+		<echo message="Using workspace ${workspacePath}" />
+		<echo message="Setting targetPlatformPath to ${targetPlatformPath}" />
+		<buckminster command="setpref" workspace="${workspacePath}">
+			<cmdargs>
+				<arg value="targetPlatformPath=${targetPlatformPath}" />
+			</cmdargs>
+		</buckminster>
+
+		<echo message="Importing projects into workspace ${workspacePath}" />
+		<echo message="Importing binaries into target platform ${targetPlatformPath}" />
+		<buckminster command="import" workspace="${workspacePath}">
+			<cmdargs>
+				<arg value="${basedir}/texo.mspec" />
+			</cmdargs>
+		</buckminster>
+	</target>
+	
+	<target name="generate.model.code">
+		<echo message="-----------------------------------"/>
+		<echo message="Creating model generation workspace" />
+		<echo message="-----------------------------------"/>
+
+		<mkdir dir="${genTargetPlatformPath}" />
+		<mkdir dir="${genWorkspacePath}" />
+		
+		<echo message="Setting jre to ${env.JAVA_HOME}"/>
+		<buckminster command="installJRE" workspace="${genWorkspacePath}">
+		    <cmdargs>
+		       <arg value="--location" />
+		       <arg value="${env.JAVA_HOME}" />
+		    </cmdargs>
+		</buckminster> 
+
+		<echo message="Using workspace ${genWorkspacePath}" />
+		<echo message="Setting targetPlatformPath to ${genTargetPlatformPath}" />
+		<buckminster command="setpref" workspace="${genWorkspacePath}">
+			<cmdargs>
+				<arg value="targetPlatformPath=${genTargetPlatformPath}" />
+			</cmdargs>
+		</buckminster>
+
+		<echo message="Importing projects into workspace ${genWorkspacePath}" />
+		<echo message="Importing binaries into target platform ${genTargetPlatformPath}" />
+		<buckminster command="import" workspace="${genWorkspacePath}">
+			<cmdargs>
+				<arg value="${basedir}/texo_generate_test.mspec" />
+			</cmdargs>
+		</buckminster>
+		
+		<echo message="Building" />
+		<buckminster command="build" workspace="${genWorkspacePath}">
+			<cmdargs>
+				<arg value="--thorough" />
+			</cmdargs>		
+		</buckminster>
+			
+		<echo message="Delete some to-be generated files"/>
+		<delete dir="${gitPath}/tests/org.eclipse.emf.texo.test.model/src-test-gen/org/eclipse/emf/texo/test/model/samples/capa"/>
+		<delete dir="${gitPath}/tests/org.eclipse.emf.texo.test.model/src-test-gen/org/eclipse/emf/texo/test/model/samples/employee"/>
+		<delete dir="${gitPath}/tests/org.eclipse.emf.texo.test.model/src-test-gen/org/eclipse/emf/texo/test/model/samples/extendedpo2"/>
+		<echo message="Copy from src-merge-test to src-test-gen, to test merging during generation"/>
+	    <copy todir="${gitPath}/tests/org.eclipse.emf.texo.test.model/src-test-gen" flatten="false">
+	    	<fileset dir="${gitPath}/tests/org.eclipse.emf.texo.test.model/src-merge-testing">
+				<include name="**/*"/>
+			</fileset>
+	    </copy>
+
+		<echo message="-----------------------------------"/>
+		<echo message="Generating model code using workspace ${genWorkspacePath}" />
+		<echo message="-----------------------------------"/>
+		<buckminster command="junit" workspace="${genWorkspacePath}">
+			<cmdargs>
+				<arg value="-l" />
+				<arg value="org.eclipse.emf.texo.modelgenerator.test/HudsonModelGeneratorTest.launch" />
+				<arg value="-o" />
+				<arg value="${testResultsPath}/generate-results-texo-modelgenerator.xml" />
+				<arg value="--stdout" />
+				<arg value="${testResultsPath}/gen-stdout.txt" />
+				<arg value="--stderr" />
+				<arg value="${testResultsPath}/gen-stderr.txt" />
+				<arg value="--flatXML"/>
+			</cmdargs>
+		</buckminster>
+
+		<echo message="-----------------------------------"/>
+		<echo message="Generating ORMS" />
+		<echo message="-----------------------------------"/>
+		<buckminster command="junit" workspace="${genWorkspacePath}">
+			<cmdargs>
+				<arg value="-l" />
+				<arg value="org.eclipse.emf.texo.orm.test/HudsonORMGeneratorTest.launch" />
+				<arg value="-o" />
+				<arg value="${testResultsPath}/generate-results-texo-ormgenerator.xml" />
+				<arg value="--stdout" />
+				<arg value="${testResultsPath}/gen-stdout.txt" />
+				<arg value="--stderr" />
+				<arg value="${testResultsPath}/gen-stderr.txt" />
+				<arg value="--flatXML"/>
+			</cmdargs>
+		</buckminster>
+	</target>
+	
+	<target name="init.build.properties">
+		<!-- Echo relevant properties to a temporary file so that Buckminster can read them
+		  -->
+		<tempfile destdir="${java.io.tmpdir}" prefix="build-" suffix=".properties" deleteonexit="true" property="properties.tmp" />
+		<echoproperties destfile="${properties.tmp}">
+			<!-- We don't want these. basedir in particular will cause problems if passed explicitly -->
+			<propertyset negate="true">
+				<propertyref name="basedir" />
+				<propertyref name="eclipse.home" />
+				<propertyref name="properties.tmp" />
+				<propertyref name="line.separator" />
+				<propertyref name="path.separator" />
+				<propertyref prefix="ant." />
+				<propertyref prefix="file." />
+				<propertyref prefix="java." />
+				<propertyref prefix="sun." />
+				<propertyref prefix="user." />
+			</propertyset>
+		</echoproperties>
+	</target>
+
+</project>

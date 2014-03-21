@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz386923.Test386923" name="bz386923_Test386923">
+    <orm:table name="bz386923_Test386923"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:sql-result-set-mapping name="Test">
+      <orm:description>Test</orm:description>
+      <orm:entity-result discriminator-column="DCCOL" entity-class="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+      <orm:entity-result discriminator-column="DCCOL2" entity-class="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+      <orm:column-result name="T1"/>
+      <orm:column-result name="T1"/>
+    </orm:sql-result-set-mapping>
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

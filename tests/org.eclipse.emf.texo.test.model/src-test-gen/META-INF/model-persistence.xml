@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="model-hsqldb">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/mapping-files/base/identifiable-orm.xml</mapping-file>
+		<mapping-file>META-INF/mapping-files/issues/model-orm.xml</mapping-file>
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:model"/>
+         	<property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="model-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="model-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="model-class-hsqldb">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>org.eclipse.emf.texo.test.model.base.identifiable.Identifiable</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SimCard</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SimContract</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SimCardXSimContract</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SimTariff</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.PaymentInfo</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.PaymentItem</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Tariff</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.OneTimePayment</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.PeriodicalPayment</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.VolumePayment</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Units</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Price</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.CarProducer</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.CarModel</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.CarRegInfo</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Car</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.CarPassport</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Phone</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Address</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Passport</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Person</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.DrivingLicense</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Contract</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SecretQuestion</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Service</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.ClientTariff</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.ContractPackage</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.User</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.UserGroup</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Message</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Event</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Coordinates</class>
+
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:classmodel"/>
+         	<property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="model-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="model-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="model-mysql">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/mapping-files/base/identifiable-orm.xml</mapping-file>
+		<mapping-file>META-INF/mapping-files/issues/model-orm.xml</mapping-file>
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="Mysql"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/model"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="model-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="model-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="model-class-mysql">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/mapping-files/base/identifiable-orm.xml</mapping-file>
+		<class>org.eclipse.emf.texo.test.model.base.identifiable.Identifiable</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SimCard</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SimContract</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SimCardXSimContract</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SimTariff</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.PaymentInfo</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.PaymentItem</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Tariff</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.OneTimePayment</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.PeriodicalPayment</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.VolumePayment</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Units</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Price</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.CarProducer</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.CarModel</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.CarRegInfo</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Car</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.CarPassport</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Phone</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Address</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Passport</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Person</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.DrivingLicense</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Contract</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.SecretQuestion</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Service</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.ClientTariff</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.ContractPackage</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.User</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.UserGroup</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Message</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Event</class>
+		<class>org.eclipse.emf.texo.test.model.issues.bz331009.Coordinates</class>
+
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="Mysql"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/classmodel"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="model-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="model-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+		
+</persistence>

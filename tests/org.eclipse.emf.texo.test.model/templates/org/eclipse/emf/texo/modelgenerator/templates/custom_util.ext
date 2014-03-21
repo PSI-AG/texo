@@ -1,0 +1,5 @@
+import org::eclipse::emf::ecore;
+import org::eclipse::emf::texo::modelgenerator::modelannotations;
+import org::eclipse::emf::texo::generator;
+
+String classFileName( EClassifierModelGenAnnotation this ): qualifiedClassName.replaceAll("\\.","/") + "OverrideTest.java";

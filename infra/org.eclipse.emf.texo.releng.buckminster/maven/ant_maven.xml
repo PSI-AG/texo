@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<project name="TexoMaven">
+
+	<macrodef name="texo.pom">
+		<attribute name="mavenVersion" />
+		<attribute name="fileName" />
+		<attribute name="name" />
+		<sequential>
+			<xslt style="maven/pom.xsl" in="maven/dummy.xml" out="@{fileName}">
+				<param name="mavenVersion" expression="@{mavenVersion}" />
+				<param name="name" expression="@{name}" />
+				<outputproperty name="method" value="xml" />
+				<outputproperty name="indent" value="yes" />
+			</xslt>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="texo.dummy.javadoc">
+		<attribute name="fileName" />
+		<sequential>
+
+			<echo file="@{fileName}">
+				<![CDATA[No content, needed for publishing on nexus]]>
+			</echo>
+		</sequential>
+	</macrodef>
+
+	<macrodef name="texo.maven">
+		<attribute name="name" />
+		<sequential>
+			<echo message="Creating maven jar and pom for @{name}" />
+
+			<copy file="${rootPath}/output/@{name}_${texo.version}-osgi.bundle/jar/@{name}_${texoVersion}.jar" tofile="${mavenPath}/@{name}-${mavenVersion}.jar" />
+			<copy file="${rootPath}/output/@{name}_${texo.version}-osgi.bundle/source.jar/@{name}.source_${texoVersion}.jar" tofile="${mavenPath}/@{name}-${mavenVersion}-sources.jar" />
+
+			<copy file="${rootPath}/output/@{name}_${texo.version}-osgi.bundle/jar/@{name}_${texoVersion}.jar" tofile="${mavenPath}/@{name}-${texo.version}-SNAPSHOT.jar" />
+			<copy file="${rootPath}/output/@{name}_${texo.version}-osgi.bundle/source.jar/@{name}.source_${texoVersion}.jar" tofile="${mavenPath}/@{name}-${texo.version}-SNAPSHOT-sources.jar" />
+
+			<texo.pom fileName="${mavenPath}/@{name}-${mavenVersion}.pom" name="@{name}" mavenVersion="${mavenVersion}" />
+			<texo.dummy.javadoc fileName="${mavenPath}/@{name}-${mavenVersion}-javadoc.jar" />
+
+			<texo.pom fileName="${mavenPath}/@{name}-${texo.version}-SNAPSHOT.pom" name="@{name}" mavenVersion="${texo.version}-SNAPSHOT" />
+			<texo.dummy.javadoc fileName="${mavenPath}/@{name}-${texo.version}-SNAPSHOT-javadoc.jar" />
+		</sequential>
+	</macrodef>
+</project>

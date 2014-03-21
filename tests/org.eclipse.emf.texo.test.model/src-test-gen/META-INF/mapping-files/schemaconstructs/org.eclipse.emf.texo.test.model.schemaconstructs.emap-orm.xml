@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.emap.Book" name="emap_Book">
+    <orm:table name="emap_Book"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="title" optional="false">
+        <orm:column name="title"/>
+      </orm:basic>
+      <orm:one-to-many name="writers">
+        <orm:map-key-column name="emap_Book_writers_ind" table="emap_Book_writers"/>
+        <orm:join-table name="emap_Book_writers">
+          <orm:join-column name="emap_Book_writers"/>
+          <orm:inverse-join-column name="writers_emap_StringToWriterMapEntry"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.emap.Writer" name="emap_Writer">
+    <orm:table name="emap_Writer"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.emap.BookStore" name="emap_BookStore">
+    <orm:table name="emap_BookStore"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:one-to-many name="writersByBook">
+        <orm:map-key-column name="emap_BookStore_writersByBook_ind" table="emap_BookStore_writersByBook"/>
+        <orm:join-table name="emap_BookStore_writersByBook">
+          <orm:join-column name="emap_BookStore_writersByBook"/>
+          <orm:inverse-join-column name="writersByBook_emap_WriterToBookMapEntry"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

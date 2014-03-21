@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotationsmodel:AnnotatedModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:annotationsmodel="http://www.eclipse.org/emf/texo/annotations/model" xmlns:modelannotations="http://www.eclipse.org/emf/texo/modelgenerator/modelannotations" xmlns:ormannotations="http://www.eclipse.org/emf/texo/orm/ormannotations">
+  <annotatedEPackages>
+    <ePackage href="bz423760.ecore#/"/>
+    <ePackageAnnotations xsi:type="modelannotations:EPackageModelGenAnnotation" name="bz423760" packagePath="org.eclipse.emf.texo.test.model.issues.bz423760" modelClassesPackagePath="org.eclipse.emf.texo.test.model.issues.bz423760" qualifiedClassName="org.eclipse.emf.texo.test.model.issues.bz423760.Bz423760ModelPackage" simpleClassName="Bz423760ModelPackage" simpleModelFactoryClassName="Bz423760ModelFactory" ecoreFileName="bz423760.ecore" daoClassesPackagePath="org.eclipse.emf.texo.test.model.issues.bz423760.dao" daoRootClass="org.eclipse.emf.texo.server.store.BaseDao"/>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="bz423760.ecore#//Test423760"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" name="Test423760" qualifiedClassName="org.eclipse.emf.texo.test.model.issues.bz423760.Test423760" simpleClassName="Test423760" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" serializable="false" abstract="false" daoQualifiedClassName="org.eclipse.emf.texo.test.model.issues.bz423760.dao.Test423760Dao"/>
+      <eClassAnnotations xsi:type="ormannotations:EClassORMAnnotation">
+        <entity name="TestABC"/>
+      </eClassAnnotations>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="bz423760.ecore#//Test423760/name"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" name="name" getter="getName" defaultValue="null" setter="setName" validJavaMemberName="name" useList="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.0/@eClassAnnotations.0"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="bz423760.ecore#//Test423760/eAttWithDeletedType"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" name="eAttWithDeletedType" getter="getEAttWithDeletedType" defaultValue="null" setter="setEAttWithDeletedType" validJavaMemberName="eAttWithDeletedType" useList="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.0/@eClassAnnotations.0"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="bz423760.ecore#//Test423760/deletedEAttribute"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" name="deletedEAttribute" getter="getDeletedEAttribute" defaultValue="null" setter="setDeletedEAttribute" validJavaMemberName="deletedEAttribute" useList="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.0/@eClassAnnotations.0"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="bz423760.ecore#//Test423760/deletedEReference"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" name="deletedEReference" getter="getDeletedEReference" defaultValue="null" setter="setDeletedEReference" validJavaMemberName="deletedEReference" useList="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.0/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEReference">
+        <eReference href="bz423760.ecore#//Test423760/referenceToDeletedType"/>
+        <eReferenceAnnotations xsi:type="modelannotations:EReferenceModelGenAnnotation" name="referenceToDeletedType" getter="getReferenceToDeletedType" defaultValue="null" setter="setReferenceToDeletedType" validJavaMemberName="referenceToDeletedType" useList="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.0/@eClassAnnotations.0" generateSafeManyAccess="false" generateBidirectionalAssociationSupport="true"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEDataType">
+      <eDataType href="bz423760.ecore#//Deleted_EDataType"/>
+      <eDataTypeAnnotations xsi:type="modelannotations:EDataTypeModelGenAnnotation" name="Deleted_EDataType" qualifiedClassName="java.lang.Integer" simpleClassName="Deleted_EDataType" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" enum="false" dateType="false" automaticStringConversion="true"/>
+    </annotatedEClassifiers>
+    <annotatedEClassifiers xsi:type="annotationsmodel:AnnotatedEClass">
+      <eClass href="bz423760.ecore#//Test423760_Deleted"/>
+      <eClassAnnotations xsi:type="modelannotations:EClassModelGenAnnotation" name="Test423760_Deleted" qualifiedClassName="org.eclipse.emf.texo.test.model.issues.bz423760.Test423760_Deleted" simpleClassName="Test423760_Deleted" generateCode="true" ownerEPackageAnnotation="//@annotatedEPackages.0/@ePackageAnnotations.0" hasSuperEClass="false" serializable="false" abstract="false" daoQualifiedClassName="org.eclipse.emf.texo.test.model.issues.bz423760.dao.Test423760_DeletedDao"/>
+      <annotatedEStructuralFeatures xsi:type="annotationsmodel:AnnotatedEAttribute">
+        <eAttribute href="bz423760.ecore#//Test423760_Deleted/name"/>
+        <eAttributeAnnotations xsi:type="modelannotations:EAttributeModelGenAnnotation" name="name" getter="getName" defaultValue="null" setter="setName" validJavaMemberName="name" useList="false" ownerEClassAnnotation="//@annotatedEPackages.0/@annotatedEClassifiers.2/@eClassAnnotations.0"/>
+      </annotatedEStructuralFeatures>
+    </annotatedEClassifiers>
+  </annotatedEPackages>
+</annotationsmodel:AnnotatedModel>

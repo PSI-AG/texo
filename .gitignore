@@ -1,0 +1,8 @@
+bin/
+*~
+.metadata/
+.svn/
+build/
+.buckminster
+update-site
+.settings/

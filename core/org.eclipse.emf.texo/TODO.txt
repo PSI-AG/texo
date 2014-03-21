@@ -1,0 +1,13 @@
+TODO:
+- make json/xml serialization to use a writer instead of a string as return
+- implement data backup and restore function
+- add downloadable zip file on update site
+
+- check/support modelgroup and then particurarly: multi-occurence modelgroup
+http://fusesource.com/docs/framework/2.2/jaxws/JAXWSComplexTypeMappingGroup.html
+
+- blog about:
+> DB ORM mapping with Texo
+> model driven testing
+> copy/compare functionality
+> Texo automatic mapping to db

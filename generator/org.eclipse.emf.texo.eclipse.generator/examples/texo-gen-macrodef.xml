@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 
+Copyright (c) 2012 Springsite BV (The Netherlands) and others
+All rights reserved. This program and the accompanying materials
+are made available under the terms of the Eclipse Public License v1.0
+which accompanies this distribution, and is available at
+http://www.eclipse.org/legal/epl-v10.html
+
+Contributors:
+  Martin Taal - Initial API and implementation
+-->
+<project name="Texo Headless Generation Macrodef">
+	<macrodef name="texo.gen">
+		<attribute name="eclipse" />
+		<attribute name="data" />
+		<attribute name="projectName" default="" />
+		<attribute name="modelLocation" />
+		<attribute name="dao" default="false" />
+		<attribute name="jpa" default="false" />
+		<sequential>
+
+			<condition property="dao.arg" value="-dao" else="">
+				<istrue value="@{dao}" />
+			</condition>
+
+			<condition property="jpa.arg" value="-jpa" else="">
+				<istrue value="@{jpa}" />
+			</condition>
+
+			<condition property="projectName.arg" value="-projectName" else="">
+				<istrue value="@{projectName}" />
+			</condition>
+
+			<property name="eclipse.plugins" value="@{eclipse}/plugins" />
+			<property name="launcher.jar" value="${eclipse.plugins}/org.eclipse.equinox.launcher.jar" />
+
+			<!-- copy the version numbered launcher jar to an unversion numbered launcher jar -->
+			<copy tofile="${launcher.jar}">
+				<fileset dir="${eclipse.plugins}" includes="**/org.eclipse.equinox.launcher_*.jar" />
+			</copy>
+
+			<!-- start Eclipse with java -->
+			<java classpath="${launcher.jar}" fork="true" classname="org.eclipse.equinox.launcher.Main" failonerror="true">
+				<arg value="-nosplash" />
+				<arg value="-application" />
+				<arg value="org.eclipse.emf.texo.eclipse.generator.TexoCodeGenerator" />
+				<arg value="-data" />
+				<arg value="@{data}" />
+				<arg value="-modelLocation" />
+				<arg value="@{modelLocation}" />
+				<arg value="${projectName.arg}" />
+				<arg value="@{projectName}" />
+				<arg value="${jpa.arg}" />
+				<arg value="${dao.arg}" />
+			</java>
+		</sequential>
+	</macrodef>
+</project>

@@ -1,0 +1,41 @@
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::texo::annotations::annotationsmodel»
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::custom_util»
+
+«DEFINE root(ModelController modelController) FOR EClassModelGenAnnotation-»
+«LET ((EPackageModelGenAnnotation)this.ownerEPackageAnnotation) AS ePackageAnnotation»
+
+«REM»Only generate if not transient, in case of document root only generate if the model info needs to be generated«ENDREM»
+«FILE classFileName(this) java-»
+package «ePackageAnnotation.packagePath»;
+
+/**
+ * A test output for testing overrides.
+ * @generated
+*/
+public class «this.simpleClassName-»OverrideTest
+{
+	/**
+	* @return the hello return
+	* @generated
+	*/
+	public String hello() {
+		System.err.println("hello");
+		return "hello";
+	}
+}
+«ENDFILE-»
+«ENDLET»
+«ENDDEFINE»
+
+«REM»Called for EPackages, even if you don't want to generate code for EPackages, still keep this empty DEFINE«ENDREM»
+«DEFINE root(ModelController modelController) FOR EPackageModelGenAnnotation-»
+«ENDDEFINE»
+
+«REM»Called for EEnums, even if you don't want to generate code for EEnums, still keep this empty DEFINE«ENDREM»
+«DEFINE root(ModelController modelController) FOR EEnumModelGenAnnotation-»
+«ENDDEFINE»
+

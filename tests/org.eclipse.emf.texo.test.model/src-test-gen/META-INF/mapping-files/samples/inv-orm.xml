@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.inventory.PType" name="inv_PType">
+    <orm:table name="inv_PType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="id">
+        <orm:column name="id"/>
+      </orm:basic>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:many-to-one name="base">
+        <orm:join-table name="inv_PType_base">
+          <orm:join-column name="inv_PType_base"/>
+          <orm:inverse-join-column name="base_inv_PType"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:one-to-many mapped-by="base" name="subTypes">
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:one-to-many>
+      <orm:many-to-many name="subNOTypes">
+        <orm:join-table name="inv_PType_subNOTypes">
+          <orm:join-column name="inv_PType_subNOTypes"/>
+          <orm:inverse-join-column name="subNOTypes_inv_PType"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+      <orm:many-to-many name="infoReferences">
+        <orm:order-column name="inv_PType_infoReferences_ind"/>
+        <orm:join-table name="inv_PType_infoReferences">
+          <orm:join-column name="inv_PType_infoReferences"/>
+          <orm:inverse-join-column name="infoReferences_inv_PDeclaration"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-persist/>
+          <orm:cascade-merge/>
+          <orm:cascade-refresh/>
+        </orm:cascade>
+      </orm:many-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.inventory.PDeclaration" name="inv_PDeclaration">
+    <orm:table name="inv_PDeclaration"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="id">
+        <orm:column name="id"/>
+      </orm:basic>
+      <orm:basic name="name">
+        <orm:column name="name"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

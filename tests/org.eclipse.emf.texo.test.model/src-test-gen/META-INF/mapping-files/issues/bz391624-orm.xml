@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz391624.Book" name="bz391624_Book">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:element-collection name="authors">
+        <orm:order-column name="bz391624_Book_authors_ind"/>
+        <orm:collection-table name="AUTHOR"/>
+        <orm:cascade-on-delete>true</orm:cascade-on-delete>
+      </orm:element-collection>
+    </orm:attributes>
+  </orm:entity>
+  <orm:embeddable class="org.eclipse.emf.texo.test.model.issues.bz391624.Author">
+    <orm:attributes>
+      <orm:basic name="name">
+        <orm:column name="name" nullable="true"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:embeddable>
+</orm:entity-mappings>

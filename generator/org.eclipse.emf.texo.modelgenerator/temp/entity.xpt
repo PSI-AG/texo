@@ -1,0 +1,175 @@
+«IMPORT org::eclipse::emf::texo::annotations::modelgenerator»
+«IMPORT org::eclipse::emf::texo::annotations::annotationsmodel»
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(GeneratorContext generatorContext) FOR EClass-»
+«LET ((EClassModelGenAnnotation)generatorContext.getAnnotation(this, "modelgenerator")) AS eClassAnnotation-»
+«LET ((EPackageModelGenAnnotation)generatorContext.getAnnotation(this.EPackage, "modelgenerator")) AS ePackageAnnotation»
+«FILE classFileName(eClassAnnotation) java-»
+«ePackageAnnotation.javaFileHeader-»
+package «ePackageAnnotation.packagePath»;
+
+«generatorContext.importStatementMarker»
+
+/** 
+ * A representation of the model object '«this.name»'.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+«IF eClassAnnotation.documentation != null-»
+ * <!-- begin-model-doc -->
+ * «eClassAnnotation.documentation»
+ * <!-- end-model-doc -->
+«ENDIF-»
+ * @generated 
+*/
+«generatorContext.getJavaAnnotations(this, "type")-»
+public«IF eClassAnnotation.abstract-» abstract«ENDIF-» class «eClassAnnotation.simpleClassName-»
+«IF eClassAnnotation.classExtends.size > 0-» extends «addImport(ePackageAnnotation.packagePath, eClassAnnotation.classExtends.get(0), generatorContext)-»«ENDIF-»
+«IF eClassAnnotation.classImplements.size > 0-» implements
+«FOREACH eClassAnnotation.classImplements AS classImplements SEPARATOR ","»«addImport(ePackageAnnotation.packagePath, classImplements, generatorContext)-»«ENDFOREACH-»
+«ENDIF-»
+{ 
+«IF eClassAnnotation.serializable-»
+	/** 
+	 * @generated 
+	*/
+	private static final long serialVersionUID = 1L;
+«ENDIF-»
+
+«FOREACH this.EAllStructuralFeatures AS feature-»
+	«LET ((EStructuralFeatureModelGenAnnotation)generatorContext.getAnnotation(feature, "modelgenerator")) AS featureAnnotation-»
+		«IF !feature.volatile»
+		
+			/** 
+			 * @generated 
+			*/
+			«generatorContext.getJavaAnnotations(feature, "field")-»
+			private «addImport(ePackageAnnotation.packagePath, featureAnnotation.type, generatorContext)» «featureAnnotation.validJavaMemberName» = «featureAnnotation.defaultValue»;
+		«ENDIF-»
+	«ENDLET-»
+«ENDFOREACH-»
+«FOREACH this.EAllStructuralFeatures AS feature-»
+	«LET ((EStructuralFeatureModelGenAnnotation)generatorContext.getAnnotation(feature, "modelgenerator")) AS featureAnnotation-»
+	
+		/**
+		 * Returns the value of '«feature.name»' feature.
+		 *
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @return the value of '«feature.name»' feature
+		 * @generated
+		 */
+		«generatorContext.getJavaAnnotations(feature, "getter")-»
+		public «addImport(ePackageAnnotation.packagePath, featureAnnotation.type, generatorContext)» «featureAnnotation.getter»() {
+		«IF !feature.volatile-»
+			return «featureAnnotation.validJavaMemberName»;
+		«ELSE-»
+	    	// Volatile feature
+	    	// TODO: implement this method to return the '«feature.name»'
+			// Ensure that you remove @generated or mark it @generated NOT
+			throw new UnsupportedOperationException();
+		«ENDIF-»
+		}
+
+		«IF feature.changeable-»
+			/**
+			 * Sets the '{@link «eClassAnnotation.simpleClassName»#«featureAnnotation.getter»() «feature.name»}' feature.
+			 *
+			 * <!-- begin-user-doc -->
+			 * <!-- end-user-doc -->
+			 * @param the new value of the '{@link «eClassAnnotation.simpleClassName»#«featureAnnotation.getter»() «feature.name»}' feature.
+			 * @generated
+			 */
+			«generatorContext.getJavaAnnotations(feature, "getter")-»
+			public void «featureAnnotation.setter»(«addImport(ePackageAnnotation.packagePath, featureAnnotation.type, generatorContext)» new«feature.name.toFirstUpper()») {
+			«IF !feature.volatile-»
+				«featureAnnotation.validJavaMemberName» = new«feature.name.toFirstUpper()»;
+			«ELSE-»
+				// TODO: implement this method to set the '«feature.name»'
+				// Ensure that you remove @generated or mark it @generated NOT
+				throw new UnsupportedOperationException();
+			«ENDIF-»
+			}	
+		«ENDIF-»
+	«ENDLET-»
+«ENDFOREACH-»
+
+	/**
+	* A toString method which prints the values of all EAttributes of this instance.
+	*
+	* @generated
+	 */
+	 public String toString() {
+	 	return  "«this.name» "
+	 	«FOREACH this.EAllAttributes AS feature-»
+			«LET ((EStructuralFeatureModelGenAnnotation)generatorContext.getAnnotation(feature, "modelgenerator")) AS featureAnnotation-»
+			«IF !feature.many-»
+		 		+ " [«feature.name»: " +  «featureAnnotation.getter»() + "]"
+	  		«ENDIF-»
+	  		«ENDLET-»
+	 	«ENDFOREACH-»;
+	 }
+	 	 	
+	/**
+	* @return the {@link «addImport("org.eclipse.emf.ecore.EClass", generatorContext)»}
+	* @generated
+	*/
+	public EClass eClass() {
+		return «addImport(ePackageAnnotation.packagePath, ePackageAnnotation.qualifiedClassName, generatorContext)».INSTANCE.get«this.name.toFirstUpper()»EClass();
+	}
+	 	 	
+	/**
+	* @param eStructuralFeature the {@link «addImport("org.eclipse.emf.ecore.EStructuralFeature", generatorContext)»} for which the value is returned.
+	* @return the value of a certain {@link EStructuralFeature}.
+	* @generated
+	*/
+	public Object eGet(EStructuralFeature eStructuralFeature) {
+		final int featureID = eClass().getFeatureID(eStructuralFeature);
+
+		switch (featureID) {		
+		«FOREACH this.EStructuralFeatures AS feature-»
+			«LET ((EStructuralFeatureModelGenAnnotation)generatorContext.getAnnotation(feature, "modelgenerator")) AS featureAnnotation-»
+			case «addImport(ePackageAnnotation.packagePath, ePackageAnnotation.qualifiedClassName, generatorContext)».«this.name.toUpperCase()»_«feature.name.toUpperCase()»_FEATURE_ID:
+				return «featureAnnotation.getter»();
+			«ENDLET-»
+		«ENDFOREACH-»
+		}
+		«IF eClassAnnotation.hasSuperEClass-»
+		return super.eGet(eStructuralFeature);
+		«ELSE-»
+		throw new IllegalArgumentException(eStructuralFeature.getName() + " not found in EClass " + eClass().getName());	
+		«ENDIF»
+	}
+	 	 	
+	/**
+	* @param eStructuralFeature the {@link EStructuralFeature} for which the value is returned.
+	* @param value the value to set.
+	* @return the value of a certain {@link EStructuralFeature»}
+	* @generated
+	*/
+	public void eSetEStructuralFeature eStructuralFeature, Object value) {
+		final int featureID = eClass().getFeatureID(eStructuralFeature);
+
+		switch (featureID) {		
+		«FOREACH this.EStructuralFeatures AS feature-»
+			«LET ((EStructuralFeatureModelGenAnnotation)generatorContext.getAnnotation(feature, "modelgenerator")) AS featureAnnotation-»
+			case «addImport(ePackageAnnotation.packagePath, ePackageAnnotation.qualifiedClassName, generatorContext)».«this.name.toUpperCase()»_«feature.name.toUpperCase()»_FEATURE_ID:
+				«featureAnnotation.setter»((«featureAnnotation.objectType»)value);
+				return;
+			«ENDLET-»
+		«ENDFOREACH-»
+		}
+		«IF eClassAnnotation.hasSuperEClass-»
+		return super.eGet(eStructuralFeature);
+		«ELSE-»
+		throw new IllegalArgumentException(eStructuralFeature.getName() + " not found in EClass " + eClass().getName());	
+		«ENDIF»
+	}	
+}
+«ENDFILE-»
+«ENDLET»
+«ENDLET»
+«ENDDEFINE»

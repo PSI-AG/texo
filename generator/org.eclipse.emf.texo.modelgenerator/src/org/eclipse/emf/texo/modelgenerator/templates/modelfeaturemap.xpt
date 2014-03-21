@@ -1,0 +1,90 @@
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::texo::annotations::annotationsmodel»
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(ModelController modelController) FOR EStructuralFeatureModelGenAnnotation-»
+«LET ((EClassModelGenAnnotation)this.ownerEClassAnnotation) AS eClassAnnotation-»
+«LET ((EPackageModelGenAnnotation)eClassAnnotation.ownerEPackageAnnotation) AS ePackageAnnotation-»
+
+/**
+ * The wrapper/adapter for the Feature Group '<em><b>«eClassAnnotation.EClass.name».«this.name»</b></em>'.
+ *
+ * @param <E> the featuremap object stored in this entry
+ *
+ * @generated
+*/
+public static class «this.featureMapSimpleClassName-»ModelFeatureMapEntry<E extends «this.featureMapQualifiedClassName-»> extends org.eclipse.emf.texo.model.AbstractModelFeatureMapEntry<«this.featureMapQualifiedClassName-»> {
+
+	/**
+	 * @return the current EStructuralFeature of this Feature Map entry
+	 * @generated
+	 */
+	public org.eclipse.emf.ecore.EStructuralFeature getEStructuralFeature() {
+		switch (getTarget().getFeature()) {
+		«IF isMixed(this.EStructuralFeature)-»
+			case TEXT:
+				return org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text();
+			case CDATA:
+				return org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_CDATA();
+			case COMMENT:
+				return org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Comment();
+		«ENDIF-»
+	«FOREACH this.allMemberFeatureMapFeatures AS memberFeatureAnnotation-»
+			case «toUpperCase(memberFeatureAnnotation.name)»:
+				return «ePackageAnnotation.qualifiedClassName».INSTANCE.get«toFirstUpper(eClassAnnotation.name)»_«toFirstUpper(memberFeatureAnnotation.name)»();
+	«ENDFOREACH-»
+		}
+		throw new IllegalArgumentException("No eStructuralFeature for feature kind " + getTarget().getFeature());
+	}
+
+	/**
+	 * @param eStructuralFeature sets the EStructuralFeature
+	 * @generated
+	 */
+	public void setEStructuralFeature(final org.eclipse.emf.ecore.EStructuralFeature eStructuralFeature) {
+		«IF isMixed(this.EStructuralFeature)-»
+		if (eStructuralFeature == org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Text()) {
+			getTarget().setFeature(«this.featureMapQualifiedClassName-».Feature.TEXT);
+			return;
+		} else if (eStructuralFeature == org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_CDATA()) {
+			getTarget().setFeature(«this.featureMapQualifiedClassName-».Feature.CDATA);
+			return;
+		} else if (eStructuralFeature == org.eclipse.emf.ecore.xml.type.XMLTypePackage.eINSTANCE.getXMLTypeDocumentRoot_Comment()) {
+			getTarget().setFeature(«this.featureMapQualifiedClassName-».Feature.COMMENT);
+			return;
+		}
+		«ENDIF-»
+
+		final org.eclipse.emf.ecore.EClass eClass = «ePackageAnnotation.qualifiedClassName».INSTANCE.get«toFirstUpper(eClassAnnotation.name)»EClass();
+		switch (eClass.getFeatureID(eStructuralFeature)) {
+	«FOREACH this.allMemberFeatureMapFeatures AS memberFeatureAnnotation-»
+			case «ePackageAnnotation.qualifiedClassName».«toUpperCase(eClassAnnotation.name)»_«toUpperCase(memberFeatureAnnotation.name)»_FEATURE_ID:
+				getTarget().setFeature(«this.featureMapQualifiedClassName-».Feature.«toUpperCase(memberFeatureAnnotation.name)»);
+				return;
+	«ENDFOREACH-»
+		}
+		throw new IllegalArgumentException("EStructuralFeature " + eStructuralFeature + " not supported here");
+	}
+
+	/**
+	 * @return the value
+	 * @generated
+	 */
+	public Object getValue() {
+		return getTarget().getValue();
+	}
+
+	/**
+	 * @param value sets the value
+	 * @generated
+	 */
+	public void setValue(final Object value) {
+		getTarget().setValue(getTarget().getFeature(), value);
+	}
+}
+«ENDLET-»
+«ENDLET-»
+«ENDDEFINE»

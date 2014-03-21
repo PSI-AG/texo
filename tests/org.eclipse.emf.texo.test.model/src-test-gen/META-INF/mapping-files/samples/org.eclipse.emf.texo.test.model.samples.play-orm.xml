@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.ActType" name="play_ActType">
+    <orm:table name="play_ActType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="pindex" optional="false">
+        <orm:column name="pindex"/>
+      </orm:basic>
+      <orm:basic name="title" optional="false">
+        <orm:column name="title"/>
+      </orm:basic>
+      <orm:one-to-many name="scene">
+        <orm:order-column name="play_ActType_scene_ind"/>
+        <orm:join-column name="play_ActType_scene"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.SceneTypeGroupFeatureGroup" name="play_SceneType_group">
+    <orm:attributes>
+      <orm:basic name="stageDirections" optional="false">
+        <orm:column name="stageDirections"/>
+      </orm:basic>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:many-to-one name="speech" optional="false">
+        <orm:join-column name="play_SceneType_speech"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.SceneType" name="play_SceneType">
+    <orm:table name="play_SceneType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="pindex" optional="false">
+        <orm:column name="pindex"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:basic name="title" optional="false">
+        <orm:column name="title"/>
+      </orm:basic>
+      <orm:one-to-many name="group" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.samples.play.SceneTypeGroupFeatureGroup">
+        <orm:join-table name="play_SceneType_group_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.FmType" name="play_FmType">
+    <orm:table name="play_FmType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:element-collection name="p">
+        <orm:order-column name="play_FmType_p_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="play_FmType_p">
+          <orm:join-column name="play_FmType_p"/>
+        </orm:collection-table>
+      </orm:element-collection>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.PersonaeTypeGroupFeatureGroup" name="play_PersonaeType_group">
+    <orm:attributes>
+      <orm:basic name="title" optional="false">
+        <orm:column name="title"/>
+      </orm:basic>
+      <orm:basic name="persona" optional="false">
+        <orm:column name="persona"/>
+      </orm:basic>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:many-to-one name="personaGroup" optional="false">
+        <orm:join-column name="play_PersonaeType_personaGroup"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.PersonaeType" name="play_PersonaeType">
+    <orm:table name="play_PersonaeType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="group" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.samples.play.PersonaeTypeGroupFeatureGroup">
+        <orm:join-table name="play_PersonaeType_group_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.PersonaGroupType" name="play_PersonaGroupType">
+    <orm:table name="play_PersonaGroupType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="groupDescription" optional="false">
+        <orm:column name="groupDescription"/>
+      </orm:basic>
+      <orm:element-collection name="persona">
+        <orm:order-column name="play_PersonaGroupType_persona_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="play_PersonaGroupType_persona">
+          <orm:join-column name="play_PersonaGroupType_persona"/>
+        </orm:collection-table>
+      </orm:element-collection>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.PlayType" name="play_PlayType">
+    <orm:table name="play_PlayType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="title" optional="false">
+        <orm:column name="title"/>
+      </orm:basic>
+      <orm:basic name="sceneDescription" optional="false">
+        <orm:column name="sceneDescription"/>
+      </orm:basic>
+      <orm:basic name="playSubTitle" optional="false">
+        <orm:column name="playSubTitle"/>
+      </orm:basic>
+      <orm:many-to-one name="fm" optional="false">
+        <orm:join-column name="play_PlayType_fm"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="personae" optional="false">
+        <orm:join-column name="play_PlayType_personae"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:one-to-many name="act">
+        <orm:order-column name="play_PlayType_act_ind"/>
+        <orm:join-column name="play_PlayType_act"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.SpeechTypeGroupFeatureGroup" name="play_SpeechType_group">
+    <orm:attributes>
+      <orm:basic name="speaker" optional="false">
+        <orm:column name="speaker"/>
+      </orm:basic>
+      <orm:basic name="line" optional="false">
+        <orm:column name="line"/>
+      </orm:basic>
+      <orm:basic name="stageDirections" optional="false">
+        <orm:column name="stageDirections"/>
+      </orm:basic>
+      <orm:basic name="feature" optional="false">
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.play.SpeechType" name="play_SpeechType">
+    <orm:table name="play_SpeechType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="group" orphan-removal="true" target-entity="org.eclipse.emf.texo.test.model.samples.play.SpeechTypeGroupFeatureGroup">
+        <orm:join-table name="play_SpeechType_group_FM"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

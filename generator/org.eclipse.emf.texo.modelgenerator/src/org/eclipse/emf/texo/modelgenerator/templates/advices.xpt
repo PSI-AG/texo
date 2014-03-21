@@ -1,0 +1,7 @@
+«REM»Template file which can be overridden to specify advices«ENDREM»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(ModelController modelController) FOR Object-»
+«ENDDEFINE»

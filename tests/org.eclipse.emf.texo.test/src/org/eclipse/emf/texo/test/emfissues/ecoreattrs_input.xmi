@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecoreattrs="http://www.eclipse.org/emf/texo/test/model/schemaconstructs/ecoreattrs">
+  <ecoreattrs:Element>
+    <names firstName="appellationis modo" middleName="de omnibus" lastName="discrimine gentium"/>
+  </ecoreattrs:Element>
+  <ecoreattrs:Element>
+    <names firstName="vel iure" middleName="quibus tribunalia" lastName="teneri se"/>
+  </ecoreattrs:Element>
+  <ecoreattrs:Element>
+    <names firstName="discrimen participes" middleName="DECLARATIONEM enuntiantur" lastName="lege regionis"/>
+  </ecoreattrs:Element>
+  <ecoreattrs:Feature>
+    <name>quisque suppliciis</name>
+    <value>0.1</value>
+  </ecoreattrs:Feature>
+  <ecoreattrs:Feature>
+    <value>0.30000000000000004</value>
+    <name>publicae sunt</name>
+  </ecoreattrs:Feature>
+  <ecoreattrs:Feature>
+    <name>incolumitatis discrimine</name>
+    <value>0.4</value>
+  </ecoreattrs:Feature>
+  <ecoreattrs:Mixed>
+    <name>patria personae</name>
+    <value>0.5</value>
+divitiis nemo  </ecoreattrs:Mixed>
+  <ecoreattrs:Mixed>
+<![CDATA[et Omnium]]><!--institutis eam-->    <name>coram statuetur</name>
+  </ecoreattrs:Mixed>
+  <ecoreattrs:Mixed>
+    <value>0.6</value>
+prehendi iusta<![CDATA[pares commercium]]>  </ecoreattrs:Mixed>
+  <ecoreattrs:NameList firstName="sui violet" middleName="discretis legibus" lastName="civilis loco"/>
+</xmi:XMI>

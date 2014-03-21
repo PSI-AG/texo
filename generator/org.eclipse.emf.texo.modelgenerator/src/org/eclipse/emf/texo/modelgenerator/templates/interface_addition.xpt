@@ -1,0 +1,7 @@
+«REM»Template file which can be overridden to generate additional files or code«ENDREM»
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«REM»Called for an interface EClass, generated code is placed in the class body«ENDREM»
+«DEFINE root(ModelController modelController) FOR EClassModelGenAnnotation-»
+«ENDDEFINE»

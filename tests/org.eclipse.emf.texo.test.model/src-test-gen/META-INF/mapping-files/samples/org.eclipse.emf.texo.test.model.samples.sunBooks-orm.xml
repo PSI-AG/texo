@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.sunbooks.AuthorsType" name="sunBooks_AuthorsType">
+    <orm:table name="sunBooks_AuthorsType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:element-collection name="authorName">
+        <orm:order-column name="sunBooks_AuthorsType_authorName_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="sunBooks_AuthorsType_authorName">
+          <orm:join-column name="sunBooks_AuthorsType_authorName"/>
+        </orm:collection-table>
+      </orm:element-collection>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.sunbooks.BooksType" name="sunBooks_BooksType">
+    <orm:table name="sunBooks_BooksType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="book">
+        <orm:order-column name="sunBooks_BooksType_book_ind"/>
+        <orm:join-column name="sunBooks_BooksType_book"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.sunbooks.BookType" name="sunBooks_BookType">
+    <orm:table name="sunBooks_BookType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name"/>
+      </orm:basic>
+      <orm:basic name="iSBN" optional="false">
+        <orm:column name="iSBN"/>
+      </orm:basic>
+      <orm:basic name="price" optional="false">
+        <orm:column name="price"/>
+      </orm:basic>
+      <orm:basic name="description">
+        <orm:column name="description"/>
+      </orm:basic>
+      <orm:basic name="publicationDate" optional="false">
+        <orm:column name="publicationDate"/>
+        <orm:temporal>DATE</orm:temporal>
+      </orm:basic>
+      <orm:basic name="bookCategory" optional="false">
+        <orm:column name="bookCategory"/>
+        <orm:enumerated>STRING</orm:enumerated>
+      </orm:basic>
+      <orm:basic name="itemId">
+        <orm:column name="itemId"/>
+      </orm:basic>
+      <orm:many-to-one name="authors" optional="false">
+        <orm:join-column name="sunBooks_BookType_authors"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="promotion" optional="false">
+        <orm:join-column name="sunBooks_BookType_promotion"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.sunbooks.PromotionType" name="sunBooks_PromotionType">
+    <orm:table name="sunBooks_PromotionType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="discount">
+        <orm:column name="discount"/>
+      </orm:basic>
+      <orm:basic name="none">
+        <orm:column name="T_none"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.samples.sunbooks.CollectionType" name="sunBooks_CollectionType">
+    <orm:table name="sunBooks_CollectionType"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:many-to-one name="books" optional="false">
+        <orm:join-column name="sunBooks_CollectionType_books"/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.eclipse.org/emf/texo/test/model/issues/bz379796"
+	xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.eclipse.org/emf/texo/test/model/issues/bz379796">
+
+	<xs:complexType name="priceType">
+		<xs:sequence>
+			<xs:element name="valueElement" type="xs:int" minOccurs="0"/>
+			<xs:element name="nillableValueElement" type="xs:int" nillable="true" minOccurs="1"/>
+			<xs:element name="requiredValueElement" type="xs:int" minOccurs="1" default="2"/>
+			<xs:element name="comparisonElement" type="ComparisonType" minOccurs="0"/>
+			<xs:element name="requiredComparisonElement" type="ComparisonType" minOccurs="1"/>
+		</xs:sequence>
+		<xs:attribute name="value" type="xs:string" use="optional" default=""/>
+		<xs:attribute name="requiredValue" type="xs:string" use="required"/>
+		<xs:attribute name="comparison" type="ComparisonType" />
+		<xs:attribute name="requiredComparison" type="ComparisonType" use="required"/>
+	</xs:complexType>
+
+	<xs:simpleType name="ComparisonType">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="less" />
+			<xs:enumeration value="less-or-equal" />
+			<xs:enumeration value="equal" />
+			<xs:enumeration value="greater-or-equal" />
+			<xs:enumeration value="greater" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

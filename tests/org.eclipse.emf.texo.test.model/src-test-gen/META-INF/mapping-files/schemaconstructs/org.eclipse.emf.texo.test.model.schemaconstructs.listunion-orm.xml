@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.schemaconstructs.listunion.StatesByCountry" name="listunion_statesByCountry">
+    <orm:table name="listunion_statesByCountry"/>
+    <orm:discriminator-column length="255"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="country" optional="false">
+        <orm:column name="country"/>
+      </orm:basic>
+      <orm:basic name="allStates" optional="false">
+        <orm:column name="allStates"/>
+      </orm:basic>
+      <orm:basic name="sixImportantStates" optional="false">
+        <orm:column name="sixImportantStates"/>
+      </orm:basic>
+      <orm:basic name="zipUnion" optional="false">
+        <orm:column name="zipUnion"/>
+      </orm:basic>
+      <orm:basic name="simpleUnion" optional="false">
+        <orm:column name="simpleUnion"/>
+        <orm:convert>TexoTestObjectConverter</orm:convert>
+      </orm:basic>
+      <orm:basic name="simpleStringUnion" optional="false">
+        <orm:column name="simpleStringUnion"/>
+      </orm:basic>
+      <orm:element-collection name="zipUnions">
+        <orm:order-column name="listunion_statesByCountry_zipUnions_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="listunion_statesByCountry_zipUnions">
+          <orm:join-column name="listunion_statesByCountry_zipUnions"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="simpleUnions">
+        <orm:order-column name="listunion_statesByCountry_simpleUnions_ind"/>
+        <orm:column name="T_element"/>
+        <orm:convert>TexoTestObjectConverter</orm:convert>
+        <orm:collection-table name="listunion_statesByCountry_simpleUnions">
+          <orm:join-column name="listunion_statesByCountry_simpleUnions"/>
+        </orm:collection-table>
+      </orm:element-collection>
+      <orm:element-collection name="simpleStringUnions">
+        <orm:order-column name="listunion_statesByCountry_simpleStringUnions_ind"/>
+        <orm:column name="T_element"/>
+        <orm:collection-table name="listunion_statesByCountry_simpleStringUnions">
+          <orm:join-column name="listunion_statesByCountry_simpleStringUnions"/>
+        </orm:collection-table>
+      </orm:element-collection>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.eclipse.emf.texo.sdk"
+      label="%featureName"
+      version="0.1.0.qualifier"
+      provider-name="%featureProvider">
+
+   <description url="http://wiki.eclipse.org/Texo">
+      %description
+   </description>
+
+   <copyright url="%copyrightURL">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%emftUpdateSiteName" url="http://download.eclipse.org/modeling/emft/texo/updates/interim"/>
+   </url>
+
+   <includes
+         id="org.eclipse.emf.texo"
+         version="0.0.0"/>
+
+   <includes
+         id="org.eclipse.emf.texo.source"
+         version="0.0.0"/>
+
+</feature>

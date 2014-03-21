@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.1">
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.server.model.response.DocumentRootMixedFeatureGroup" name="DocumentRoot_mixed">
+    <orm:attributes>
+      <orm:many-to-one name="error" optional="true" target-entity="org.eclipse.emf.texo.server.model.response.ErrorType">
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="response" optional="true" target-entity="org.eclipse.emf.texo.server.model.response.ResponseType">
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="result" optional="true" target-entity="org.eclipse.emf.texo.server.model.response.ResultType">
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.server.model.response.DocumentRoot" name="DocumentRoot">
+    <orm:attributes>
+      <orm:one-to-many name="mixed" orphan-removal="true" target-entity="org.eclipse.emf.texo.server.model.response.DocumentRootMixedFeatureGroup">
+        <orm:join-table/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+      <orm:element-collection name="xMLNSPrefixMap">
+        <orm:collection-table name="DocumentRoot_xMLNSPrefixMap"/>
+      </orm:element-collection>
+      <orm:element-collection name="xSISchemaLocation">
+        <orm:collection-table name="DocumentRoot_xSISchemaLocation"/>
+      </orm:element-collection>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.server.model.response.ErrorType" name="ErrorType">
+    <orm:attributes>
+      <orm:basic name="errorClass" optional="false"/>
+      <orm:basic name="message" optional="false"/>
+      <orm:basic name="stackTrace" optional="false"/>
+      <orm:many-to-one name="cause" optional="false" target-entity="org.eclipse.emf.texo.server.model.response.ErrorType">
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.server.model.response.ResponseType" name="ResponseType">
+    <orm:attributes>
+      <orm:basic name="status" optional="false"/>
+      <orm:basic name="startRow" optional="false"/>
+      <orm:basic name="endRow" optional="false"/>
+      <orm:basic name="totalRows" optional="false"/>
+      <orm:many-to-one name="list" optional="false" target-entity="org.eclipse.emf.texo.server.model.response.ListType">
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.server.model.response.ResultType" name="ResultType">
+    <orm:attributes>
+      <orm:many-to-one name="updated" optional="true" target-entity="org.eclipse.emf.texo.server.model.response.ListType">
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="inserted" optional="true" target-entity="org.eclipse.emf.texo.server.model.response.ListType">
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+      <orm:many-to-one name="deleted" optional="true" target-entity="org.eclipse.emf.texo.server.model.response.ListType">
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:many-to-one>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.server.model.response.ListType" name="ListType">
+    <orm:attributes>
+      <orm:one-to-many name="data" orphan-removal="true" target-entity="org.eclipse.emf.ecore.EObject">
+        <orm:order-column/>
+        <orm:join-column/>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>

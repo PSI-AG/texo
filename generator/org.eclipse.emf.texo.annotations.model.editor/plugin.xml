@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+ <copyright>
+ </copyright>
+
+ $Id: plugin.xml,v 1.1 2010/05/02 13:38:13 mtaal Exp $
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="org.eclipse.emf.texo.annotations.annotationsmodel.presentation.AnnotationsmodelModelWizardID"
+            name="%_UI_AnnotationsmodelModelWizard_label"
+            class="org.eclipse.emf.texo.annotations.annotationsmodel.presentation.AnnotationsmodelModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/AnnotationsmodelModelFile.gif">
+         <description>%_UI_AnnotationsmodelModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            id="org.eclipse.emf.texo.annotations.annotationsmodel.presentation.AnnotationsmodelEditorID"
+            name="%_UI_AnnotationsmodelEditor_label"
+            icon="icons/full/obj16/AnnotationsmodelModelFile.gif"
+            extensions="annotationsmodel"
+            class="org.eclipse.emf.texo.annotations.annotationsmodel.presentation.AnnotationsmodelEditor"
+            contributorClass="org.eclipse.emf.texo.annotations.annotationsmodel.presentation.AnnotationsmodelActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

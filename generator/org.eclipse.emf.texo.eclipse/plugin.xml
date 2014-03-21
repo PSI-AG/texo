@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.popupMenus">
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.emf.texo.eclipse.contribution1">
+            <visibility>
+                    <or>
+                        <objectState name="extension" value="ecore"/>
+                        <objectState name="extension" value="xsd"/>
+                        <objectState name="extension" value="xcore"/>
+                    </or>
+            </visibility>
+         <menu
+               label="%menu.Texo"
+               path="additions"
+               id="org.eclipse.emf.texo.eclipse.menu1">
+            <separator
+                  name="group1"/>
+            <separator
+                  name="group2"/>
+            <separator
+                  name="group3"/>
+            <separator
+                  name="group4"/>
+            <separator
+                  name="group5"/>
+            <separator
+                  name="zlastgroup"/>
+         </menu>
+         <action
+             label="%menu.GenerateCodeGenAnnotationModel"
+               class="org.eclipse.emf.texo.eclipse.popup.actions.CodeGenAnnotatedModelGenerator"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group1"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.CodeGenAnnotatedModelGenerator">
+         </action>
+         <action
+             label="%menu.GenerateModelCode"
+               class="org.eclipse.emf.texo.eclipse.popup.actions.GenerateCode"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group1"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.GenerateCode"/>
+         <action
+             label="%menu.GenerateModelDaoCode"
+               class="org.eclipse.emf.texo.eclipse.popup.actions.GenerateModelDaoCode"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group1"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.GenerateModelDaoCode"/>
+         <action
+             label="%menu.GenerateAnnotationModelInitial"
+               class="org.eclipse.emf.texo.eclipse.popup.actions.GenerateInitialAnnotationModel"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group3"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.GenerateInitialAnnotationModel">
+               <enablement>
+                    <or>
+                        <objectState name="extension" value="ecore"/>
+                        <objectState name="extension" value="xcore"/>
+                    </or>
+               </enablement>
+          </action>
+      </objectContribution>
+
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.emf.texo.eclipse.contribution">
+            <visibility>
+                    <or>
+                        <objectState name="extension" value="xsd"/>
+                    </or>
+            </visibility>
+         <action
+             label="%menu.GenerateEcore"
+               class="org.eclipse.emf.texo.eclipse.popup.actions.GenerateEcoreFromXSD"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group5"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.GenerateEcoreFromXSD"/>
+      </objectContribution>
+
+      <objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.emf.texo.eclipse.contribution">
+            <visibility>
+                    <or>
+                        <objectState name="extension" value="xcore"/>
+                    </or>
+            </visibility>
+         <action
+             label="%menu.GenerateEcore"
+               class="org.eclipse.emf.texo.eclipse.popup.actions.GenerateEcoreFromXCore"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group5"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.GenerateEcoreFromXCore"/>
+      </objectContribution>
+	  
+      <!--objectContribution
+            objectClass="org.eclipse.core.resources.IFile"
+            id="org.eclipse.emf.texo.eclipse.contribution">
+            <visibility>
+                    <or>
+                        <objectState name="extension" value="ecore"/>
+                    </or>
+            </visibility>
+         <action
+             label="%menu.GenerateAnnotationModelComplete"
+               class="org.eclipse.emf.texo.eclipse.popup.actions.GenerateFullyAnnotatedAnnotationModel"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/group3"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.generatefullyannotatedannotationmodel"/>
+         <action
+             label="%menu.GenerateAnnotationModel"
+               class="org.eclipse.emf.texo.eclipse.popup.actions.GenerateAnnotationModel"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/zlastgroup"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.generateannotationmodel"/>
+         <action
+             label="%menu.GenerateAnnotationModelInitial"
+               class="org.eclipse.emf.texo.eclipse.popup.actions.GenerateInitialAnnotationModel"
+               menubarPath="org.eclipse.emf.texo.eclipse.menu1/zlastgroup"
+               enablesFor="+"
+               id="org.eclipse.emf.texo.eclipse.generateinitialannotationmodel"/>
+      </objectContribution-->
+	  
+	  <objectContribution
+            adaptable="true"
+            id="org.eclipse.emf.texo.eclipse.contribution2"
+            nameFilter="*"
+            objectClass="org.eclipse.core.resources.IProject">
+         <action
+               class="org.eclipse.emf.texo.eclipse.popup.actions.AddRemoveNatureAction"
+               id="org.eclipse.emf.texo.eclipse.addRemoveNatureAction"
+               label="%addRemoveNature.label"
+               menubarPath="org.eclipse.ui.projectConfigure/additions">
+		</action>
+		<visibility>
+			<or>
+	        	<objectClass name="org.eclipse.jdt.core.IJavaProject"/>
+	            <objectClass name="org.eclipse.core.resources.IProject"/>
+		    </or>		            
+		</visibility>
+      </objectContribution>
+   </extension>         
+   
+  <extension
+      point="org.eclipse.core.resources.natures"
+      id="nature"
+      name="%nature.Name">
+      <runtime>
+         <run class="org.eclipse.emf.texo.eclipse.nature.TexoProjectNature">
+         </run>
+      </runtime>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.propertyPages">
+         <page 
+            class="org.eclipse.emf.texo.eclipse.properties.ProjectPropertyPage"
+            id="org.eclipse.emf.texo.properties.pages.ProjectPropertyPage"
+            name="%projectPropertyPage.Name">
+            
+            <enabledWhen>
+       			<or>
+    	        	<instanceof value="org.eclipse.core.resources.IProject"/>
+        	    	<instanceof value="org.eclipse.jdt.core.IJavaProject"/>
+			    </or>		            
+            </enabledWhen>
+            
+            <filter
+               name="nature"
+               value="org.eclipse.emf.texo.eclipse.nature"/>
+ 
+       </page>
+   </extension>
+   <extension
+   		 id="TexoAutoCodeGenerator" 
+         name="Texo Code Generator Builder"
+         point="org.eclipse.core.resources.builders">
+     <builder>
+         <run class="org.eclipse.emf.texo.eclipse.nature.TexoAutoCodeGenerator">
+         </run>
+      </builder>
+   </extension>
+
+</plugin>

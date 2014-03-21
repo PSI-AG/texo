@@ -1,0 +1,219 @@
+«IMPORT org::eclipse::emf::texo::modelgenerator::modelannotations»
+«IMPORT org::eclipse::emf::texo::annotations::annotationsmodel»
+«IMPORT org::eclipse::emf::ecore»
+«IMPORT org::eclipse::emf::texo::generator»
+
+«EXTENSION  org::eclipse::emf::texo::modelgenerator::templates::util»
+
+«DEFINE root(ModelController modelController) FOR EEnumModelGenAnnotation-»
+«LET ((EEnum)this.EDataType) AS eEnum»
+«LET ((EPackageModelGenAnnotation)this.ownerEPackageAnnotation) AS ePackageAnnotation»
+«IF this.generateCode»
+«FILE classFileName(this) java»
+«ePackageAnnotation.javaFileHeader-»
+package «ePackageAnnotation.packagePath»;
+
+/**
+ * A representation of the literals of the enumeration '<em><b>«this.name»</b></em>'.
+ * <!-- begin-user-doc -->
+ * <!-- end-user-doc -->
+«IF this.documentation != null-»
+ * <!-- begin-model-doc -->
+ * «this.documentation»
+ * <!-- end-model-doc -->
+«ENDIF-»
+ * @generated
+ */
+«modelController.getJavaAnnotations(this.EEnum, "type")-»
+public enum «this.simpleClassName»
+{
+
+«EXPAND org::eclipse::emf::texo::modelgenerator::templates::enum_addition::root(modelController) FOR this»
+
+«FOREACH eEnum.ELiterals AS e SEPARATOR ","-»
+	«LET ((EEnumLiteral)e) AS el-»
+	 	/**
+	 	 * The enum: «toUpperCase(el.name)»
+	     * <!-- begin-user-doc -->
+	     * <!-- end-user-doc -->
+		«IF getDocumentation(el) != null-»
+		 * <!-- begin-model-doc -->
+		 * «getDocumentation(el)»
+		 * <!-- end-model-doc -->
+		«ENDIF-»
+	 	 * @generated
+	 	 */
+		«modelController.getJavaAnnotations(el, "field")-»
+		«toUpperCase(format(el.name))»(«el.value», "«el.name»", "«el.literal»") {
+		
+ 		/**
+		 * @return always true for this instance
+ 		 * @generated
+ 		 */ 
+		@Override
+		public boolean is«toFirstUpper(el.name)»() {
+			return true;
+		}
+	}
+	«ENDLET-»
+«ENDFOREACH-»;
+
+	/**
+	 * An array of all the '<em><b>«this.name»</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private static final «this.simpleClassName»[] VALUES_ARRAY =
+		new «this.simpleClassName»[] {
+«FOREACH eEnum.ELiterals AS e SEPARATOR ","-»
+	«LET ((EEnumLiteral)e) AS el-»«toUpperCase(format(el.name))»«ENDLET-»
+«ENDFOREACH»
+		};
+
+	/**
+	 * A public read-only list of all the '<em><b>«this.name»</b></em>' enumerators.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static final java.util.List<«this.simpleClassName»> VALUES = java.util.Collections.unmodifiableList(java.util.Arrays.asList(VALUES_ARRAY));
+
+	/**
+	 * Returns the '<em><b>«this.name»</b></em>' literal with the specified literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static «this.simpleClassName» get(String literal) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			«this.simpleClassName» result = VALUES_ARRAY[i];
+			if (result.toString().equals(literal)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>«this.name»</b></em>' literal with the specified name.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static «this.simpleClassName» getByName(String name) {
+		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
+			«this.simpleClassName» result = VALUES_ARRAY[i];
+			if (result.getName().equals(name)) {
+				return result;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * Returns the '<em><b>«this.name»</b></em>' literal with the specified integer value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public static «this.simpleClassName» get(int value) {
+		for («this.simpleClassName» enumInstance : VALUES_ARRAY) {
+			if (enumInstance.getValue() == value) {
+				return enumInstance;
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final int value;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String name;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private final String literal;
+	
+	/**
+	 * Only this class can construct instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private «this.simpleClassName»(int value, String name, String literal) {
+		this.value = value;
+		this.name = name;
+		this.literal = literal;
+	} 
+
+«FOREACH eEnum.ELiterals AS e-»
+	«LET ((EEnumLiteral)e) AS el-»
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return false, is overridden by actual enum types.
+	 * @generated
+	 */
+	public boolean is«toFirstUpper(el.name)»() {
+		return false;
+	}			
+	«ENDLET-»
+«ENDFOREACH-»
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public int getValue() {
+	  return value;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+	  return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getLiteral() {
+	  return literal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the literal value of the enumerator, which is its string representation.
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		return literal;
+	}
+}
+«ENDFILE-»
+«ENDIF»
+«ENDLET»
+«ENDLET»
+«ENDDEFINE»

@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="kdm-hsqldb">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/mapping-files/base/identifiable-orm.xml</mapping-file>
+		<mapping-file>META-INF/mapping-files/samples/kdm-orm.xml</mapping-file>
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:kdm"/>
+         	<property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="kdm-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="kdm-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="kdm-class-hsqldb">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>org.eclipse.emf.texo.test.model.base.identifiable.Identifiable</class>
+		<class>org.eclipse.modisco.kdm.core.Element</class>
+		<class>org.eclipse.modisco.kdm.core.ModelElement</class>
+		<class>org.eclipse.modisco.kdm.core.KDMEntity</class>
+		<class>org.eclipse.modisco.kdm.core.KDMRelationship</class>
+		<class>org.eclipse.modisco.kdm.core.AggregatedRelationship</class>
+		<class>org.eclipse.modisco.kdm.kdm.KDMFramework</class>
+		<class>org.eclipse.modisco.kdm.kdm.KDMModel</class>
+		<class>org.eclipse.modisco.kdm.kdm.Segment</class>
+		<class>org.eclipse.modisco.kdm.kdm.Audit</class>
+		<class>org.eclipse.modisco.kdm.kdm.Stereotype</class>
+		<class>org.eclipse.modisco.kdm.kdm.TagDefinition</class>
+		<class>org.eclipse.modisco.kdm.kdm.ExtensionFamily</class>
+		<class>org.eclipse.modisco.kdm.kdm.ExtendedValue</class>
+		<class>org.eclipse.modisco.kdm.kdm.TaggedValue</class>
+		<class>org.eclipse.modisco.kdm.kdm.TaggedRef</class>
+		<class>org.eclipse.modisco.kdm.kdm.Attribute</class>
+		<class>org.eclipse.modisco.kdm.kdm.Annotation</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryModel</class>
+		<class>org.eclipse.modisco.kdm.source.AbstractInventoryElement</class>
+		<class>org.eclipse.modisco.kdm.source.AbstractInventoryRelationship</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryItem</class>
+		<class>org.eclipse.modisco.kdm.source.SourceFile</class>
+		<class>org.eclipse.modisco.kdm.source.Image</class>
+		<class>org.eclipse.modisco.kdm.source.Configuration</class>
+		<class>org.eclipse.modisco.kdm.source.ResourceDescription</class>
+		<class>org.eclipse.modisco.kdm.source.BinaryFile</class>
+		<class>org.eclipse.modisco.kdm.source.ExecutableFile</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryContainer</class>
+		<class>org.eclipse.modisco.kdm.source.Directory</class>
+		<class>org.eclipse.modisco.kdm.source.Project</class>
+		<class>org.eclipse.modisco.kdm.source.DependsOn</class>
+		<class>org.eclipse.modisco.kdm.source.SourceRef</class>
+		<class>org.eclipse.modisco.kdm.source.SourceRegion</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryElement</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryRelationship</class>
+		<class>org.eclipse.modisco.kdm.code.CodeModel</class>
+		<class>org.eclipse.modisco.kdm.code.AbstractCodeElement</class>
+		<class>org.eclipse.modisco.kdm.code.AbstractCodeRelationship</class>
+		<class>org.eclipse.modisco.kdm.code.CodeItem</class>
+		<class>org.eclipse.modisco.kdm.code.ComputationalObject</class>
+		<class>org.eclipse.modisco.kdm.code.Datatype</class>
+		<class>org.eclipse.modisco.kdm.code.Module</class>
+		<class>org.eclipse.modisco.kdm.code.CompilationUnit</class>
+		<class>org.eclipse.modisco.kdm.code.SharedUnit</class>
+		<class>org.eclipse.modisco.kdm.code.LanguageUnit</class>
+		<class>org.eclipse.modisco.kdm.code.CodeAssembly</class>
+		<class>org.eclipse.modisco.kdm.code.Package</class>
+		<class>org.eclipse.modisco.kdm.code.ControlElement</class>
+		<class>org.eclipse.modisco.kdm.code.CallableUnit</class>
+		<class>org.eclipse.modisco.kdm.code.MethodUnit</class>
+		<class>org.eclipse.modisco.kdm.code.DataElement</class>
+		<class>org.eclipse.modisco.kdm.code.StorableUnit</class>
+		<class>org.eclipse.modisco.kdm.code.ItemUnit</class>
+		<class>org.eclipse.modisco.kdm.code.IndexUnit</class>
+		<class>org.eclipse.modisco.kdm.code.MemberUnit</class>
+		<class>org.eclipse.modisco.kdm.code.ParameterUnit</class>
+		<class>org.eclipse.modisco.kdm.code.ValueElement</class>
+		<class>org.eclipse.modisco.kdm.code.Value</class>
+		<class>org.eclipse.modisco.kdm.code.ValueList</class>
+		<class>org.eclipse.modisco.kdm.code.PrimitiveType</class>
+		<class>org.eclipse.modisco.kdm.code.BooleanType</class>
+		<class>org.eclipse.modisco.kdm.code.CharType</class>
+		<class>org.eclipse.modisco.kdm.code.OrdinalType</class>
+		<class>org.eclipse.modisco.kdm.code.DateType</class>
+		<class>org.eclipse.modisco.kdm.code.TimeType</class>
+		<class>org.eclipse.modisco.kdm.code.IntegerType</class>
+		<class>org.eclipse.modisco.kdm.code.DecimalType</class>
+		<class>org.eclipse.modisco.kdm.code.ScaledType</class>
+		<class>org.eclipse.modisco.kdm.code.FloatType</class>
+		<class>org.eclipse.modisco.kdm.code.VoidType</class>
+		<class>org.eclipse.modisco.kdm.code.StringType</class>
+		<class>org.eclipse.modisco.kdm.code.BitType</class>
+		<class>org.eclipse.modisco.kdm.code.BitstringType</class>
+		<class>org.eclipse.modisco.kdm.code.OctetType</class>
+		<class>org.eclipse.modisco.kdm.code.OctetstringType</class>
+		<class>org.eclipse.modisco.kdm.code.EnumeratedType</class>
+		<class>org.eclipse.modisco.kdm.code.CompositeType</class>
+		<class>org.eclipse.modisco.kdm.code.ChoiceType</class>
+		<class>org.eclipse.modisco.kdm.code.RecordType</class>
+		<class>org.eclipse.modisco.kdm.code.DerivedType</class>
+		<class>org.eclipse.modisco.kdm.code.ArrayType</class>
+		<class>org.eclipse.modisco.kdm.code.PointerType</class>
+		<class>org.eclipse.modisco.kdm.code.RangeType</class>
+		<class>org.eclipse.modisco.kdm.code.BagType</class>
+		<class>org.eclipse.modisco.kdm.code.SetType</class>
+		<class>org.eclipse.modisco.kdm.code.SequenceType</class>
+		<class>org.eclipse.modisco.kdm.code.Signature</class>
+		<class>org.eclipse.modisco.kdm.code.DefinedType</class>
+		<class>org.eclipse.modisco.kdm.code.TypeUnit</class>
+		<class>org.eclipse.modisco.kdm.code.SynonymUnit</class>
+		<class>org.eclipse.modisco.kdm.code.ClassUnit</class>
+		<class>org.eclipse.modisco.kdm.code.InterfaceUnit</class>
+		<class>org.eclipse.modisco.kdm.code.TemplateUnit</class>
+		<class>org.eclipse.modisco.kdm.code.TemplateParameter</class>
+		<class>org.eclipse.modisco.kdm.code.TemplateType</class>
+		<class>org.eclipse.modisco.kdm.code.InstanceOf</class>
+		<class>org.eclipse.modisco.kdm.code.ParameterTo</class>
+		<class>org.eclipse.modisco.kdm.code.Implements</class>
+		<class>org.eclipse.modisco.kdm.code.ImplementationOf</class>
+		<class>org.eclipse.modisco.kdm.code.HasType</class>
+		<class>org.eclipse.modisco.kdm.code.HasValue</class>
+		<class>org.eclipse.modisco.kdm.code.Extends</class>
+		<class>org.eclipse.modisco.kdm.code.PreprocessorDirective</class>
+		<class>org.eclipse.modisco.kdm.code.MacroUnit</class>
+		<class>org.eclipse.modisco.kdm.code.MacroDirective</class>
+		<class>org.eclipse.modisco.kdm.code.IncludeDirective</class>
+		<class>org.eclipse.modisco.kdm.code.ConditionalDirective</class>
+		<class>org.eclipse.modisco.kdm.code.Expands</class>
+		<class>org.eclipse.modisco.kdm.code.GeneratedFrom</class>
+		<class>org.eclipse.modisco.kdm.code.Includes</class>
+		<class>org.eclipse.modisco.kdm.code.VariantTo</class>
+		<class>org.eclipse.modisco.kdm.code.Redefines</class>
+		<class>org.eclipse.modisco.kdm.code.CommentUnit</class>
+		<class>org.eclipse.modisco.kdm.code.Namespace</class>
+		<class>org.eclipse.modisco.kdm.code.VisibleIn</class>
+		<class>org.eclipse.modisco.kdm.code.Imports</class>
+		<class>org.eclipse.modisco.kdm.code.CodeElement</class>
+		<class>org.eclipse.modisco.kdm.code.CodeRelationship</class>
+		<class>org.eclipse.modisco.kdm.action.ActionElement</class>
+		<class>org.eclipse.modisco.kdm.action.AbstractActionRelationship</class>
+		<class>org.eclipse.modisco.kdm.action.BlockUnit</class>
+		<class>org.eclipse.modisco.kdm.action.ControlFlow</class>
+		<class>org.eclipse.modisco.kdm.action.EntryFlow</class>
+		<class>org.eclipse.modisco.kdm.action.Flow</class>
+		<class>org.eclipse.modisco.kdm.action.TrueFlow</class>
+		<class>org.eclipse.modisco.kdm.action.FalseFlow</class>
+		<class>org.eclipse.modisco.kdm.action.GuardedFlow</class>
+		<class>org.eclipse.modisco.kdm.action.Calls</class>
+		<class>org.eclipse.modisco.kdm.action.Dispatches</class>
+		<class>org.eclipse.modisco.kdm.action.Reads</class>
+		<class>org.eclipse.modisco.kdm.action.Writes</class>
+		<class>org.eclipse.modisco.kdm.action.Addresses</class>
+		<class>org.eclipse.modisco.kdm.action.Creates</class>
+		<class>org.eclipse.modisco.kdm.action.ExceptionUnit</class>
+		<class>org.eclipse.modisco.kdm.action.TryUnit</class>
+		<class>org.eclipse.modisco.kdm.action.CatchUnit</class>
+		<class>org.eclipse.modisco.kdm.action.FinallyUnit</class>
+		<class>org.eclipse.modisco.kdm.action.ExitFlow</class>
+		<class>org.eclipse.modisco.kdm.action.ExceptionFlow</class>
+		<class>org.eclipse.modisco.kdm.action.Throws</class>
+		<class>org.eclipse.modisco.kdm.action.CompliesTo</class>
+		<class>org.eclipse.modisco.kdm.action.UsesType</class>
+		<class>org.eclipse.modisco.kdm.action.ActionRelationship</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformModel</class>
+		<class>org.eclipse.modisco.kdm.platform.AbstractPlatformElement</class>
+		<class>org.eclipse.modisco.kdm.platform.AbstractPlatformRelationship</class>
+		<class>org.eclipse.modisco.kdm.platform.ResourceType</class>
+		<class>org.eclipse.modisco.kdm.platform.NamingResource</class>
+		<class>org.eclipse.modisco.kdm.platform.MarshalledResource</class>
+		<class>org.eclipse.modisco.kdm.platform.MessagingResource</class>
+		<class>org.eclipse.modisco.kdm.platform.FileResource</class>
+		<class>org.eclipse.modisco.kdm.platform.ExecutionResource</class>
+		<class>org.eclipse.modisco.kdm.platform.LockResource</class>
+		<class>org.eclipse.modisco.kdm.platform.StreamResource</class>
+		<class>org.eclipse.modisco.kdm.platform.DataManager</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformEvent</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformAction</class>
+		<class>org.eclipse.modisco.kdm.platform.ExternalActor</class>
+		<class>org.eclipse.modisco.kdm.platform.BindsTo</class>
+		<class>org.eclipse.modisco.kdm.platform.Requires</class>
+		<class>org.eclipse.modisco.kdm.platform.ManagesResource</class>
+		<class>org.eclipse.modisco.kdm.platform.ReadsResource</class>
+		<class>org.eclipse.modisco.kdm.platform.WritesResource</class>
+		<class>org.eclipse.modisco.kdm.platform.DefinedBy</class>
+		<class>org.eclipse.modisco.kdm.platform.DeployedComponent</class>
+		<class>org.eclipse.modisco.kdm.platform.DeployedSoftwareSystem</class>
+		<class>org.eclipse.modisco.kdm.platform.Machine</class>
+		<class>org.eclipse.modisco.kdm.platform.DeployedResource</class>
+		<class>org.eclipse.modisco.kdm.platform.RuntimeResource</class>
+		<class>org.eclipse.modisco.kdm.platform.Process</class>
+		<class>org.eclipse.modisco.kdm.platform.Thread</class>
+		<class>org.eclipse.modisco.kdm.platform.Loads</class>
+		<class>org.eclipse.modisco.kdm.platform.Spawns</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformElement</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformRelationship</class>
+		<class>org.eclipse.modisco.kdm.build.AbstractBuildElement</class>
+		<class>org.eclipse.modisco.kdm.build.BuildResource</class>
+		<class>org.eclipse.modisco.kdm.build.BuildDescription</class>
+		<class>org.eclipse.modisco.kdm.build.SymbolicLink</class>
+		<class>org.eclipse.modisco.kdm.build.AbstractBuildRelationship</class>
+		<class>org.eclipse.modisco.kdm.build.LinksTo</class>
+		<class>org.eclipse.modisco.kdm.build.Consumes</class>
+		<class>org.eclipse.modisco.kdm.build.BuildModel</class>
+		<class>org.eclipse.modisco.kdm.build.BuildComponent</class>
+		<class>org.eclipse.modisco.kdm.build.Supplier</class>
+		<class>org.eclipse.modisco.kdm.build.Tool</class>
+		<class>org.eclipse.modisco.kdm.build.BuildElement</class>
+		<class>org.eclipse.modisco.kdm.build.BuildRelationship</class>
+		<class>org.eclipse.modisco.kdm.build.SuppliedBy</class>
+		<class>org.eclipse.modisco.kdm.build.Library</class>
+		<class>org.eclipse.modisco.kdm.build.BuildStep</class>
+		<class>org.eclipse.modisco.kdm.build.Produces</class>
+		<class>org.eclipse.modisco.kdm.build.SupportedBy</class>
+		<class>org.eclipse.modisco.kdm.build.BuildProduct</class>
+		<class>org.eclipse.modisco.kdm.build.DescribedBy</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualModel</class>
+		<class>org.eclipse.modisco.kdm.conceptual.AbstractConceptualElement</class>
+		<class>org.eclipse.modisco.kdm.conceptual.TermUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualContainer</class>
+		<class>org.eclipse.modisco.kdm.conceptual.FactUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.AbstractConceptualRelationship</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualRelationship</class>
+		<class>org.eclipse.modisco.kdm.conceptual.BehaviorUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.RuleUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ScenarioUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualFlow</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualElement</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualRole</class>
+		<class>org.eclipse.modisco.kdm.data.DataModel</class>
+		<class>org.eclipse.modisco.kdm.data.AbstractDataElement</class>
+		<class>org.eclipse.modisco.kdm.data.DataResource</class>
+		<class>org.eclipse.modisco.kdm.data.IndexElement</class>
+		<class>org.eclipse.modisco.kdm.data.UniqueKey</class>
+		<class>org.eclipse.modisco.kdm.data.Index</class>
+		<class>org.eclipse.modisco.kdm.data.AbstractDataRelationship</class>
+		<class>org.eclipse.modisco.kdm.data.KeyRelation</class>
+		<class>org.eclipse.modisco.kdm.data.ReferenceKey</class>
+		<class>org.eclipse.modisco.kdm.data.DataContainer</class>
+		<class>org.eclipse.modisco.kdm.data.Catalog</class>
+		<class>org.eclipse.modisco.kdm.data.RelationalSchema</class>
+		<class>org.eclipse.modisco.kdm.data.ColumnSet</class>
+		<class>org.eclipse.modisco.kdm.data.RelationalTable</class>
+		<class>org.eclipse.modisco.kdm.data.RelationalView</class>
+		<class>org.eclipse.modisco.kdm.data.RecordFile</class>
+		<class>org.eclipse.modisco.kdm.data.DataEvent</class>
+		<class>org.eclipse.modisco.kdm.data.XMLSchema</class>
+		<class>org.eclipse.modisco.kdm.data.AbstractContentElement</class>
+		<class>org.eclipse.modisco.kdm.data.ComplexContentType</class>
+		<class>org.eclipse.modisco.kdm.data.AllContent</class>
+		<class>org.eclipse.modisco.kdm.data.SeqContent</class>
+		<class>org.eclipse.modisco.kdm.data.ChoiceContent</class>
+		<class>org.eclipse.modisco.kdm.data.ContentItem</class>
+		<class>org.eclipse.modisco.kdm.data.GroupContent</class>
+		<class>org.eclipse.modisco.kdm.data.ContentRestriction</class>
+		<class>org.eclipse.modisco.kdm.data.SimpleContentType</class>
+		<class>org.eclipse.modisco.kdm.data.ExtendedDataElement</class>
+		<class>org.eclipse.modisco.kdm.data.DataRelationship</class>
+		<class>org.eclipse.modisco.kdm.data.MixedContent</class>
+		<class>org.eclipse.modisco.kdm.data.ContentReference</class>
+		<class>org.eclipse.modisco.kdm.data.DataAction</class>
+		<class>org.eclipse.modisco.kdm.data.ReadsColumnSet</class>
+		<class>org.eclipse.modisco.kdm.data.ContentAttribute</class>
+		<class>org.eclipse.modisco.kdm.data.TypedBy</class>
+		<class>org.eclipse.modisco.kdm.data.ReferenceTo</class>
+		<class>org.eclipse.modisco.kdm.data.RestrictionOf</class>
+		<class>org.eclipse.modisco.kdm.data.ExtensionTo</class>
+		<class>org.eclipse.modisco.kdm.data.DatatypeOf</class>
+		<class>org.eclipse.modisco.kdm.data.HasContent</class>
+		<class>org.eclipse.modisco.kdm.data.WritesColumnSet</class>
+		<class>org.eclipse.modisco.kdm.data.ProducesDataEvent</class>
+		<class>org.eclipse.modisco.kdm.data.DataSegment</class>
+		<class>org.eclipse.modisco.kdm.data.ContentElement</class>
+		<class>org.eclipse.modisco.kdm.data.ManagesData</class>
+		<class>org.eclipse.modisco.kdm.event.EventModel</class>
+		<class>org.eclipse.modisco.kdm.event.AbstractEventElement</class>
+		<class>org.eclipse.modisco.kdm.event.Event</class>
+		<class>org.eclipse.modisco.kdm.event.AbstractEventRelationship</class>
+		<class>org.eclipse.modisco.kdm.event.EventRelationship</class>
+		<class>org.eclipse.modisco.kdm.event.EventResource</class>
+		<class>org.eclipse.modisco.kdm.event.State</class>
+		<class>org.eclipse.modisco.kdm.event.Transition</class>
+		<class>org.eclipse.modisco.kdm.event.OnEntry</class>
+		<class>org.eclipse.modisco.kdm.event.OnExit</class>
+		<class>org.eclipse.modisco.kdm.event.EventAction</class>
+		<class>org.eclipse.modisco.kdm.event.ReadsState</class>
+		<class>org.eclipse.modisco.kdm.event.ProducesEvent</class>
+		<class>org.eclipse.modisco.kdm.event.ConsumesEvent</class>
+		<class>org.eclipse.modisco.kdm.event.NextState</class>
+		<class>org.eclipse.modisco.kdm.event.InitialState</class>
+		<class>org.eclipse.modisco.kdm.event.EventElement</class>
+		<class>org.eclipse.modisco.kdm.event.HasState</class>
+		<class>org.eclipse.modisco.kdm.structure.AbstractStructureElement</class>
+		<class>org.eclipse.modisco.kdm.structure.Subsystem</class>
+		<class>org.eclipse.modisco.kdm.structure.Layer</class>
+		<class>org.eclipse.modisco.kdm.structure.StructureModel</class>
+		<class>org.eclipse.modisco.kdm.structure.Component</class>
+		<class>org.eclipse.modisco.kdm.structure.SoftwareSystem</class>
+		<class>org.eclipse.modisco.kdm.structure.AbstractStructureRelationship</class>
+		<class>org.eclipse.modisco.kdm.structure.StructureRelationship</class>
+		<class>org.eclipse.modisco.kdm.structure.ArchitectureView</class>
+		<class>org.eclipse.modisco.kdm.structure.StructureElement</class>
+		<class>org.eclipse.modisco.kdm.ui.AbstractUIElement</class>
+		<class>org.eclipse.modisco.kdm.ui.UIResource</class>
+		<class>org.eclipse.modisco.kdm.ui.UIDisplay</class>
+		<class>org.eclipse.modisco.kdm.ui.Screen</class>
+		<class>org.eclipse.modisco.kdm.ui.Report</class>
+		<class>org.eclipse.modisco.kdm.ui.UIModel</class>
+		<class>org.eclipse.modisco.kdm.ui.AbstractUIRelationship</class>
+		<class>org.eclipse.modisco.kdm.ui.UILayout</class>
+		<class>org.eclipse.modisco.kdm.ui.UIField</class>
+		<class>org.eclipse.modisco.kdm.ui.DisplaysImage</class>
+		<class>org.eclipse.modisco.kdm.ui.Displays</class>
+		<class>org.eclipse.modisco.kdm.ui.UIFlow</class>
+		<class>org.eclipse.modisco.kdm.ui.UIElement</class>
+		<class>org.eclipse.modisco.kdm.ui.UIRelationship</class>
+		<class>org.eclipse.modisco.kdm.ui.UIAction</class>
+		<class>org.eclipse.modisco.kdm.ui.UIEvent</class>
+		<class>org.eclipse.modisco.kdm.ui.ReadsUI</class>
+		<class>org.eclipse.modisco.kdm.ui.WritesUI</class>
+		<class>org.eclipse.modisco.kdm.ui.ManagesUI</class>
+
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="org.eclipse.persistence.platform.database.HSQLPlatform"/>
+            <property name="javax.persistence.jdbc.driver" value="org.hsqldb.jdbcDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:hsqldb:mem:classkdm"/>
+         	<property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="kdm-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="kdm-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="kdm-mysql">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/mapping-files/base/identifiable-orm.xml</mapping-file>
+		<mapping-file>META-INF/mapping-files/samples/kdm-orm.xml</mapping-file>
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="Mysql"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/kdm"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="kdm-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="kdm-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="kdm-class-mysql">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<mapping-file>META-INF/mapping-files/base/identifiable-orm.xml</mapping-file>
+		<class>org.eclipse.emf.texo.test.model.base.identifiable.Identifiable</class>
+		<class>org.eclipse.modisco.kdm.core.Element</class>
+		<class>org.eclipse.modisco.kdm.core.ModelElement</class>
+		<class>org.eclipse.modisco.kdm.core.KDMEntity</class>
+		<class>org.eclipse.modisco.kdm.core.KDMRelationship</class>
+		<class>org.eclipse.modisco.kdm.core.AggregatedRelationship</class>
+		<class>org.eclipse.modisco.kdm.kdm.KDMFramework</class>
+		<class>org.eclipse.modisco.kdm.kdm.KDMModel</class>
+		<class>org.eclipse.modisco.kdm.kdm.Segment</class>
+		<class>org.eclipse.modisco.kdm.kdm.Audit</class>
+		<class>org.eclipse.modisco.kdm.kdm.Stereotype</class>
+		<class>org.eclipse.modisco.kdm.kdm.TagDefinition</class>
+		<class>org.eclipse.modisco.kdm.kdm.ExtensionFamily</class>
+		<class>org.eclipse.modisco.kdm.kdm.ExtendedValue</class>
+		<class>org.eclipse.modisco.kdm.kdm.TaggedValue</class>
+		<class>org.eclipse.modisco.kdm.kdm.TaggedRef</class>
+		<class>org.eclipse.modisco.kdm.kdm.Attribute</class>
+		<class>org.eclipse.modisco.kdm.kdm.Annotation</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryModel</class>
+		<class>org.eclipse.modisco.kdm.source.AbstractInventoryElement</class>
+		<class>org.eclipse.modisco.kdm.source.AbstractInventoryRelationship</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryItem</class>
+		<class>org.eclipse.modisco.kdm.source.SourceFile</class>
+		<class>org.eclipse.modisco.kdm.source.Image</class>
+		<class>org.eclipse.modisco.kdm.source.Configuration</class>
+		<class>org.eclipse.modisco.kdm.source.ResourceDescription</class>
+		<class>org.eclipse.modisco.kdm.source.BinaryFile</class>
+		<class>org.eclipse.modisco.kdm.source.ExecutableFile</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryContainer</class>
+		<class>org.eclipse.modisco.kdm.source.Directory</class>
+		<class>org.eclipse.modisco.kdm.source.Project</class>
+		<class>org.eclipse.modisco.kdm.source.DependsOn</class>
+		<class>org.eclipse.modisco.kdm.source.SourceRef</class>
+		<class>org.eclipse.modisco.kdm.source.SourceRegion</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryElement</class>
+		<class>org.eclipse.modisco.kdm.source.InventoryRelationship</class>
+		<class>org.eclipse.modisco.kdm.code.CodeModel</class>
+		<class>org.eclipse.modisco.kdm.code.AbstractCodeElement</class>
+		<class>org.eclipse.modisco.kdm.code.AbstractCodeRelationship</class>
+		<class>org.eclipse.modisco.kdm.code.CodeItem</class>
+		<class>org.eclipse.modisco.kdm.code.ComputationalObject</class>
+		<class>org.eclipse.modisco.kdm.code.Datatype</class>
+		<class>org.eclipse.modisco.kdm.code.Module</class>
+		<class>org.eclipse.modisco.kdm.code.CompilationUnit</class>
+		<class>org.eclipse.modisco.kdm.code.SharedUnit</class>
+		<class>org.eclipse.modisco.kdm.code.LanguageUnit</class>
+		<class>org.eclipse.modisco.kdm.code.CodeAssembly</class>
+		<class>org.eclipse.modisco.kdm.code.Package</class>
+		<class>org.eclipse.modisco.kdm.code.ControlElement</class>
+		<class>org.eclipse.modisco.kdm.code.CallableUnit</class>
+		<class>org.eclipse.modisco.kdm.code.MethodUnit</class>
+		<class>org.eclipse.modisco.kdm.code.DataElement</class>
+		<class>org.eclipse.modisco.kdm.code.StorableUnit</class>
+		<class>org.eclipse.modisco.kdm.code.ItemUnit</class>
+		<class>org.eclipse.modisco.kdm.code.IndexUnit</class>
+		<class>org.eclipse.modisco.kdm.code.MemberUnit</class>
+		<class>org.eclipse.modisco.kdm.code.ParameterUnit</class>
+		<class>org.eclipse.modisco.kdm.code.ValueElement</class>
+		<class>org.eclipse.modisco.kdm.code.Value</class>
+		<class>org.eclipse.modisco.kdm.code.ValueList</class>
+		<class>org.eclipse.modisco.kdm.code.PrimitiveType</class>
+		<class>org.eclipse.modisco.kdm.code.BooleanType</class>
+		<class>org.eclipse.modisco.kdm.code.CharType</class>
+		<class>org.eclipse.modisco.kdm.code.OrdinalType</class>
+		<class>org.eclipse.modisco.kdm.code.DateType</class>
+		<class>org.eclipse.modisco.kdm.code.TimeType</class>
+		<class>org.eclipse.modisco.kdm.code.IntegerType</class>
+		<class>org.eclipse.modisco.kdm.code.DecimalType</class>
+		<class>org.eclipse.modisco.kdm.code.ScaledType</class>
+		<class>org.eclipse.modisco.kdm.code.FloatType</class>
+		<class>org.eclipse.modisco.kdm.code.VoidType</class>
+		<class>org.eclipse.modisco.kdm.code.StringType</class>
+		<class>org.eclipse.modisco.kdm.code.BitType</class>
+		<class>org.eclipse.modisco.kdm.code.BitstringType</class>
+		<class>org.eclipse.modisco.kdm.code.OctetType</class>
+		<class>org.eclipse.modisco.kdm.code.OctetstringType</class>
+		<class>org.eclipse.modisco.kdm.code.EnumeratedType</class>
+		<class>org.eclipse.modisco.kdm.code.CompositeType</class>
+		<class>org.eclipse.modisco.kdm.code.ChoiceType</class>
+		<class>org.eclipse.modisco.kdm.code.RecordType</class>
+		<class>org.eclipse.modisco.kdm.code.DerivedType</class>
+		<class>org.eclipse.modisco.kdm.code.ArrayType</class>
+		<class>org.eclipse.modisco.kdm.code.PointerType</class>
+		<class>org.eclipse.modisco.kdm.code.RangeType</class>
+		<class>org.eclipse.modisco.kdm.code.BagType</class>
+		<class>org.eclipse.modisco.kdm.code.SetType</class>
+		<class>org.eclipse.modisco.kdm.code.SequenceType</class>
+		<class>org.eclipse.modisco.kdm.code.Signature</class>
+		<class>org.eclipse.modisco.kdm.code.DefinedType</class>
+		<class>org.eclipse.modisco.kdm.code.TypeUnit</class>
+		<class>org.eclipse.modisco.kdm.code.SynonymUnit</class>
+		<class>org.eclipse.modisco.kdm.code.ClassUnit</class>
+		<class>org.eclipse.modisco.kdm.code.InterfaceUnit</class>
+		<class>org.eclipse.modisco.kdm.code.TemplateUnit</class>
+		<class>org.eclipse.modisco.kdm.code.TemplateParameter</class>
+		<class>org.eclipse.modisco.kdm.code.TemplateType</class>
+		<class>org.eclipse.modisco.kdm.code.InstanceOf</class>
+		<class>org.eclipse.modisco.kdm.code.ParameterTo</class>
+		<class>org.eclipse.modisco.kdm.code.Implements</class>
+		<class>org.eclipse.modisco.kdm.code.ImplementationOf</class>
+		<class>org.eclipse.modisco.kdm.code.HasType</class>
+		<class>org.eclipse.modisco.kdm.code.HasValue</class>
+		<class>org.eclipse.modisco.kdm.code.Extends</class>
+		<class>org.eclipse.modisco.kdm.code.PreprocessorDirective</class>
+		<class>org.eclipse.modisco.kdm.code.MacroUnit</class>
+		<class>org.eclipse.modisco.kdm.code.MacroDirective</class>
+		<class>org.eclipse.modisco.kdm.code.IncludeDirective</class>
+		<class>org.eclipse.modisco.kdm.code.ConditionalDirective</class>
+		<class>org.eclipse.modisco.kdm.code.Expands</class>
+		<class>org.eclipse.modisco.kdm.code.GeneratedFrom</class>
+		<class>org.eclipse.modisco.kdm.code.Includes</class>
+		<class>org.eclipse.modisco.kdm.code.VariantTo</class>
+		<class>org.eclipse.modisco.kdm.code.Redefines</class>
+		<class>org.eclipse.modisco.kdm.code.CommentUnit</class>
+		<class>org.eclipse.modisco.kdm.code.Namespace</class>
+		<class>org.eclipse.modisco.kdm.code.VisibleIn</class>
+		<class>org.eclipse.modisco.kdm.code.Imports</class>
+		<class>org.eclipse.modisco.kdm.code.CodeElement</class>
+		<class>org.eclipse.modisco.kdm.code.CodeRelationship</class>
+		<class>org.eclipse.modisco.kdm.action.ActionElement</class>
+		<class>org.eclipse.modisco.kdm.action.AbstractActionRelationship</class>
+		<class>org.eclipse.modisco.kdm.action.BlockUnit</class>
+		<class>org.eclipse.modisco.kdm.action.ControlFlow</class>
+		<class>org.eclipse.modisco.kdm.action.EntryFlow</class>
+		<class>org.eclipse.modisco.kdm.action.Flow</class>
+		<class>org.eclipse.modisco.kdm.action.TrueFlow</class>
+		<class>org.eclipse.modisco.kdm.action.FalseFlow</class>
+		<class>org.eclipse.modisco.kdm.action.GuardedFlow</class>
+		<class>org.eclipse.modisco.kdm.action.Calls</class>
+		<class>org.eclipse.modisco.kdm.action.Dispatches</class>
+		<class>org.eclipse.modisco.kdm.action.Reads</class>
+		<class>org.eclipse.modisco.kdm.action.Writes</class>
+		<class>org.eclipse.modisco.kdm.action.Addresses</class>
+		<class>org.eclipse.modisco.kdm.action.Creates</class>
+		<class>org.eclipse.modisco.kdm.action.ExceptionUnit</class>
+		<class>org.eclipse.modisco.kdm.action.TryUnit</class>
+		<class>org.eclipse.modisco.kdm.action.CatchUnit</class>
+		<class>org.eclipse.modisco.kdm.action.FinallyUnit</class>
+		<class>org.eclipse.modisco.kdm.action.ExitFlow</class>
+		<class>org.eclipse.modisco.kdm.action.ExceptionFlow</class>
+		<class>org.eclipse.modisco.kdm.action.Throws</class>
+		<class>org.eclipse.modisco.kdm.action.CompliesTo</class>
+		<class>org.eclipse.modisco.kdm.action.UsesType</class>
+		<class>org.eclipse.modisco.kdm.action.ActionRelationship</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformModel</class>
+		<class>org.eclipse.modisco.kdm.platform.AbstractPlatformElement</class>
+		<class>org.eclipse.modisco.kdm.platform.AbstractPlatformRelationship</class>
+		<class>org.eclipse.modisco.kdm.platform.ResourceType</class>
+		<class>org.eclipse.modisco.kdm.platform.NamingResource</class>
+		<class>org.eclipse.modisco.kdm.platform.MarshalledResource</class>
+		<class>org.eclipse.modisco.kdm.platform.MessagingResource</class>
+		<class>org.eclipse.modisco.kdm.platform.FileResource</class>
+		<class>org.eclipse.modisco.kdm.platform.ExecutionResource</class>
+		<class>org.eclipse.modisco.kdm.platform.LockResource</class>
+		<class>org.eclipse.modisco.kdm.platform.StreamResource</class>
+		<class>org.eclipse.modisco.kdm.platform.DataManager</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformEvent</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformAction</class>
+		<class>org.eclipse.modisco.kdm.platform.ExternalActor</class>
+		<class>org.eclipse.modisco.kdm.platform.BindsTo</class>
+		<class>org.eclipse.modisco.kdm.platform.Requires</class>
+		<class>org.eclipse.modisco.kdm.platform.ManagesResource</class>
+		<class>org.eclipse.modisco.kdm.platform.ReadsResource</class>
+		<class>org.eclipse.modisco.kdm.platform.WritesResource</class>
+		<class>org.eclipse.modisco.kdm.platform.DefinedBy</class>
+		<class>org.eclipse.modisco.kdm.platform.DeployedComponent</class>
+		<class>org.eclipse.modisco.kdm.platform.DeployedSoftwareSystem</class>
+		<class>org.eclipse.modisco.kdm.platform.Machine</class>
+		<class>org.eclipse.modisco.kdm.platform.DeployedResource</class>
+		<class>org.eclipse.modisco.kdm.platform.RuntimeResource</class>
+		<class>org.eclipse.modisco.kdm.platform.Process</class>
+		<class>org.eclipse.modisco.kdm.platform.Thread</class>
+		<class>org.eclipse.modisco.kdm.platform.Loads</class>
+		<class>org.eclipse.modisco.kdm.platform.Spawns</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformElement</class>
+		<class>org.eclipse.modisco.kdm.platform.PlatformRelationship</class>
+		<class>org.eclipse.modisco.kdm.build.AbstractBuildElement</class>
+		<class>org.eclipse.modisco.kdm.build.BuildResource</class>
+		<class>org.eclipse.modisco.kdm.build.BuildDescription</class>
+		<class>org.eclipse.modisco.kdm.build.SymbolicLink</class>
+		<class>org.eclipse.modisco.kdm.build.AbstractBuildRelationship</class>
+		<class>org.eclipse.modisco.kdm.build.LinksTo</class>
+		<class>org.eclipse.modisco.kdm.build.Consumes</class>
+		<class>org.eclipse.modisco.kdm.build.BuildModel</class>
+		<class>org.eclipse.modisco.kdm.build.BuildComponent</class>
+		<class>org.eclipse.modisco.kdm.build.Supplier</class>
+		<class>org.eclipse.modisco.kdm.build.Tool</class>
+		<class>org.eclipse.modisco.kdm.build.BuildElement</class>
+		<class>org.eclipse.modisco.kdm.build.BuildRelationship</class>
+		<class>org.eclipse.modisco.kdm.build.SuppliedBy</class>
+		<class>org.eclipse.modisco.kdm.build.Library</class>
+		<class>org.eclipse.modisco.kdm.build.BuildStep</class>
+		<class>org.eclipse.modisco.kdm.build.Produces</class>
+		<class>org.eclipse.modisco.kdm.build.SupportedBy</class>
+		<class>org.eclipse.modisco.kdm.build.BuildProduct</class>
+		<class>org.eclipse.modisco.kdm.build.DescribedBy</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualModel</class>
+		<class>org.eclipse.modisco.kdm.conceptual.AbstractConceptualElement</class>
+		<class>org.eclipse.modisco.kdm.conceptual.TermUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualContainer</class>
+		<class>org.eclipse.modisco.kdm.conceptual.FactUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.AbstractConceptualRelationship</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualRelationship</class>
+		<class>org.eclipse.modisco.kdm.conceptual.BehaviorUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.RuleUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ScenarioUnit</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualFlow</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualElement</class>
+		<class>org.eclipse.modisco.kdm.conceptual.ConceptualRole</class>
+		<class>org.eclipse.modisco.kdm.data.DataModel</class>
+		<class>org.eclipse.modisco.kdm.data.AbstractDataElement</class>
+		<class>org.eclipse.modisco.kdm.data.DataResource</class>
+		<class>org.eclipse.modisco.kdm.data.IndexElement</class>
+		<class>org.eclipse.modisco.kdm.data.UniqueKey</class>
+		<class>org.eclipse.modisco.kdm.data.Index</class>
+		<class>org.eclipse.modisco.kdm.data.AbstractDataRelationship</class>
+		<class>org.eclipse.modisco.kdm.data.KeyRelation</class>
+		<class>org.eclipse.modisco.kdm.data.ReferenceKey</class>
+		<class>org.eclipse.modisco.kdm.data.DataContainer</class>
+		<class>org.eclipse.modisco.kdm.data.Catalog</class>
+		<class>org.eclipse.modisco.kdm.data.RelationalSchema</class>
+		<class>org.eclipse.modisco.kdm.data.ColumnSet</class>
+		<class>org.eclipse.modisco.kdm.data.RelationalTable</class>
+		<class>org.eclipse.modisco.kdm.data.RelationalView</class>
+		<class>org.eclipse.modisco.kdm.data.RecordFile</class>
+		<class>org.eclipse.modisco.kdm.data.DataEvent</class>
+		<class>org.eclipse.modisco.kdm.data.XMLSchema</class>
+		<class>org.eclipse.modisco.kdm.data.AbstractContentElement</class>
+		<class>org.eclipse.modisco.kdm.data.ComplexContentType</class>
+		<class>org.eclipse.modisco.kdm.data.AllContent</class>
+		<class>org.eclipse.modisco.kdm.data.SeqContent</class>
+		<class>org.eclipse.modisco.kdm.data.ChoiceContent</class>
+		<class>org.eclipse.modisco.kdm.data.ContentItem</class>
+		<class>org.eclipse.modisco.kdm.data.GroupContent</class>
+		<class>org.eclipse.modisco.kdm.data.ContentRestriction</class>
+		<class>org.eclipse.modisco.kdm.data.SimpleContentType</class>
+		<class>org.eclipse.modisco.kdm.data.ExtendedDataElement</class>
+		<class>org.eclipse.modisco.kdm.data.DataRelationship</class>
+		<class>org.eclipse.modisco.kdm.data.MixedContent</class>
+		<class>org.eclipse.modisco.kdm.data.ContentReference</class>
+		<class>org.eclipse.modisco.kdm.data.DataAction</class>
+		<class>org.eclipse.modisco.kdm.data.ReadsColumnSet</class>
+		<class>org.eclipse.modisco.kdm.data.ContentAttribute</class>
+		<class>org.eclipse.modisco.kdm.data.TypedBy</class>
+		<class>org.eclipse.modisco.kdm.data.ReferenceTo</class>
+		<class>org.eclipse.modisco.kdm.data.RestrictionOf</class>
+		<class>org.eclipse.modisco.kdm.data.ExtensionTo</class>
+		<class>org.eclipse.modisco.kdm.data.DatatypeOf</class>
+		<class>org.eclipse.modisco.kdm.data.HasContent</class>
+		<class>org.eclipse.modisco.kdm.data.WritesColumnSet</class>
+		<class>org.eclipse.modisco.kdm.data.ProducesDataEvent</class>
+		<class>org.eclipse.modisco.kdm.data.DataSegment</class>
+		<class>org.eclipse.modisco.kdm.data.ContentElement</class>
+		<class>org.eclipse.modisco.kdm.data.ManagesData</class>
+		<class>org.eclipse.modisco.kdm.event.EventModel</class>
+		<class>org.eclipse.modisco.kdm.event.AbstractEventElement</class>
+		<class>org.eclipse.modisco.kdm.event.Event</class>
+		<class>org.eclipse.modisco.kdm.event.AbstractEventRelationship</class>
+		<class>org.eclipse.modisco.kdm.event.EventRelationship</class>
+		<class>org.eclipse.modisco.kdm.event.EventResource</class>
+		<class>org.eclipse.modisco.kdm.event.State</class>
+		<class>org.eclipse.modisco.kdm.event.Transition</class>
+		<class>org.eclipse.modisco.kdm.event.OnEntry</class>
+		<class>org.eclipse.modisco.kdm.event.OnExit</class>
+		<class>org.eclipse.modisco.kdm.event.EventAction</class>
+		<class>org.eclipse.modisco.kdm.event.ReadsState</class>
+		<class>org.eclipse.modisco.kdm.event.ProducesEvent</class>
+		<class>org.eclipse.modisco.kdm.event.ConsumesEvent</class>
+		<class>org.eclipse.modisco.kdm.event.NextState</class>
+		<class>org.eclipse.modisco.kdm.event.InitialState</class>
+		<class>org.eclipse.modisco.kdm.event.EventElement</class>
+		<class>org.eclipse.modisco.kdm.event.HasState</class>
+		<class>org.eclipse.modisco.kdm.structure.AbstractStructureElement</class>
+		<class>org.eclipse.modisco.kdm.structure.Subsystem</class>
+		<class>org.eclipse.modisco.kdm.structure.Layer</class>
+		<class>org.eclipse.modisco.kdm.structure.StructureModel</class>
+		<class>org.eclipse.modisco.kdm.structure.Component</class>
+		<class>org.eclipse.modisco.kdm.structure.SoftwareSystem</class>
+		<class>org.eclipse.modisco.kdm.structure.AbstractStructureRelationship</class>
+		<class>org.eclipse.modisco.kdm.structure.StructureRelationship</class>
+		<class>org.eclipse.modisco.kdm.structure.ArchitectureView</class>
+		<class>org.eclipse.modisco.kdm.structure.StructureElement</class>
+		<class>org.eclipse.modisco.kdm.ui.AbstractUIElement</class>
+		<class>org.eclipse.modisco.kdm.ui.UIResource</class>
+		<class>org.eclipse.modisco.kdm.ui.UIDisplay</class>
+		<class>org.eclipse.modisco.kdm.ui.Screen</class>
+		<class>org.eclipse.modisco.kdm.ui.Report</class>
+		<class>org.eclipse.modisco.kdm.ui.UIModel</class>
+		<class>org.eclipse.modisco.kdm.ui.AbstractUIRelationship</class>
+		<class>org.eclipse.modisco.kdm.ui.UILayout</class>
+		<class>org.eclipse.modisco.kdm.ui.UIField</class>
+		<class>org.eclipse.modisco.kdm.ui.DisplaysImage</class>
+		<class>org.eclipse.modisco.kdm.ui.Displays</class>
+		<class>org.eclipse.modisco.kdm.ui.UIFlow</class>
+		<class>org.eclipse.modisco.kdm.ui.UIElement</class>
+		<class>org.eclipse.modisco.kdm.ui.UIRelationship</class>
+		<class>org.eclipse.modisco.kdm.ui.UIAction</class>
+		<class>org.eclipse.modisco.kdm.ui.UIEvent</class>
+		<class>org.eclipse.modisco.kdm.ui.ReadsUI</class>
+		<class>org.eclipse.modisco.kdm.ui.WritesUI</class>
+		<class>org.eclipse.modisco.kdm.ui.ManagesUI</class>
+
+		<properties>
+			<property name="eclipselink.session.customizer" value="org.eclipse.emf.texo.test.TexoSessionCustomizer"/>
+            <property name="eclipselink.target-database" value="Mysql"/>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/classkdm"/>
+            <property name="javax.persistence.jdbc.user" value="root"/>
+            <property name="javax.persistence.jdbc.password" value="root"/>
+
+			<!-- EclipseLink should create the database schema automatically -->
+
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.ddl-generation.output-mode" value="database" />
+			<!-- property name="eclipselink.drop-ddl-jdbc-file-name" value="kdm-drop.sql"/>
+			<property name="eclipselink.create-ddl-jdbc-file-name" value="kdm-create.sql"/>
+			<property name="eclipselink.application-location" value="ddl/"/-->
+			<property name="eclipselink.logging.level" value="WARNING" />
+		</properties>
+	</persistence-unit>
+		
+</persistence>

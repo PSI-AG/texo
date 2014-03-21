@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<orm:entity-mappings xmlns:orm="http://www.eclipse.org/eclipselink/xsds/persistence/orm" version="2.3">
+  <orm:persistence-unit-metadata>
+    <orm:persistence-unit-defaults>
+      <orm:delimited-identifiers/>
+    </orm:persistence-unit-defaults>
+  </orm:persistence-unit-metadata>
+  <orm:access>FIELD</orm:access>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz399086.MapElement" name="bz399086_MapElement">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:basic name="name" optional="false">
+        <orm:column name="name" nullable="true"/>
+      </orm:basic>
+    </orm:attributes>
+  </orm:entity>
+  <orm:entity class="org.eclipse.emf.texo.test.model.issues.bz399086.TheMap" name="bz399086_TheMap">
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestObjectConverter" name="TexoTestObjectConverter"/>
+    <orm:converter class="org.eclipse.emf.texo.test.TexoTestQNameConverter" name="TexoTestQNameConverter"/>
+    <orm:attributes>
+      <orm:one-to-many name="refContent">
+        <orm:map-key-column name="bz399086_TheMap_refContent_ind" table="bz399086_TheMap_refContent"/>
+        <orm:join-table name="bz399086_TheMap_refContent">
+          <orm:join-column name="bz399086_TheMap_refContent"/>
+          <orm:inverse-join-column name="refContent_bz399086_MapRefEntry"/>
+        </orm:join-table>
+        <orm:cascade>
+          <orm:cascade-all/>
+        </orm:cascade>
+      </orm:one-to-many>
+      <orm:element-collection name="valueContent">
+        <orm:collection-table name="bz399086_TheMap_valueContent"/>
+        <orm:cascade-on-delete>true</orm:cascade-on-delete>
+      </orm:element-collection>
+    </orm:attributes>
+  </orm:entity>
+</orm:entity-mappings>
